@@ -37,3 +37,1180 @@
 639  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
 717  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
 22362 [Thread-5] ERROR ca.sqlpower.architect.swingui.action.CheckForUpdateAction  - Fail to retrieve current version number!
+0    [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ArchitectUtils  - Log4J configured successfully
+360  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+415  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+416  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+464  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+22368 [Thread-5] ERROR ca.sqlpower.architect.swingui.action.CheckForUpdateAction  - Fail to retrieve current version number!
+260882 [AWT-EventQueue-0] WARN  ca.sqlpower.sqlobject.ForeignKeyColumnUpdaterPoolingSPListener  - Warning: unknown SQLTypePhysicalProperties property name changed while monitoring pkTable
+260885 [AWT-EventQueue-0] WARN  ca.sqlpower.sqlobject.ForeignKeyColumnUpdaterPoolingSPListener  - Warning: unknown UserDefinedSQLType property myAutoIncrement changed while monitoring pkTable
+467220 [AWT-EventQueue-0] WARN  ca.sqlpower.sqlobject.ForeignKeyColumnUpdaterPoolingSPListener  - Warning: unknown SQLTypePhysicalProperties property name changed while monitoring pkTable
+467221 [AWT-EventQueue-0] WARN  ca.sqlpower.sqlobject.ForeignKeyColumnUpdaterPoolingSPListener  - Warning: unknown UserDefinedSQLType property myAutoIncrement changed while monitoring pkTable
+467221 [AWT-EventQueue-0] WARN  ca.sqlpower.sqlobject.ForeignKeyColumnUpdaterPoolingSPListener  - Warning: unknown SQLTypePhysicalProperties property name changed while monitoring pkTable
+467221 [AWT-EventQueue-0] WARN  ca.sqlpower.sqlobject.ForeignKeyColumnUpdaterPoolingSPListener  - Warning: unknown UserDefinedSQLType property myAutoIncrement changed while monitoring pkTable
+546783 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@13c96c1]
+548740 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+548744 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+548745 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+548749 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+548749 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+564610 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@13c96c1]
+668034 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@13c96c1]
+1550632 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@13c96c1]
+1691471 [AWT-EventQueue-0] WARN  ca.sqlpower.sqlobject.ForeignKeyColumnUpdaterPoolingSPListener  - Warning: unknown column property autoIncrementSequenceName changed while monitoring pkTable
+1804055 [AWT-EventQueue-0] WARN  ca.sqlpower.sqlobject.ForeignKeyColumnUpdaterPoolingSPListener  - Warning: unknown SQLTypePhysicalProperties property name changed while monitoring pkTable
+1804056 [AWT-EventQueue-0] WARN  ca.sqlpower.sqlobject.ForeignKeyColumnUpdaterPoolingSPListener  - Warning: unknown UserDefinedSQLType property myAutoIncrement changed while monitoring pkTable
+1864816 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@13c96c1]
+1925666 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@13c96c1]
+1928237 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@13c96c1]
+1978437 [AWT-EventQueue-0] WARN  ca.sqlpower.sqlobject.ForeignKeyColumnUpdaterPoolingSPListener  - Warning: unknown SQLTypePhysicalProperties property name changed while monitoring pkTable
+1978438 [AWT-EventQueue-0] WARN  ca.sqlpower.sqlobject.ForeignKeyColumnUpdaterPoolingSPListener  - Warning: unknown UserDefinedSQLType property myAutoIncrement changed while monitoring pkTable
+2042738 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@13c96c1]
+2096030 [AWT-EventQueue-0] WARN  ca.sqlpower.sqlobject.ForeignKeyColumnUpdaterPoolingSPListener  - Warning: unknown SQLTypePhysicalProperties property name changed while monitoring pkTable
+2096031 [AWT-EventQueue-0] WARN  ca.sqlpower.sqlobject.ForeignKeyColumnUpdaterPoolingSPListener  - Warning: unknown UserDefinedSQLType property myAutoIncrement changed while monitoring pkTable
+2223732 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.DBTree  - DBTree: exporting list of DnD-type tree paths
+2272481 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@13c96c1]
+2391829 [AWT-EventQueue-0] WARN  ca.sqlpower.sqlobject.ForeignKeyColumnUpdaterPoolingSPListener  - Warning: unknown SQLTypePhysicalProperties property name changed while monitoring pkTable
+2391831 [AWT-EventQueue-0] WARN  ca.sqlpower.sqlobject.ForeignKeyColumnUpdaterPoolingSPListener  - Warning: unknown UserDefinedSQLType property myAutoIncrement changed while monitoring pkTable
+2470209 [AWT-EventQueue-0] WARN  ca.sqlpower.sqlobject.ForeignKeyColumnUpdaterPoolingSPListener  - Warning: unknown column property autoIncrementSequenceName changed while monitoring pkTable
+2495353 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@13c96c1]
+2660200 [AWT-EventQueue-0] WARN  ca.sqlpower.sqlobject.ForeignKeyColumnUpdaterPoolingSPListener  - Warning: unknown SQLTypePhysicalProperties property name changed while monitoring pkTable
+2727860 [AWT-EventQueue-0] WARN  ca.sqlpower.sqlobject.ForeignKeyColumnUpdaterPoolingSPListener  - Warning: unknown SQLTypePhysicalProperties property name changed while monitoring pkTable
+2784141 [AWT-EventQueue-0] WARN  ca.sqlpower.sqlobject.ForeignKeyColumnUpdaterPoolingSPListener  - Warning: unknown SQLTypePhysicalProperties property name changed while monitoring pkTable
+3275573 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@13c96c1]
+3311227 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@13c96c1]
+3317566 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@13c96c1]
+3443256 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@13c96c1]
+3676830 [AWT-EventQueue-0] WARN  ca.sqlpower.sqlobject.ForeignKeyColumnUpdaterPoolingSPListener  - Warning: unknown SQLTypePhysicalProperties property name changed while monitoring pkTable
+3752659 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@13c96c1]
+3759111 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@13c96c1]
+3772821 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3772822 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3772822 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3772829 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3772829 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3772829 [AWT-EventQueue-0] INFO  ca.sqlpower.object.undo.PropertyChangeEdit  - Found setter: setLengths
+3782724 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@13c96c1]
+80000831 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@13c96c1]
+80000831 [Objects-Adder] INFO  ca.sqlpower.architect.swingui.PlayPen  - AddObjectsTask starting on thread Objects-Adder
+80000843 [Objects-Adder] INFO  ca.sqlpower.architect.swingui.PlayPen  - AddObjectsTask done
+80000859 [AWT-EventQueue-0] ERROR ca.sqlpower.architect.swingui.PlayPen  - Unknown object dropped in PlayPen: Contrasenha: VARCHAR(50)
+80305646 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@13c96c1]
+80357107 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@13c96c1]
+80385911 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@13c96c1]
+0    [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ArchitectUtils  - Log4J configured successfully
+678  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+812  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+813  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+879  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+15956 [AWT-EventQueue-0] ERROR ca.sqlpower.architect.swingui.KettleDataSourceOptionsPanel  -  The map is: {}
+22811 [Thread-5] ERROR ca.sqlpower.architect.swingui.action.CheckForUpdateAction  - Fail to retrieve current version number!
+26733 [AWT-EventQueue-0] ERROR ca.sqlpower.architect.swingui.KettleDataSourceOptionsPanel  -  The map is: {Hostname=, Port=5432, Database=}
+26737 [AWT-EventQueue-0] ERROR ca.sqlpower.architect.swingui.KettleDataSourceOptionsPanel  -  The map is: {Hostname=, Port=5432, Database=}
+55846 [AWT-EventQueue-0] WARN  ca.sqlpower.sql.JDBCDataSource  - Driver Class not found
+java.lang.ClassNotFoundException: Could not locate class org.postgresql.Driver in any of the JDBC Driver JAR files: [file:/C:/Users/Katty/Downloads/postgresql-42.5.4.jar]
+	at ca.sqlpower.sql.JDBCDataSourceType$JDBCClassLoader.findClass(JDBCDataSourceType.java:239)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Unknown Source)
+	at ca.sqlpower.sql.JDBCDataSource.createConnection(JDBCDataSource.java:274)
+	at ca.sqlpower.swingui.JDBCDataSourcePanel$1.actionPerformed(JDBCDataSourcePanel.java:168)
+	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(Unknown Source)
+	at java.awt.Component.processMouseEvent(Unknown Source)
+	at javax.swing.JComponent.processMouseEvent(Unknown Source)
+	at java.awt.Component.processEvent(Unknown Source)
+	at java.awt.Container.processEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.awt.EventQueue.access$500(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+80768 [AWT-EventQueue-0] WARN  ca.sqlpower.sql.JDBCDataSource  - Driver Class not found
+java.lang.ClassNotFoundException: Could not locate class org.postgresql.Driver in any of the JDBC Driver JAR files: [file:/C:/Users/Katty/Downloads/postgresql-42.5.4.jar]
+	at ca.sqlpower.sql.JDBCDataSourceType$JDBCClassLoader.findClass(JDBCDataSourceType.java:239)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Unknown Source)
+	at ca.sqlpower.sql.JDBCDataSource.createConnection(JDBCDataSource.java:274)
+	at ca.sqlpower.swingui.JDBCDataSourcePanel$1.actionPerformed(JDBCDataSourcePanel.java:168)
+	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(Unknown Source)
+	at java.awt.Component.processMouseEvent(Unknown Source)
+	at javax.swing.JComponent.processMouseEvent(Unknown Source)
+	at java.awt.Component.processEvent(Unknown Source)
+	at java.awt.Container.processEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.awt.EventQueue.access$500(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+236097 [AWT-EventQueue-0] ERROR ca.sqlpower.architect.swingui.KettleDataSourceOptionsPanel  -  The map is: {}
+247071 [AWT-EventQueue-0] ERROR ca.sqlpower.architect.swingui.KettleDataSourceOptionsPanel  -  The map is: {Hostname=, Port=5432, Database=}
+247074 [AWT-EventQueue-0] ERROR ca.sqlpower.architect.swingui.KettleDataSourceOptionsPanel  -  The map is: {Hostname=, Port=5432, Database=}
+263918 [AWT-EventQueue-0] WARN  ca.sqlpower.sql.JDBCDataSource  - Driver Class not found
+java.lang.ClassNotFoundException: Could not locate class org.postgresql.Driver in any of the JDBC Driver JAR files: [file:/C:/Users/Katty/Downloads/postgresql-42.5.4.jar]
+	at ca.sqlpower.sql.JDBCDataSourceType$JDBCClassLoader.findClass(JDBCDataSourceType.java:239)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Unknown Source)
+	at ca.sqlpower.sql.JDBCDataSource.createConnection(JDBCDataSource.java:274)
+	at ca.sqlpower.swingui.JDBCDataSourcePanel$1.actionPerformed(JDBCDataSourcePanel.java:168)
+	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(Unknown Source)
+	at java.awt.Component.processMouseEvent(Unknown Source)
+	at javax.swing.JComponent.processMouseEvent(Unknown Source)
+	at java.awt.Component.processEvent(Unknown Source)
+	at java.awt.Container.processEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.awt.EventQueue.access$500(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+275135 [Thread-7] WARN  ca.sqlpower.swingui.db.JDBCDriverPanel  - I/O Error reading JAR file
+java.io.FileNotFoundException: C:\Users\Katty\Downloads\postgresql-42.5.4.jar (El sistema no puede encontrar el archivo especificado)
+	at java.util.zip.ZipFile.open(Native Method)
+	at java.util.zip.ZipFile.<init>(Unknown Source)
+	at java.util.zip.ZipFile.<init>(Unknown Source)
+	at java.util.jar.JarFile.<init>(Unknown Source)
+	at java.util.jar.JarFile.<init>(Unknown Source)
+	at sun.net.www.protocol.jar.URLJarFile.<init>(Unknown Source)
+	at sun.net.www.protocol.jar.URLJarFile.getJarFile(Unknown Source)
+	at sun.net.www.protocol.jar.JarFileFactory.get(Unknown Source)
+	at sun.net.www.protocol.jar.JarURLConnection.connect(Unknown Source)
+	at sun.net.www.protocol.jar.JarURLConnection.getJarFile(Unknown Source)
+	at ca.sqlpower.util.JarScanClassLoader.<init>(JarScanClassLoader.java:59)
+	at ca.sqlpower.swingui.db.JDBCDriverPanel$JDBCScanClassLoader.<init>(JDBCDriverPanel.java:456)
+	at ca.sqlpower.swingui.db.JDBCDriverPanel$LoadJDBCDrivers.addJarLocation(JDBCDriverPanel.java:422)
+	at ca.sqlpower.swingui.db.JDBCDriverPanel$LoadJDBCDrivers.execute(JDBCDriverPanel.java:403)
+	at ca.sqlpower.swingui.db.JDBCDriverPanel$LoadJDBCDriversWorker.run(JDBCDriverPanel.java:319)
+	at java.lang.Thread.run(Unknown Source)
+698309 [AWT-EventQueue-0] ERROR ca.sqlpower.architect.swingui.KettleDataSourceOptionsPanel  -  The map is: {}
+706889 [Thread-8] WARN  ca.sqlpower.swingui.db.JDBCDriverPanel  - I/O Error reading JAR file
+java.io.FileNotFoundException: C:\Users\Katty\Downloads\postgresql-42.5.4.jar (El sistema no puede encontrar el archivo especificado)
+	at java.util.zip.ZipFile.open(Native Method)
+	at java.util.zip.ZipFile.<init>(Unknown Source)
+	at java.util.zip.ZipFile.<init>(Unknown Source)
+	at java.util.jar.JarFile.<init>(Unknown Source)
+	at java.util.jar.JarFile.<init>(Unknown Source)
+	at sun.net.www.protocol.jar.URLJarFile.<init>(Unknown Source)
+	at sun.net.www.protocol.jar.URLJarFile.getJarFile(Unknown Source)
+	at sun.net.www.protocol.jar.JarFileFactory.get(Unknown Source)
+	at sun.net.www.protocol.jar.JarURLConnection.connect(Unknown Source)
+	at sun.net.www.protocol.jar.JarURLConnection.getJarFile(Unknown Source)
+	at ca.sqlpower.util.JarScanClassLoader.<init>(JarScanClassLoader.java:59)
+	at ca.sqlpower.swingui.db.JDBCDriverPanel$JDBCScanClassLoader.<init>(JDBCDriverPanel.java:456)
+	at ca.sqlpower.swingui.db.JDBCDriverPanel$LoadJDBCDrivers.addJarLocation(JDBCDriverPanel.java:422)
+	at ca.sqlpower.swingui.db.JDBCDriverPanel$LoadJDBCDrivers.execute(JDBCDriverPanel.java:403)
+	at ca.sqlpower.swingui.db.JDBCDriverPanel$LoadJDBCDriversWorker.run(JDBCDriverPanel.java:319)
+	at java.lang.Thread.run(Unknown Source)
+763044 [Thread-9] INFO  ca.sqlpower.util.JarScanClassLoader  - Found jdbc driver org.postgresql.Driver
+763153 [Thread-9] WARN  ca.sqlpower.util.JarScanClassLoader  - JAR does not contain dependency needed by: org/postgresql/osgi/PGBundleActivator.class
+763156 [Thread-9] WARN  ca.sqlpower.util.JarScanClassLoader  - JAR does not contain dependency needed by: org/postgresql/osgi/PGDataSourceFactory.class
+763186 [Thread-9] WARN  ca.sqlpower.util.JarScanClassLoader  - JAR does not contain dependency needed by: org/postgresql/sspi/NTDSAPI.class
+763222 [Thread-9] INFO  ca.sqlpower.swingui.db.JDBCDriverPanel  - Found drivers: [org.postgresql.Driver]
+891249 [AWT-EventQueue-0] ERROR ca.sqlpower.architect.swingui.KettleDataSourceOptionsPanel  -  The map is: {}
+897653 [AWT-EventQueue-0] ERROR ca.sqlpower.architect.swingui.KettleDataSourceOptionsPanel  -  The map is: {Hostname=, Port=5432, Database=}
+897659 [AWT-EventQueue-0] ERROR ca.sqlpower.architect.swingui.KettleDataSourceOptionsPanel  -  The map is: {Hostname=, Port=5432, Database=}
+915391 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.JDBCDataSource  - Driver Class org.postgresql.Driver loaded without exception
+916049 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.JDBCDataSource  - Driver Class org.postgresql.Driver loaded without exception
+934393 [AWT-EventQueue-0] ERROR ca.sqlpower.architect.swingui.KettleDataSourceOptionsPanel  -  The map is: {}
+941093 [Thread-10] INFO  ca.sqlpower.util.JarScanClassLoader  - Found jdbc driver org.postgresql.Driver
+941173 [Thread-10] WARN  ca.sqlpower.util.JarScanClassLoader  - JAR does not contain dependency needed by: org/postgresql/osgi/PGBundleActivator.class
+941173 [Thread-10] WARN  ca.sqlpower.util.JarScanClassLoader  - JAR does not contain dependency needed by: org/postgresql/osgi/PGDataSourceFactory.class
+941190 [Thread-10] WARN  ca.sqlpower.util.JarScanClassLoader  - JAR does not contain dependency needed by: org/postgresql/sspi/NTDSAPI.class
+941209 [Thread-10] INFO  ca.sqlpower.swingui.db.JDBCDriverPanel  - Found drivers: [org.postgresql.Driver]
+951801 [AWT-EventQueue-0] ERROR ca.sqlpower.architect.swingui.KettleDataSourceOptionsPanel  -  The map is: {}
+958138 [AWT-EventQueue-0] ERROR ca.sqlpower.architect.swingui.KettleDataSourceOptionsPanel  -  The map is: {Hostname=, Port=5432, Database=}
+958142 [AWT-EventQueue-0] ERROR ca.sqlpower.architect.swingui.KettleDataSourceOptionsPanel  -  The map is: {Hostname=, Port=5432, Database=}
+974091 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.JDBCDataSource  - Driver Class org.postgresql.Driver loaded without exception
+974136 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.JDBCDataSource  - Driver Class org.postgresql.Driver loaded without exception
+1002522 [AWT-EventQueue-0] WARN  ca.sqlpower.sqlobject.ForeignKeyColumnUpdaterPoolingSPListener  - Warning: unknown column property autoIncrementSequenceName changed while monitoring pkTable
+1002526 [AWT-EventQueue-0] WARN  ca.sqlpower.sqlobject.ForeignKeyColumnUpdaterPoolingSPListener  - Warning: unknown column property autoIncrementSequenceName changed while monitoring pkTable
+1002528 [AWT-EventQueue-0] WARN  ca.sqlpower.sqlobject.ForeignKeyColumnUpdaterPoolingSPListener  - Warning: unknown column property autoIncrementSequenceName changed while monitoring pkTable
+1002529 [AWT-EventQueue-0] WARN  ca.sqlpower.sqlobject.ForeignKeyColumnUpdaterPoolingSPListener  - Warning: unknown column property autoIncrementSequenceName changed while monitoring pkTable
+1002569 [AWT-EventQueue-0] WARN  ca.sqlpower.sqlobject.ForeignKeyColumnUpdaterPoolingSPListener  - Warning: unknown column property autoIncrementSequenceName changed while monitoring pkTable
+1012129 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+CREATE SEQUENCE rol_id_rol_seq_2
+1012136 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE Rol (
+                ID_Rol INTEGER NOT NULL DEFAULT nextval('rol_id_rol_seq_2'),
+                Descripcion VARCHAR(60) NOT NULL,
+                CONSTRAINT rol_pk PRIMARY KEY (ID_Rol)
+)
+1012137 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON TABLE Rol IS 'Tabla de roles.'
+1012137 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN Rol.ID_Rol IS 'Identificador de rol.'
+1012137 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN Rol.Descripcion IS 'Nombre del rol.'
+1012137 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE rol_id_rol_seq_2 OWNED BY Rol.ID_Rol
+1012137 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE comentarios_user_story_id_comentario_seq
+1012138 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE Comentarios_User_Story (
+                Id_Comentario INTEGER NOT NULL DEFAULT nextval('comentarios_user_story_id_comentario_seq'),
+                Comentario VARCHAR(500),
+                CONSTRAINT comentarios_user_story_pk PRIMARY KEY (Id_Comentario)
+)
+1012138 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON TABLE Comentarios_User_Story IS 'Tabla de comentarios.'
+1012139 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN Comentarios_User_Story.Id_Comentario IS 'Identificador de comentario.'
+1012139 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN Comentarios_User_Story.Comentario IS 'Desscripcion del comentario.'
+1012139 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE comentarios_user_story_id_comentario_seq OWNED BY Comentarios_User_Story.Id_Comentario
+1012139 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE prioridad_user_story_id_prioridad_seq
+1012140 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE Prioridad_User_Story (
+                Id_Prioridad INTEGER NOT NULL DEFAULT nextval('prioridad_user_story_id_prioridad_seq'),
+                Nombre_Prioridad VARCHAR(20) NOT NULL,
+                Descripcion VARCHAR(50) NOT NULL,
+                CONSTRAINT prioridad_user_story_pk PRIMARY KEY (Id_Prioridad)
+)
+1012140 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON TABLE Prioridad_User_Story IS 'Tabal de prioridades.'
+1012141 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN Prioridad_User_Story.Id_Prioridad IS 'Identificador de prioridad.'
+1012141 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN Prioridad_User_Story.Nombre_Prioridad IS 'Nombre de la prioridad.'
+1012141 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE prioridad_user_story_id_prioridad_seq OWNED BY Prioridad_User_Story.Id_Prioridad
+1012141 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE estados_user_story_id_estado_seq
+1012142 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE Estados_User_Story (
+                Id_Estado INTEGER NOT NULL DEFAULT nextval('estados_user_story_id_estado_seq'),
+                Nombre_Estado VARCHAR(50) NOT NULL,
+                Descripcion VARCHAR(100) NOT NULL,
+                CONSTRAINT estados_user_story_pk PRIMARY KEY (Id_Estado)
+)
+1012142 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON TABLE Estados_User_Story IS 'Tabla de estados de una User Story.'
+1012142 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN Estados_User_Story.Id_Estado IS 'Identificador de Estado.'
+1012142 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN Estados_User_Story.Nombre_Estado IS 'Nombre del estado.'
+1012142 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN Estados_User_Story.Descripcion IS 'Descripcion del estado.'
+1012143 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE estados_user_story_id_estado_seq OWNED BY Estados_User_Story.Id_Estado
+1012143 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE sprint_id_sprint_seq
+1012143 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE Sprint (
+                Backlog_Id_Sprint INTEGER NOT NULL DEFAULT nextval('sprint_id_sprint_seq'),
+                fecha_inicio DATE NOT NULL,
+                fecha_fin DATE NOT NULL,
+                fecha_inicio_real DATE NOT NULL,
+                fecha_fin_real DATE NOT NULL,
+                CONSTRAINT sprint_pk PRIMARY KEY (Backlog_Id_Sprint)
+)
+1012144 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON TABLE Sprint IS 'Tabal de Sprints.'
+1012144 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN Sprint.Backlog_Id_Sprint IS 'Identificador de Sprint.'
+1012144 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN Sprint.fecha_inicio IS 'Fecha de inicio estimada.'
+1012144 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN Sprint.fecha_fin IS 'Fecha de finalizacion estimada.'
+1012144 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN Sprint.fecha_inicio_real IS 'Fecha de inicio real.'
+1012144 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN Sprint.fecha_fin_real IS 'Fecha de finalizacion real.'
+1012144 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE sprint_id_sprint_seq OWNED BY Sprint.Backlog_Id_Sprint
+1012145 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE Proyecto (
+                Backlog_Id VARCHAR(50) NOT NULL,
+                fecha_inicio DATE NOT NULL,
+                fecha_fin DATE,
+                CONSTRAINT proyecto_pk PRIMARY KEY (Backlog_Id)
+)
+1012145 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON TABLE Proyecto IS 'Tabal de proyectos.'
+1012145 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN Proyecto.Backlog_Id IS 'Identificador de proyecto.'
+1012145 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN Proyecto.fecha_inicio IS 'Fecha de creacion del proyecto.'
+1012145 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN Proyecto.fecha_fin IS 'Fecha de finalizacion del proyecto.'
+1012146 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE SEQUENCE persona_id_persona_seq
+1012146 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE Persona (
+                Id_persona INTEGER NOT NULL DEFAULT nextval('persona_id_persona_seq'),
+                Nombre VARCHAR(100) NOT NULL,
+                Apellido VARCHAR(100) NOT NULL,
+                CONSTRAINT persona_pk PRIMARY KEY (Id_persona)
+)
+1012146 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON TABLE Persona IS 'Tabla de personas'
+1012146 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN Persona.Id_persona IS 'Identificador de una persona.'
+1012146 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN Persona.Nombre IS 'Nombre de la persona.'
+1012147 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN Persona.Apellido IS 'Apellido de la persona.'
+1012147 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE persona_id_persona_seq OWNED BY Persona.Id_persona
+1012147 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE usuario_id_usuario_seq
+1012149 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE Usuario (
+                Id_Usuario INTEGER NOT NULL DEFAULT nextval('usuario_id_usuario_seq'),
+                Id_persona INTEGER NOT NULL,
+                Nombre_Usuario VARCHAR(50) NOT NULL,
+                correo VARCHAR(200) NOT NULL,
+                Contrasenha VARCHAR(50) NOT NULL,
+                CONSTRAINT usuario_pk PRIMARY KEY (Id_Usuario, Id_persona)
+)
+1012149 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON TABLE Usuario IS 'Tabla de usuarios.'
+1012149 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN Usuario.Id_Usuario IS 'Identificador de usuario.'
+1012149 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN Usuario.Id_persona IS 'Identificador de una persona.'
+1012151 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN Usuario.Nombre_Usuario IS 'Nombre de usuario.'
+1012151 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN Usuario.Contrasenha IS 'Contrasenha del usuario.'
+1012151 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE usuario_id_usuario_seq OWNED BY Usuario.Id_Usuario
+1012151 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE usuario_proyecto_id_usu_proy_rol_seq
+1012152 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE Usuario_Proyecto (
+                ID_USU_PROY_ROL INTEGER NOT NULL DEFAULT nextval('usuario_proyecto_id_usu_proy_rol_seq'),
+                Backlog_Id VARCHAR(50) NOT NULL,
+                ID_Rol INTEGER NOT NULL,
+                Id_Usuario INTEGER NOT NULL,
+                Id_persona INTEGER NOT NULL,
+                Rol_Usuario VARCHAR(50) NOT NULL,
+                CONSTRAINT usuario_proyecto_pk PRIMARY KEY (ID_USU_PROY_ROL, Backlog_Id, ID_Rol, Id_Usuario, Id_persona)
+)
+1012153 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON TABLE Usuario_Proyecto IS 'Tabla que realiciona a los usuarios con los roles que puede tomar en los distintos proyectos.'
+1012153 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN Usuario_Proyecto.ID_USU_PROY_ROL IS 'Identificador de proyecto, rol, usuario.'
+1012153 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN Usuario_Proyecto.Backlog_Id IS 'Identificador de proyecto.'
+1012153 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN Usuario_Proyecto.ID_Rol IS 'Identificador de rol.'
+1012153 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN Usuario_Proyecto.Id_Usuario IS 'Identificador de usuario.'
+1012153 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN Usuario_Proyecto.Id_persona IS 'Identificador de una persona.'
+1012154 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN Usuario_Proyecto.Rol_Usuario IS 'Descripcion del rol que desempenha un usuario en un proyecto.'
+1012154 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE usuario_proyecto_id_usu_proy_rol_seq OWNED BY Usuario_Proyecto.ID_USU_PROY_ROL
+1012154 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE user_story_id_user_history_seq
+1012155 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE User_Story (
+                Id_User_Story INTEGER NOT NULL DEFAULT nextval('user_story_id_user_history_seq'),
+                Id_Usuario INTEGER NOT NULL,
+                ID_Rol INTEGER NOT NULL,
+                Backlog_Id VARCHAR(50) NOT NULL,
+                ID_USU_PROY_ROL INTEGER NOT NULL,
+                Descripcion VARCHAR(200),
+                Story_Points INTEGER,
+                Definicion_Hecho VARCHAR(200) NOT NULL,
+                fecha_inicio DATE NOT NULL,
+                fecha_fin DATE,
+                Id_Estado INTEGER NOT NULL,
+                Backlog_Id_Sprint INTEGER,
+                Id_Prioridad INTEGER,
+                Id_Comentario INTEGER,
+                Id_persona INTEGER NOT NULL,
+                CONSTRAINT user_story_pk PRIMARY KEY (Id_User_Story)
+)
+1012155 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON TABLE User_Story IS 'Tabal de User Stories.'
+1012156 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN User_Story.Id_User_Story IS 'Identificador de User Story.'
+1012156 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN User_Story.Id_Usuario IS 'Identificador de usuario.'
+1012156 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN User_Story.ID_Rol IS 'Identificador de rol.'
+1012156 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN User_Story.Backlog_Id IS 'Identificador de proyecto.'
+1012156 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN User_Story.ID_USU_PROY_ROL IS 'Identificador de proyecto, rol, usuario.'
+1012156 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN User_Story.Descripcion IS 'Descripcion de la User Story.'
+1012156 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN User_Story.Story_Points IS 'Story points de la user story.'
+1012157 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN User_Story.Definicion_Hecho IS 'Definicion de hecho de la user story.'
+1012157 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN User_Story.fecha_inicio IS 'fecha inicio de la user story.'
+1012157 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN User_Story.fecha_fin IS 'Fecha de finalizacion de la user story.'
+1012157 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN User_Story.Id_Estado IS 'Identificador de Estado.'
+1012157 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN User_Story.Backlog_Id_Sprint IS 'Identificador de Sprint.'
+1012157 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN User_Story.Id_Prioridad IS 'Identificador de prioridad.'
+1012157 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN User_Story.Id_Comentario IS 'Identificador de comentario.'
+1012158 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN User_Story.Id_persona IS 'Identificador de una persona.'
+1012158 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE user_story_id_user_history_seq OWNED BY User_Story.Id_User_Story
+1012160 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE Usuario_Proyecto ADD CONSTRAINT rol_usuario_proyecto_fk
+FOREIGN KEY (ID_Rol)
+REFERENCES Rol (ID_Rol)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+1012163 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE User_Story ADD CONSTRAINT comentarios_user_story_user_story_fk
+FOREIGN KEY (Id_Comentario)
+REFERENCES Comentarios_User_Story (Id_Comentario)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+1012164 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE User_Story ADD CONSTRAINT prioridad_user_story_user_story_fk
+FOREIGN KEY (Id_Prioridad)
+REFERENCES Prioridad_User_Story (Id_Prioridad)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+1012164 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE User_Story ADD CONSTRAINT estados_user_story_user_story_fk
+FOREIGN KEY (Id_Estado)
+REFERENCES Estados_User_Story (Id_Estado)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+1012165 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE User_Story ADD CONSTRAINT sprint_user_story_fk
+FOREIGN KEY (Backlog_Id_Sprint)
+REFERENCES Sprint (Backlog_Id_Sprint)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+1012166 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE Usuario_Proyecto ADD CONSTRAINT proyecto_usuario_proyecto_fk
+FOREIGN KEY (Backlog_Id)
+REFERENCES Proyecto (Backlog_Id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+1012166 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE Usuario ADD CONSTRAINT persona_usuario_fk
+FOREIGN KEY (Id_persona)
+REFERENCES Persona (Id_persona)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+1012167 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE Usuario_Proyecto ADD CONSTRAINT usuario_usuario_proyecto_fk
+FOREIGN KEY (Id_Usuario, Id_persona)
+REFERENCES Usuario (Id_Usuario, Id_persona)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+1012168 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE User_Story ADD CONSTRAINT usuario_proyecto_user_story_fk
+FOREIGN KEY (ID_USU_PROY_ROL, Id_Usuario, Backlog_Id, ID_Rol, Id_persona)
+REFERENCES Usuario_Proyecto (ID_USU_PROY_ROL, Id_Usuario, Backlog_Id, ID_Rol, Id_persona)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+1012171 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.SQLScriptDialog  - The list size is :92
+0    [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ArchitectUtils  - Log4J configured successfully
+474  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+544  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+545  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+602  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+22335 [Thread-5] ERROR ca.sqlpower.architect.swingui.action.CheckForUpdateAction  - Fail to retrieve current version number!
+32046 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+CREATE SEQUENCE public.rol_id_rol_seq_2
+32054 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Rol (
+                ID_Rol INTEGER NOT NULL DEFAULT nextval('public.rol_id_rol_seq_2'),
+                Descripcion VARCHAR(60) NOT NULL,
+                CONSTRAINT rol_pk PRIMARY KEY (ID_Rol)
+)
+32055 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON TABLE public.Rol IS 'Tabla de roles.'
+32055 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.Rol.ID_Rol IS 'Identificador de rol.'
+32055 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.Rol.Descripcion IS 'Nombre del rol.'
+32056 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.rol_id_rol_seq_2 OWNED BY public.Rol.ID_Rol
+32056 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.comentarios_user_story_id_comentario_seq
+32057 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Comentarios_User_Story (
+                Id_Comentario INTEGER NOT NULL DEFAULT nextval('public.comentarios_user_story_id_comentario_seq'),
+                Comentario VARCHAR(500),
+                CONSTRAINT comentarios_user_story_pk PRIMARY KEY (Id_Comentario)
+)
+32057 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON TABLE public.Comentarios_User_Story IS 'Tabla de comentarios.'
+32057 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.Comentarios_User_Story.Id_Comentario IS 'Identificador de comentario.'
+32057 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.Comentarios_User_Story.Comentario IS 'Desscripcion del comentario.'
+32058 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.comentarios_user_story_id_comentario_seq OWNED BY public.Comentarios_User_Story.Id_Comentario
+32058 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.prioridad_user_story_id_prioridad_seq
+32058 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Prioridad_User_Story (
+                Id_Prioridad INTEGER NOT NULL DEFAULT nextval('public.prioridad_user_story_id_prioridad_seq'),
+                Nombre_Prioridad VARCHAR(20) NOT NULL,
+                Descripcion VARCHAR(50) NOT NULL,
+                CONSTRAINT prioridad_user_story_pk PRIMARY KEY (Id_Prioridad)
+)
+32059 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON TABLE public.Prioridad_User_Story IS 'Tabal de prioridades.'
+32059 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.Prioridad_User_Story.Id_Prioridad IS 'Identificador de prioridad.'
+32059 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.Prioridad_User_Story.Nombre_Prioridad IS 'Nombre de la prioridad.'
+32059 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.prioridad_user_story_id_prioridad_seq OWNED BY public.Prioridad_User_Story.Id_Prioridad
+32060 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.estados_user_story_id_estado_seq
+32060 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Estados_User_Story (
+                Id_Estado INTEGER NOT NULL DEFAULT nextval('public.estados_user_story_id_estado_seq'),
+                Nombre_Estado VARCHAR(50) NOT NULL,
+                Descripcion VARCHAR(100) NOT NULL,
+                CONSTRAINT estados_user_story_pk PRIMARY KEY (Id_Estado)
+)
+32060 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON TABLE public.Estados_User_Story IS 'Tabla de estados de una User Story.'
+32060 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.Estados_User_Story.Id_Estado IS 'Identificador de Estado.'
+32060 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.Estados_User_Story.Nombre_Estado IS 'Nombre del estado.'
+32061 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.Estados_User_Story.Descripcion IS 'Descripcion del estado.'
+32061 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.estados_user_story_id_estado_seq OWNED BY public.Estados_User_Story.Id_Estado
+32061 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.sprint_id_sprint_seq
+32061 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Sprint (
+                Backlog_Id_Sprint INTEGER NOT NULL DEFAULT nextval('public.sprint_id_sprint_seq'),
+                fecha_inicio DATE NOT NULL,
+                fecha_fin DATE NOT NULL,
+                fecha_inicio_real DATE NOT NULL,
+                fecha_fin_real DATE NOT NULL,
+                CONSTRAINT sprint_pk PRIMARY KEY (Backlog_Id_Sprint)
+)
+32061 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON TABLE public.Sprint IS 'Tabal de Sprints.'
+32062 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.Sprint.Backlog_Id_Sprint IS 'Identificador de Sprint.'
+32062 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.Sprint.fecha_inicio IS 'Fecha de inicio estimada.'
+32062 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.Sprint.fecha_fin IS 'Fecha de finalizacion estimada.'
+32062 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.Sprint.fecha_inicio_real IS 'Fecha de inicio real.'
+32062 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.Sprint.fecha_fin_real IS 'Fecha de finalizacion real.'
+32063 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.sprint_id_sprint_seq OWNED BY public.Sprint.Backlog_Id_Sprint
+32063 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Proyecto (
+                Backlog_Id VARCHAR(50) NOT NULL,
+                fecha_inicio DATE NOT NULL,
+                fecha_fin DATE,
+                CONSTRAINT proyecto_pk PRIMARY KEY (Backlog_Id)
+)
+32063 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON TABLE public.Proyecto IS 'Tabal de proyectos.'
+32063 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.Proyecto.Backlog_Id IS 'Identificador de proyecto.'
+32063 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.Proyecto.fecha_inicio IS 'Fecha de creacion del proyecto.'
+32063 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.Proyecto.fecha_fin IS 'Fecha de finalizacion del proyecto.'
+32064 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+CREATE SEQUENCE public.persona_id_persona_seq
+32064 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Persona (
+                Id_persona INTEGER NOT NULL DEFAULT nextval('public.persona_id_persona_seq'),
+                Nombre VARCHAR(100) NOT NULL,
+                Apellido VARCHAR(100) NOT NULL,
+                CONSTRAINT persona_pk PRIMARY KEY (Id_persona)
+)
+32064 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON TABLE public.Persona IS 'Tabla de personas'
+32064 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.Persona.Id_persona IS 'Identificador de una persona.'
+32064 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.Persona.Nombre IS 'Nombre de la persona.'
+32065 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.Persona.Apellido IS 'Apellido de la persona.'
+32065 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.persona_id_persona_seq OWNED BY public.Persona.Id_persona
+32065 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.usuario_id_usuario_seq
+32065 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Usuario (
+                Id_Usuario INTEGER NOT NULL DEFAULT nextval('public.usuario_id_usuario_seq'),
+                Id_persona INTEGER NOT NULL,
+                Nombre_Usuario VARCHAR(50) NOT NULL,
+                correo VARCHAR(200) NOT NULL,
+                Contrasenha VARCHAR(50) NOT NULL,
+                CONSTRAINT usuario_pk PRIMARY KEY (Id_Usuario, Id_persona)
+)
+32065 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON TABLE public.Usuario IS 'Tabla de usuarios.'
+32065 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.Usuario.Id_Usuario IS 'Identificador de usuario.'
+32066 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.Usuario.Id_persona IS 'Identificador de una persona.'
+32066 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.Usuario.Nombre_Usuario IS 'Nombre de usuario.'
+32066 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.Usuario.Contrasenha IS 'Contrasenha del usuario.'
+32066 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.usuario_id_usuario_seq OWNED BY public.Usuario.Id_Usuario
+32067 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.usuario_proyecto_id_usu_proy_rol_seq
+32067 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Usuario_Proyecto (
+                ID_USU_PROY_ROL INTEGER NOT NULL DEFAULT nextval('public.usuario_proyecto_id_usu_proy_rol_seq'),
+                Backlog_Id VARCHAR(50) NOT NULL,
+                ID_Rol INTEGER NOT NULL,
+                Id_Usuario INTEGER NOT NULL,
+                Id_persona INTEGER NOT NULL,
+                Rol_Usuario VARCHAR(50) NOT NULL,
+                CONSTRAINT usuario_proyecto_pk PRIMARY KEY (ID_USU_PROY_ROL, Backlog_Id, ID_Rol, Id_Usuario, Id_persona)
+)
+32067 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON TABLE public.Usuario_Proyecto IS 'Tabla que realiciona a los usuarios con los roles que puede tomar en los distintos proyectos.'
+32067 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.Usuario_Proyecto.ID_USU_PROY_ROL IS 'Identificador de proyecto, rol, usuario.'
+32067 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.Usuario_Proyecto.Backlog_Id IS 'Identificador de proyecto.'
+32067 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.Usuario_Proyecto.ID_Rol IS 'Identificador de rol.'
+32067 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.Usuario_Proyecto.Id_Usuario IS 'Identificador de usuario.'
+32067 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.Usuario_Proyecto.Id_persona IS 'Identificador de una persona.'
+32068 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.Usuario_Proyecto.Rol_Usuario IS 'Descripcion del rol que desempenha un usuario en un proyecto.'
+32068 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.usuario_proyecto_id_usu_proy_rol_seq OWNED BY public.Usuario_Proyecto.ID_USU_PROY_ROL
+32068 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.user_story_id_user_history_seq
+32068 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.User_Story (
+                Id_User_Story INTEGER NOT NULL DEFAULT nextval('public.user_story_id_user_history_seq'),
+                Id_Usuario INTEGER NOT NULL,
+                ID_Rol INTEGER NOT NULL,
+                Backlog_Id VARCHAR(50) NOT NULL,
+                ID_USU_PROY_ROL INTEGER NOT NULL,
+                Descripcion VARCHAR(200),
+                Story_Points INTEGER,
+                Definicion_Hecho VARCHAR(200) NOT NULL,
+                fecha_inicio DATE NOT NULL,
+                fecha_fin DATE,
+                Id_Estado INTEGER NOT NULL,
+                Backlog_Id_Sprint INTEGER,
+                Id_Prioridad INTEGER,
+                Id_Comentario INTEGER,
+                Id_persona INTEGER NOT NULL,
+                CONSTRAINT user_story_pk PRIMARY KEY (Id_User_Story)
+)
+32068 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON TABLE public.User_Story IS 'Tabal de User Stories.'
+32068 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.User_Story.Id_User_Story IS 'Identificador de User Story.'
+32069 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.User_Story.Id_Usuario IS 'Identificador de usuario.'
+32069 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.User_Story.ID_Rol IS 'Identificador de rol.'
+32069 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.User_Story.Backlog_Id IS 'Identificador de proyecto.'
+32069 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.User_Story.ID_USU_PROY_ROL IS 'Identificador de proyecto, rol, usuario.'
+32069 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.User_Story.Descripcion IS 'Descripcion de la User Story.'
+32069 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.User_Story.Story_Points IS 'Story points de la user story.'
+32069 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.User_Story.Definicion_Hecho IS 'Definicion de hecho de la user story.'
+32069 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.User_Story.fecha_inicio IS 'fecha inicio de la user story.'
+32069 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.User_Story.fecha_fin IS 'Fecha de finalizacion de la user story.'
+32070 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.User_Story.Id_Estado IS 'Identificador de Estado.'
+32070 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.User_Story.Backlog_Id_Sprint IS 'Identificador de Sprint.'
+32073 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.User_Story.Id_Prioridad IS 'Identificador de prioridad.'
+32073 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.User_Story.Id_Comentario IS 'Identificador de comentario.'
+32073 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.User_Story.Id_persona IS 'Identificador de una persona.'
+32073 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.user_story_id_user_history_seq OWNED BY public.User_Story.Id_User_Story
+32075 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Usuario_Proyecto ADD CONSTRAINT rol_usuario_proyecto_fk
+FOREIGN KEY (ID_Rol)
+REFERENCES public.Rol (ID_Rol)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+32078 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.User_Story ADD CONSTRAINT comentarios_user_story_user_story_fk
+FOREIGN KEY (Id_Comentario)
+REFERENCES public.Comentarios_User_Story (Id_Comentario)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+32079 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.User_Story ADD CONSTRAINT prioridad_user_story_user_story_fk
+FOREIGN KEY (Id_Prioridad)
+REFERENCES public.Prioridad_User_Story (Id_Prioridad)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+32080 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.User_Story ADD CONSTRAINT estados_user_story_user_story_fk
+FOREIGN KEY (Id_Estado)
+REFERENCES public.Estados_User_Story (Id_Estado)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+32081 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.User_Story ADD CONSTRAINT sprint_user_story_fk
+FOREIGN KEY (Backlog_Id_Sprint)
+REFERENCES public.Sprint (Backlog_Id_Sprint)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+32082 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Usuario_Proyecto ADD CONSTRAINT proyecto_usuario_proyecto_fk
+FOREIGN KEY (Backlog_Id)
+REFERENCES public.Proyecto (Backlog_Id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+32082 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Usuario ADD CONSTRAINT persona_usuario_fk
+FOREIGN KEY (Id_persona)
+REFERENCES public.Persona (Id_persona)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+32084 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.Usuario_Proyecto ADD CONSTRAINT usuario_usuario_proyecto_fk
+FOREIGN KEY (Id_Usuario, Id_persona)
+REFERENCES public.Usuario (Id_Usuario, Id_persona)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+32085 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.User_Story ADD CONSTRAINT usuario_proyecto_user_story_fk
+FOREIGN KEY (ID_USU_PROY_ROL, Id_Usuario, Backlog_Id, ID_Rol, Id_persona)
+REFERENCES public.Usuario_Proyecto (ID_USU_PROY_ROL, Id_Usuario, Backlog_Id, ID_Rol, Id_persona)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+32094 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.SQLScriptDialog  - The list size is :92
+355228 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.DBTree  - DBTree: exporting list of DnD-type tree paths
+367118 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.DBTree  - DBTree: exporting list of DnD-type tree paths
+374118 [Objects-Adder] INFO  ca.sqlpower.architect.swingui.PlayPen  - AddObjectsTask starting on thread Objects-Adder
+374120 [Objects-Adder] INFO  ca.sqlpower.architect.swingui.PlayPen  - AddObjectsTask done
+376970 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - adding table User_Story (TABLE)
+376972 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Looking for fk table User_Story in playpen
+376972 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - NOT FOUND
+376972 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Looking for fk table User_Story in playpen
+376972 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - NOT FOUND
+376972 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Looking for fk table User_Story in playpen
+376972 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - NOT FOUND
+376972 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Looking for fk table User_Story in playpen
+376972 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - NOT FOUND
+376972 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Looking for fk table User_Story in playpen
+376972 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - NOT FOUND
+376972 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Looking for fk table User_Story in playpen
+376972 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - NOT FOUND
+376972 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Looking for fk table User_Story in playpen
+376973 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - NOT FOUND
+376973 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Looking for fk table User_Story in playpen
+376973 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - NOT FOUND
+376973 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Looking for fk table User_Story in playpen
+376973 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - NOT FOUND
+376973 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Looking for fk table User_Story in playpen
+376973 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - NOT FOUND
+382419 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.DBTree  - DBTree: exporting list of DnD-type tree paths
+386162 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.DBTree  - Drag gesture event: java.awt.dnd.DragGestureEvent[source=sun.awt.windows.WMouseDragGestureRecognizer@ec0def]
+386162 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.DBTree  - DBTree: exporting list of DnD-type tree paths
+408516 [Objects-Adder] INFO  ca.sqlpower.architect.swingui.PlayPen  - AddObjectsTask starting on thread Objects-Adder
+408522 [Objects-Adder] INFO  ca.sqlpower.architect.swingui.PlayPen  - AddObjectsTask done
+410258 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - adding table Usuario_Proyecto (TABLE)
+410259 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Looking for fk table Usuario_Proyecto in playpen
+410259 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - NOT FOUND
+410259 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Looking for fk table Usuario_Proyecto in playpen
+410259 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - NOT FOUND
+410259 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Looking for fk table Usuario_Proyecto in playpen
+410259 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - NOT FOUND
+410260 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Looking for fk table Usuario_Proyecto in playpen
+410260 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - NOT FOUND
+410260 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Looking for fk table Usuario_Proyecto in playpen
+410260 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - NOT FOUND
+410260 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Looking for fk table Usuario_Proyecto in playpen
+410260 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - NOT FOUND
+422065 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@b2c4cd]
+452692 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+CREATE SEQUENCE usuario_proyecto_id_usu_proy_rol_seq
+452693 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE Usuario_Proyecto (
+                ID_USU_PROY_ROL INTEGER NOT NULL DEFAULT nextval('usuario_proyecto_id_usu_proy_rol_seq'),
+                Backlog_Id VARCHAR(50) NOT NULL,
+                Rol_Usuario VARCHAR(50) NOT NULL,
+                CONSTRAINT usuario_proyecto_pk PRIMARY KEY (ID_USU_PROY_ROL)
+)
+452693 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON TABLE Usuario_Proyecto IS 'Tabla que realiciona a los usuarios con los roles que puede tomar en los distintos proyectos.'
+452693 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN Usuario_Proyecto.ID_USU_PROY_ROL IS 'Identificador de proyecto, rol, usuario.'
+452693 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN Usuario_Proyecto.Backlog_Id IS 'Identificador de proyecto.'
+452694 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN Usuario_Proyecto.Rol_Usuario IS 'Descripcion del rol que desempenha un usuario en un proyecto.'
+452694 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE usuario_proyecto_id_usu_proy_rol_seq OWNED BY Usuario_Proyecto.ID_USU_PROY_ROL
+452694 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE user_story_id_user_history_seq
+452695 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE User_Story (
+                Id_User_Story INTEGER NOT NULL DEFAULT nextval('user_story_id_user_history_seq'),
+                ID_USU_PROY_ROL INTEGER NOT NULL,
+                Id_Usuario INTEGER NOT NULL,
+                ID_Rol INTEGER NOT NULL,
+                Backlog_Id VARCHAR(50) NOT NULL,
+                Descripcion VARCHAR(200),
+                Story_Points INTEGER,
+                Definicion_Hecho VARCHAR(200) NOT NULL,
+                fecha_inicio DATE NOT NULL,
+                fecha_fin DATE,
+                Id_Estado INTEGER NOT NULL,
+                Backlog_Id_Sprint INTEGER,
+                Id_Prioridad INTEGER,
+                Id_Comentario INTEGER,
+                Id_persona INTEGER NOT NULL,
+                CONSTRAINT user_story_pk PRIMARY KEY (Id_User_Story, ID_USU_PROY_ROL)
+)
+452695 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON TABLE User_Story IS 'Tabal de User Stories.'
+452695 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN User_Story.Id_User_Story IS 'Identificador de User Story.'
+452696 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN User_Story.ID_USU_PROY_ROL IS 'Identificador de proyecto, rol, usuario.'
+452696 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN User_Story.Id_Usuario IS 'Identificador de usuario.'
+452696 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN User_Story.ID_Rol IS 'Identificador de rol.'
+452696 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN User_Story.Backlog_Id IS 'Identificador de proyecto.'
+452696 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN User_Story.Descripcion IS 'Descripcion de la User Story.'
+452696 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN User_Story.Story_Points IS 'Story points de la user story.'
+452696 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN User_Story.Definicion_Hecho IS 'Definicion de hecho de la user story.'
+452697 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN User_Story.fecha_inicio IS 'fecha inicio de la user story.'
+452697 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN User_Story.fecha_fin IS 'Fecha de finalizacion de la user story.'
+452697 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN User_Story.Id_Estado IS 'Identificador de Estado.'
+452697 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN User_Story.Backlog_Id_Sprint IS 'Identificador de Sprint.'
+452697 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN User_Story.Id_Prioridad IS 'Identificador de prioridad.'
+452698 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN User_Story.Id_Comentario IS 'Identificador de comentario.'
+452698 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN User_Story.Id_persona IS 'Identificador de una persona.'
+452698 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE user_story_id_user_history_seq OWNED BY User_Story.Id_User_Story
+452699 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE User_Story ADD CONSTRAINT usuario_proyecto_user_story_fk
+FOREIGN KEY (ID_USU_PROY_ROL)
+REFERENCES Usuario_Proyecto (ID_USU_PROY_ROL)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+452700 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.SQLScriptDialog  - The list size is :27
+641645 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.PlayPen  - Drop: I am over dtde=java.awt.dnd.DropTargetDropEvent[source=java.awt.dnd.DropTarget@b2c4cd]
+660124 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+CREATE SEQUENCE public.usuario_proyecto_id_usu_proy_rol_seq
+660125 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.Usuario_Proyecto (
+                ID_USU_PROY_ROL INTEGER NOT NULL DEFAULT nextval('public.usuario_proyecto_id_usu_proy_rol_seq'),
+                Backlog_Id VARCHAR(50) NOT NULL,
+                Rol_Usuario VARCHAR(50) NOT NULL,
+                CONSTRAINT usuario_proyecto_pk PRIMARY KEY (ID_USU_PROY_ROL)
+)
+660125 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON TABLE public.Usuario_Proyecto IS 'Tabla que realiciona a los usuarios con los roles que puede tomar en los distintos proyectos.'
+660125 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.Usuario_Proyecto.ID_USU_PROY_ROL IS 'Identificador de proyecto, rol, usuario.'
+660125 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.Usuario_Proyecto.Backlog_Id IS 'Identificador de proyecto.'
+660125 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.Usuario_Proyecto.Rol_Usuario IS 'Descripcion del rol que desempenha un usuario en un proyecto.'
+660125 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.usuario_proyecto_id_usu_proy_rol_seq OWNED BY public.Usuario_Proyecto.ID_USU_PROY_ROL
+660126 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE public.user_story_id_user_history_seq
+660126 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE public.User_Story (
+                Id_User_Story INTEGER NOT NULL DEFAULT nextval('public.user_story_id_user_history_seq'),
+                ID_USU_PROY_ROL INTEGER NOT NULL,
+                Descripcion VARCHAR(200),
+                Story_Points INTEGER,
+                Definicion_Hecho VARCHAR(200) NOT NULL,
+                fecha_inicio DATE NOT NULL,
+                fecha_fin DATE,
+                Id_Estado INTEGER NOT NULL,
+                Backlog_Id_Sprint INTEGER,
+                Id_Prioridad INTEGER,
+                Id_Comentario INTEGER,
+                CONSTRAINT user_story_pk PRIMARY KEY (Id_User_Story)
+)
+660126 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON TABLE public.User_Story IS 'Tabal de User Stories.'
+660126 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.User_Story.Id_User_Story IS 'Identificador de User Story.'
+660127 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.User_Story.ID_USU_PROY_ROL IS 'Identificador de proyecto, rol, usuario.'
+660127 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.User_Story.Descripcion IS 'Descripcion de la User Story.'
+660127 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.User_Story.Story_Points IS 'Story points de la user story.'
+660127 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.User_Story.Definicion_Hecho IS 'Definicion de hecho de la user story.'
+660127 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.User_Story.fecha_inicio IS 'fecha inicio de la user story.'
+660127 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.User_Story.fecha_fin IS 'Fecha de finalizacion de la user story.'
+660127 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.User_Story.Id_Estado IS 'Identificador de Estado.'
+660128 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.User_Story.Backlog_Id_Sprint IS 'Identificador de Sprint.'
+660128 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.User_Story.Id_Prioridad IS 'Identificador de prioridad.'
+660128 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON COLUMN public.User_Story.Id_Comentario IS 'Identificador de comentario.'
+660128 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE public.user_story_id_user_history_seq OWNED BY public.User_Story.Id_User_Story
+660128 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE public.User_Story ADD CONSTRAINT usuario_proyecto_user_story_fk
+FOREIGN KEY (ID_USU_PROY_ROL)
+REFERENCES public.Usuario_Proyecto (ID_USU_PROY_ROL)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+660129 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.SQLScriptDialog  - The list size is :23
