@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,9 +15,10 @@
         --white:#FFFFFF;
         --black: #000000;
         --very-light-pink: #c7c7c7;
+
         --text-input-field: #f7f7f7;
         --hospital-green: #acd9b2;
-        /* variables de tamanos de letras que usamo (chico, medio, largo) */
+        /* variables de tamanos de letras que usamos (chico, medio, largo) */
         --sm: 14px;
         --md:16px;
         --lg:18px;
@@ -25,6 +27,7 @@
         body{
             font-family: 'Quicksand', sans-serif;
             margin: 0;
+            background-color: #284B63;
             
         }
         .login{
@@ -34,16 +37,30 @@
             place-items: center;
 
         }
+      
+      .error-container{
+        text-align: center;
+        
+      }
         .form-container{
+            background-color: #FFFFFF;
             display: grid;
             grid-template-rows: auto 1fr auto;
             width: 300px;
-            border: 2px solid var(--very-light-pink);
+            border: 5px solid var(--very-light-pink);
             border-radius: 10px;
             padding: 20px 20px 20px;
             
         }
-       
+
+        .form a {
+            color: var(--hospital-green);
+            font-size: var(--sm);
+            text-align: center;
+            text-decoration: none; /*quita el subrayado  del link */
+            margin-bottom: 52px;
+        }
+
         .tittle {
             font-size: var(--lg) ;
             margin-bottom: 12px;
@@ -65,14 +82,42 @@
         }
         .input{
             background-color: var(--text-input-field);
-            border: none;
+            border: 1px solid var(--very-light-pink);
             border-radius: 8px;
             height: 30px;
             font-size: var(--md);
             padding: 6px;
             margin-bottom: 12px;
         }
+
+        .input-user {
+            margin-bottom: 22px;
+        }
         
+        .forgot{
+            color: var(--hospital-green);
+            text-decoration: none;
+            text-align: center;
+            margin-bottom: 42px;
+
+        }
+        
+        .primary-button{
+            background-color: var(--hospital-green);
+            border-radius: 8px;
+            border: none;
+            color: var(--white);
+            width: 100%; /*para que sea lo mas grande posible */
+            cursor: pointer; /* cursor arriba, aparece una mano */
+            font-size: var(--md);     
+            font-weight: bold;
+            height: 50px;
+        }
+        .login-button{
+            margin-top: 14px;
+            margin-bottom: 30px;
+        }   
+
         .secondary-button{
             background-color: var(--white);
             border-radius: 8px;
@@ -93,8 +138,13 @@
                 bottom: 0;
                 margin-bottom: 24px;
                 position: absolute;
-            }
-            
+            }  
+        }
+
+        #errorMessage {
+            align : center;
+            color : red;
+
         }
     </style>
 </head>
@@ -102,19 +152,31 @@
     <div class="login">
         <div class="form-container">
         
-            <h1 class="tittle">My Account</h1>
+            <h1 class="tittle">Mi cuenta</h1>
 
-            <form action="" class="form">
-                <label for="name" class="label"> Name</label>
-                <p class="value"></p>
+            <form method="POST" action="" class="form">{% csrf_token %}
+                <label class="label"> Usuario </label>
+                <input type="text" id="user" placeholder="" class="input input-user" name="username"></input>
            
-                <label for="password" class="label">Password</label>
-                <p class="value"></p>
+                <label class="label"> Contraseña </label>
+                <input type="password" id="password" placeholder="" class="input input-password" name="password"></input>
            
-                <input type="submit" 
-                value="Ingresar" 
-                class="secondary-button edit-button">    
+                <input type="submit" value="Iniciar sesión" class="primary-button login-button"></input>
+                <div class="error-container">
+                    {% if messages %}
+                                        {% for message in messages %}
+                                            <span id="errorMessage"> {{message}}</span><br><br>
+                                        {% endfor %}
+                    {% endif %}
+                </div>
+                <p class="forgot">
+                    <a href="/"> Olvidaste tu contraseña? </a>
+                </p>
             </form>
+
+            <button class="secondary-button signup-button">
+                Registrarse </button>
+            
         </div>
     </div>
 </body>

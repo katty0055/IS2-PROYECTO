@@ -55,7 +55,7 @@ ROOT_URLCONF = 'scrum.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR/'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -85,9 +85,13 @@ WSGI_APPLICATION = 'scrum.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Scrum',
+        'NAME': 'scrum',
         'USER': 'postgres',
+<<<<<<< HEAD
         'PASSWORD': 'basedatos',
+=======
+        'PASSWORD': 'postgres',
+>>>>>>> 2b09a7d7efef22c6112ff4b4fbe663248fc27587
         'HOST': '127.0.0.1',
         'PORT': '5433',
     }
