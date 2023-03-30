@@ -87,7 +87,11 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'scrum',
         'USER': 'postgres',
+<<<<<<< HEAD
         'PASSWORD': 'basedatos',
+=======
+        'PASSWORD': 'postgres',
+>>>>>>> 2b09a7d7efef22c6112ff4b4fbe663248fc27587
         'HOST': '127.0.0.1',
         'PORT': '5433',
     }
