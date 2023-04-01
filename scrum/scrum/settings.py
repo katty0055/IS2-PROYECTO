@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -87,9 +88,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'Scrum',
         'USER': 'postgres',
-        'PASSWORD': 'basedatos',
+        'PASSWORD': 'postgres',
         'HOST': '127.0.0.1',
-        'PORT': '5433',
+        'PORT': '5432',
     }
 }
 
@@ -128,7 +129,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+MEDIA_URL ='/media/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,"static_pro","static")
+]
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR),"static_env","static_root")
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR),"static_env","media_root")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
