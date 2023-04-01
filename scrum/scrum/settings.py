@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'scrum.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'scrum',
+        'NAME': 'Scrum',
         'USER': 'postgres',
         'PASSWORD': 'basedatos',
         'HOST': '127.0.0.1',
