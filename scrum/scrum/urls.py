@@ -25,8 +25,7 @@ urlpatterns = [
     path('login',views.crear_usuario,name='crear_usuario'),
     path('inicio/',views.inicio, name='inicio'),
     path('cerrar/', views.cerrar, name='cerrar'),
-
-    
+    path('crear_proyecto',views.crear_proyecto,name='crear_proyecto'), 
 ]
 
 
