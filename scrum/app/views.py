@@ -5,8 +5,9 @@ from django.conf import settings
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.models import User
 from django.utils import timezone
-
-    
+from .forms import ProyectoUsuarioModelForm, UsuarioProyectoFormulario
+#from usuario_proyecto.models import UsuarioProyecto
+from .models import UsuarioProyecto
 
 # Create your views here.
 
@@ -32,7 +33,20 @@ def cerrar (request):
     return redirect('login')
 
 def crear_proyecto (request):
-    return render(request,"crear_proyecto.html",{})
+
+    #proyecto_usuario=UsuarioProyectoFormulario(request.POST or None)
+    #context={"proyecto_usuario":proyecto_usuario}
+    usuario=UsuarioProyecto.objects.all()
+    context={"usuario":usuario}
+    return render(request,"crear_proyecto.html",context)
+
+def agregar_usuario(request):
+    return render(request,'agregar_usuario.html')
+
+def agregar_registro(request):
+    usuario=request.POST['Usuario']
+    rol=request.POST['Rol']
+    usuario_proyecto=UsuarioProyecto()
 
 def crear_usuario(request):
     print("hola")

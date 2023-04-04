@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
     <title>Document</title>
-    <style>
+    <!--style>
         :root{
      /* variables de colores que se usan en esta parte */
         --white:#FFFFFF;
@@ -98,38 +98,23 @@
             
             
         }
-    </style>
+    </style-->
+  
 </head>
 <body>
-    <div class="crear_proyecto">
-        <div class="form-container">
-        
-            <h1 class="tittle">Crear Proyecto</h1>
-
-            <form action="/" class="form">
-                
-                <label class="label">Nombre Proyecto</label>
-                <input type="text" id="name" placeholder="" class="input input-name">
-
-                <label class="label">Fecha Inicio</label>
-                <input type="date" id="name" placeholder="" class="input input-date">
-
-                <label class="label">Fecha Fin</label>
-                <input type="date" id="name" placeholder="" class="input input-date">
-                
-                <!--p>
-                    <a href="agregar_usuario/">Agregar Usuarios</a>
-                </p-->
-                <!--button onclick="lacation.href='agregar_usuario/'">Agregar Usuario</button-->
-                <div class="card-header">
-                    <a name="" id="" class="btn btn-success" href="{% url 'agregar_usuario' %}" role="button">Agregar Usuarios</a>
-                </div> <br><br>
-                <input type="submit" 
-                value="Crear" 
-                class="primary-button loggin-button">    
-            </form>
-        </div>
-    </div>
+    <h1>Agregar Usuario</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        Usuario:
+        <input type="text" name="usuario"> <br><br>
+        Rol:<select name="roles" id="rol">
+            <option value="selecciona">Seleccionar Rol</option>
+            <option value="product owner">Product Owner</option>
+            <option value="scrum master">Scrum Master</option>
+            <option value="team developers">Team Developers</option>
+        </select> <br><br>
+        <input type="submit" value="Agregar">
+    </form>
 </body>
 </html>
 
