@@ -41,8 +41,7 @@
             border-radius: 10px;
             padding: 20px 20px 20px;
             
-        }
-       
+        }       
         .tittle {
             font-size: var(--lg) ;
             margin-bottom: 12px;
@@ -83,7 +82,15 @@
             height: 50px;
             ;
         }
-       
+        .error-container{
+            text-align : justify;
+            color : red;
+        }
+        ul, ol{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }       
         @media (max-width:640px) {
             .logo{
                 display: block; }/* para que se vea en la medida pequena  */
@@ -91,47 +98,49 @@
                 bottom: 0;
                 margin-bottom: 24px;
                 position: absolute;
-            }
-            
-            
+            }                 
         }
     </style>
 </head>
 <body>
-    <div class="login">
+      <div class="login">
         <div class="form-container">
-        
-            <h1 class="tittle">Nuevo Usuario</h1>
 
-            <form method="POST" action="{%url 'guardar_usuario'%}" class="form" name="formulario">{% csrf_token %}
+            <h1 class="tittle">Nuevo Usuario</h1> 
+            <form method="POST" action="" class="form" name="formulario">{% csrf_token %}
                 <label class="label">Usuario</label>
-                <input type="text" id="name" placeholder="" class="input input-name" name="usuario">
-
+                {{form.username}}
+                
                 <label class="label">Nombre</label>
-                <input type="text" id="name" placeholder="" class="input input-name" name="nombre">
-
+                {{form.first_name}}
+                
                 <label class="label">Apellido</label>
-                <input type="text" id="name" placeholder="" class="input input-name" name="apellido">
-           
+                {{form.last_name}}
+
                 <label class="label">Correo<Address></Address></label>
-                <input type="text" id="email" placeholder="" class="input input-email" name="correo">
+                {{form.email}} 
 
                 <label class="label">Contraseña</label>
-                <input type="password" id="password" placeholder="" class="input input-password" name="contrasenha">
+                {{form.password1}}
 
                 <label class="label">Reingrese la contraseña</label>
-                <input type="password" id="password" placeholder="" class="input input-password" name="reingresar_contrasenha">
-                <div class="error-container">
+                {{form.password2}} 
+                
+                <div class="error-container">  
+                    {{form.errors}} 
                     {% if messages %}
                                         {% for message in messages %}
                                             <span id="errorMessage"> {{message}}</span><br><br>
                                         {% endfor %}
                     {% endif %}
-                </div>
-            
+                </div> 
                 <input type="submit" value="Crear" class="primary-button loggin-button">    
             </form>
-        </div>
-    </div>
+            <br>
+            <a href= "{% url 'login'%}"> 
+                <input type="button" value="Volver" class="primary-button loggin-button"> 
+            </a>             
+         </div>
+    </div>     
 </body>
 </html>
