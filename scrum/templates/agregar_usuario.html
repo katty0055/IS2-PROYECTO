@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Document</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
-    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/cesiumjs/1.78/Build/Cesium/Cesium.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+       $(document).ready(function()
+       {
+          $('#usuario').select2();
+       });
+    </script>
+   
     <!--style>
         :root{
      /* variables de colores que se usan en esta parte */
@@ -102,19 +112,27 @@
   
 </head>
 <body>
-    <h1>Agregar Usuario</h1>
-    <form action="" method="POST">
-        {% csrf_token %}
-        Usuario:
-        <input type="text" name="usuario"> <br><br>
-        Rol:<select name="roles" id="rol">
-            <option value="selecciona">Seleccionar Rol</option>
-            <option value="product owner">Product Owner</option>
-            <option value="scrum master">Scrum Master</option>
-            <option value="team developers">Team Developers</option>
-        </select> <br><br>
-        <input type="submit" value="Agregar">
-    </form>
+    <div class="agregar_usuario">
+        <div class="form-container">
+        
+            <h1>Agregar Usuarios</h1>
+
+            Usuario: <select name="usuarios" id="usuario">
+                        <option value="selecciona">Seleccionar Usuario</option>
+                        {% for usuario in UsuarioProyecto %}
+                        <option>{{usurio.username}}</option>
+                        {% endfor %}
+                    </select> <br><br>
+            Rol:<select name="roles" id="rol">
+                    <option value="selecciona">Seleccionar Rol</option>
+                    <option value="product owner">Product Owner</option>
+                    <option value="scrum master">Scrum Master</option>
+                    <option value="team developers">Team Developers</option>
+                </select> <br><br>
+            <!--input type="submit" value="Agregar"-->
+            <a name="" id="" class="btn btn-success" href="{% url 'crear_proyecto' %}" role="button">Guardar</a>
+        </div>
+    </div>
 </body>
 </html>
 

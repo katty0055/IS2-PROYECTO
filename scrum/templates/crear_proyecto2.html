@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    
+    <style>
+        :root{
+     /* variables de colores que se usan en esta parte */
+        --white:#FFFFFF;
+        --black: #000000;
+        --very-light-pink: #c7c7c7;
+        --text-input-field: #f7f7f7;
+        --hospital-green: #acd9b2;
+        /* variables de tamanos de letras que usamo (chico, medio, largo) */
+        --sm: 14px;
+        --md:16px;
+        --lg:40px;
+
+        }   
+        .body{
+            font-family: 'Quicksand', sans-serif;
+            margin: 0;
+        }
+        .crear_proyecto{
+            width: 100%;
+            height: 100vh;
+            display: grid;
+            place-items: center;
+
+        }
+        .form-container{
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            width: 1500px;
+            border: 5px solid var(--very-light-pink);
+            border-radius: 10px;
+            padding: 20px 20px 20px;
+        }
+        .tittle {
+            background-color: var(--hospital-green);
+            font-size: var(--lg) ;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        .form{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .label{
+            font-size: var(--md);
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+        .input{
+            background-color: var(--text-input-field);
+            width: 35%;
+            border: none;
+            border-radius: 8px;
+            height: 30px;
+            font-size: var(--md);
+            padding: 6px;
+            margin-bottom: 12px;
+        }
+        .input-name,
+        .input-date {
+            margin-bottom: 22px;
+        }
+        .primary-button{
+            background-color: var(--hospital-green);
+            border-radius: 8px;
+            border: none;
+            color: var(--black);
+            width: 300px; /*para que sea lo mas grande posible */
+            cursor: pointer; /* cursor arriba, aparece una mano */
+            font-size: var(--md);     
+            font-weight: bold;
+            height: 50px;
+            ;
+        }
+        .cabecera{
+            background-color: var(--hospital-green);
+            text-align: center;
+            font-size: var(--md); 
+        }
+        .table-title{
+            text-align: center;
+            font-size: 25px;
+            color: var(--black);
+        }
+    </style>
+
+</head>
+<body>
+    <div class="crear_proyecto">
+    <div class="form-container">
+    
+        <h1 class="tittle">Crear Proyecto</h1>
+    
+        <form action="" class="form" method="POST">{% csrf_token %}
+            
+            <label class="label">Nombre Proyecto</label>
+            {{form.nombre}}
+            <label class="label">Fecha Inicio</label>
+            {{form.fecha_inicio}}
+            <label class="label">Fecha Fin</label>
+            {{form.fecha_fin}}
+            
+            <input type="submit" 
+                value="Crear" 
+                class="primary-button loggin-button">
+        </form>
+    
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+            <h2 class="table-title">Asignar Usuarios</h2>
+            <div class="card">
+                <div class="card-body">
+                    <form action="" method="POST" class="form">{% csrf_token %}
+                        <div class="form-group">
+                            <label for="usuarios">Usuarios:</label>
+                            <select data-live-search="true">
+                                <option value="selecciona">Seleccionar Usuario</option>
+                                {% for user in usuario %}
+                                <option>{{user.username}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <!--div class="form-group">
+                            Rol: <select name="roles" id="rol">
+                                <option value="selecciona">Seleccionar Rol</option>
+                                <option value="product owner">Product Owner</option>
+                                <option value="scrum master">Scrum Master</option>
+                                <option value="team developers">Team Developers</option>
+                            </select>
+                        </div-->
+                        <!--div class="buscar_seleccionar"-->
+                            <label for="roles">Rol:</label>
+                            <select class="seleccionar_rol" name="roles">
+                                <option value="selecciona">Seleccionar Rol</option>
+                                    <option value="product owner">Product Owner</option>
+                                    <option value="scrum master">Scrum Master</option>
+                                    <option value="team developers">Team Developers</option>
+                                    <option value="product owner">Product</option>
+                                    <option value="scrum master">Master</option>
+                                    <option value="team developers">Team Developers</option>
+                                    <option value="product owner">Product</option>
+                                    <option value="scrum master">Master</option>
+                                    
+                                <option value="team developers">Developerk</option>
+                                </select> <br><br>
+                        <!--/div-->
+                        <div class="form-group">
+                            <button type="submit" class="primary-button">Agregar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>    
+        <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+            <h1 class="table-title">Listado de Usuarios Asignados</h1>
+            <div class="table-responsive py-2">
+                <table class="table table-stripped">
+                                    <!--cabecera de la tabla-->
+                    <thead>
+                        <tr>
+                            <th class="cabecera">Usuario</th>
+                            <th class="cabecera">Rol</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for user in usuario %}
+                        <tr>
+                            <td>{{use.username}}</td>
+                            <td>{{r.rol_usuario}}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>   
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> 
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function() {
+        $('.seleccionar_rol').select2();
+    });
+</script>
+</body>
+</html>

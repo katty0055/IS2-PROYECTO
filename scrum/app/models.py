@@ -115,6 +115,7 @@ from django.contrib.auth.models import User, Group
 
 class Proyecto(models.Model):
     backlog_id = models.CharField(primary_key=True, max_length=50)
+    nombre = models.CharField(max_length=100, blank=True, null=True)
     fecha_inicio = models.DateField()
     fecha_fin = models.DateField(blank=True, null=True)
 

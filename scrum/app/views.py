@@ -5,9 +5,9 @@ from django.conf import settings
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.models import User
 from django.utils import timezone
-from .forms import ProyectoUsuarioModelForm, UsuarioProyectoFormulario
-#from usuario_proyecto.models import UsuarioProyecto
-from .models import UsuarioProyecto
+from .forms import ProyectoModelForm, UsuarioProyectoFormulario
+
+
 
 # Create your views here.
 
@@ -32,21 +32,39 @@ def cerrar (request):
     logout(request)
     return redirect('login')
 
-def crear_proyecto (request):
 
-    #proyecto_usuario=UsuarioProyectoFormulario(request.POST or None)
-    #context={"proyecto_usuario":proyecto_usuario}
-    usuario=UsuarioProyecto.objects.all()
-    context={"usuario":usuario}
-    return render(request,"crear_proyecto.html",context)
-
+def crear_proyecto2(request):
+   
+   form=ProyectoModelForm(request.POST or None)
+   
+   if form.is_valid():
+        print("valido")
+        instancia=form.save(commit=False)
+        instancia.backlog_id='12345'
+        instancia=form.save()
+   else:
+        form=ProyectoModelForm(request.POST or None)
+    
+    
+   context={'form':form}
+   
+   return render(request, 'crear_proyecto2.html', context)
+   
 def agregar_usuario(request):
-    return render(request,'agregar_usuario.html')
+    form_usuario=UsuarioProyectoFormulario(request or None)
 
-def agregar_registro(request):
-    usuario=request.POST['Usuario']
-    rol=request.POST['Rol']
-    usuario_proyecto=UsuarioProyecto()
+    if form_usuario.is_valid():
+       print("valido")
+       instancia2=form_usuario.save(commit=False)
+       instancia.backlog_id='12345'
+       instancia=form_usuario.save()
+
+    else:
+       form_usuario=UsuarioProyectoFormulario(request or None)
+
+    context={'form_usuario':form_usuario}
+
+    return render(request, 'crear_proyecto2.html', context)
 
 def crear_usuario(request):
     print("hola")
