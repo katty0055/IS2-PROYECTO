@@ -1,0 +1,268 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        :root{
+     /* variables de colores que se usan en esta parte */
+        --white:#FFFFFF;
+        --black: #000000;
+        --very-light-pink: #c7c7c7;
+        --text-input-field: #f7f7f7;
+        --hospital-green: #acd9b2;
+        --red:rgb(216, 74, 74);
+        /* variables de tamanos de letras que usamo (chico, medio, largo) */
+        --sm: 14px;
+        --md:16px;
+        --lg:18px;
+
+        }   
+        body{
+            background-color: var(--text-input-field);
+            font-family: 'Quicksand', sans-serif;
+            justify-content: center;       
+        }
+        .barra{
+            width: 100%;
+            height: 9vh;
+            display: grid;
+            place-items: center;
+            grid-template-columns: 1fr 1fr ;  
+
+        }
+        .container{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 100%;
+            height: 8vh;
+            border-radius: 0px;
+            padding: 5px 5px 5px 5px;  
+            justify-content: flex-end;
+            min-height: 30px;  
+            min-width: 40px;    
+            background-color: var(--hospital-green);   
+            align-items:center;     
+        }
+        .tittle-nombre {
+            font-size: 3vh;
+            margin-bottom: 8px;
+            text-align: start;
+        }
+        .barra-button{
+            background-color: var(--hospital-green); 
+            border-radius: 8px;
+            border-color: var(--very-light-pink); 
+            border: 3px solid var(--text-input-field);
+            font-size: 1vw;   
+            font-weight: bold;
+            height: 7vh;
+            width: 4vw;    
+            min-height: 30px;
+            min-width: 40px;   
+            color: var(--white);
+            cursor: pointer; /* cursor arriba, aparece una mano */         
+        }
+        .saludo{
+            text-align:center;
+            font-size: 2vh;
+            padding: 7px 7px 7px 7px;
+        }
+        a{
+            text-align: center;
+            text-decoration: none; /*quita el subrayado  del link */
+            display:block;
+        }
+        ul, ol{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        } 
+        .nav li a{
+            background-color: var(--hospital-green);
+            color: var( --white);
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+        .nav li a:hover{
+            background-color: var( --verde-mirto);
+        }
+        .nav > li{
+            float: left;
+        }
+        .nav li ul{
+            display:none;
+            position: absolute;
+            min-width: 5vw;       
+        }
+        .nav li:hover > ul{
+            display:block;
+        }
+        .login{
+            width: 100%;
+            height: 70vh;
+            display: grid;
+            place-items: center;
+            min-height: 80px;
+            min-width: 100px;  
+        }
+        .form-container{
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            width: 19vw; 
+            border: 2px solid var(--very-light-pink);
+            border-radius: 10px;
+            padding: 20px 20px 20px;            
+        }
+        .tittle {
+            font-size: 3vh;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        .form{
+            display: flex;
+            flex-direction: column;
+        }
+        .label{
+            font-size: 2vh;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+        .value{
+            color: var(--very-light-pink);
+            font-size: 2vh;
+            margin: 8px 0 32px 0; /*   es equivalente a top, right, bottom y left, sucesivamente */
+        }
+        .input{
+            background-color: var(--text-input-field);
+            border: none;
+            border-radius: 8px;
+            height: 30px;
+            font-size: 2vh;
+            padding: 6px;
+            margin-bottom: 12px;
+        }
+        .secondary-button{
+            background-color: var(--white);
+            border-radius: 8px;
+            border-color: var(--hospital-green);
+            border: 1px solid var(--hospital-green);
+            color: var(--hospital-green);
+            width: 100%; /*para que sea lo mas grande posible */
+            cursor: pointer; /* cursor arriba, aparece una mano */
+            font-size: 2vh;     
+            font-weight: bold;
+            height: 7vh;
+            width: 19vw;    
+            min-height: 30px;
+            min-width: 40px; 
+        
+        }
+        .delete-button{
+            background-color: var(--white);
+            border-radius: 8px;
+            border: 1px solid var(--red);
+            color: var(--red);
+            width: 100%; /*para que sea lo mas grande posible */
+            cursor: pointer; /* cursor arriba, aparece una mano */
+            font-size: 2vh;        
+            font-weight: bold;
+            height: 7vh;
+            width: 19vw;    
+            min-height: 30px;
+            min-width: 40px; 
+            margin: 5px 0px 0px 0px; /*   es equivalente a top, right, bottom y left, sucesivamente */
+           }
+       
+        @media (max-width:640px) {
+            .barra-button {
+                bottom: 0;
+                margin-bottom: 24px;
+                position: relative;
+            }
+            .secondary-button {
+                bottom: 0;
+                margin-bottom: 3%;
+                position: relative;
+            }
+            
+        }
+        #titulo{
+            justify-content: flex-start;
+            margin: 12px 0px 32px 5px; 
+        }
+        #botones{
+            margin: 12px 10px 32px 0px;
+        }
+    </style>
+</head>
+<body>
+    <body>
+        <div class="barra">
+            <div class="container" id="titulo">
+                <h1 class="tittle-nombre"> {{nombre}}</h1>         
+            </div>
+            
+            <div class="container" id="botones" >
+                <ul class="nav">
+                    <li>
+                        <input type="image" src="{% static '/img/usuario.png' %}" class="barra-button" value="Usuario"></input>  
+                        <ul>
+                            <li>
+                                <a href="{%url 'ver_perfil'%}"> Ver perfil </a>
+                                <a href=""> Modificar Datos </a>
+                                <a href=""> Eliminar perfil</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <input type="image" src="{% static '/img/proyecto.png' %}" class="barra-button" value="Proyecto" ></input>
+                        <ul>
+                            <li>
+                                <a href="{%url 'crear_proyecto'%}"> Nuevo proyecto </a>
+                                <a href=""> Ver proyectos </a>
+                                <a href=""> Modificar proyecto</a>
+                                <a href=""> Eliminar proyecto</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>             
+                <a href= "{% url 'cerrar'%}"> 
+                    <input  type="image" src="{% static '/img/salir.png' %}" class="barra-button" ></input>
+                 </a>       
+    
+            </div>
+        </div>
+        <h2 class="saludo"> {{saludo}}</h2>
+    <div class="login">
+        <div class="form-container">
+            <h1 class="tittle">Perfil</h1>
+            <form action="" class="form">
+                <label for="name" class="label">Nombre</label>
+                <p class="value">{{request.user.first_name}}</p>
+
+                <label for="name" class="label">Apellido</label>
+                <p class="value">{{request.user.last_name}}</p>
+           
+                <label for="email" class="label">Correo <Address></Address></label>
+                <p class="value">{{request.user.email}}</p>
+           
+                <a href= "{% url 'editar_perfil'%}"> 
+                    <input type="button" value="Editar" class="secondary-button edit-button"> 
+                </a>
+                
+                <button class="delete-button">
+                    Eliminar</button> 
+            </form>
+        </div>
+    </div>
+</body>
+</html>

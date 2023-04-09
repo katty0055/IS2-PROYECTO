@@ -24,8 +24,14 @@ def login_usuario(request):
     return render(request,"Login.html",{})
 
 
-def inicio (request):
-    return render(request,"inicio.html",{})
+def inicio (request): 
+    saludo = "Bienvenido %s" %(request.user)
+    nombre = "Proyecto Scrum"
+    context ={
+        "nombre": nombre,
+        "saludo": saludo,
+    }
+    return render(request,"inicio.html",context)
 
 
 def cerrar (request):
@@ -72,4 +78,19 @@ def crear_usuario(request):
         "form": form,
     }
     return render(request,"crear_usuarios.html",context)
+
+
+def ver_perfil(request):
+    saludo = "Bienvenido %s" %(request.user)
+    nombre = "Proyecto Scrum"
+    context ={
+        "nombre": nombre,
+        "saludo": saludo,
+    }
+    return render(request,'ver_perfil.html',context)
+
+def editar_perfil(request):
+    context ={
+    }
+    return render(request,'modificar_usuario.html',context)
 
