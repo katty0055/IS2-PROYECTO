@@ -40,14 +40,6 @@ class UsuarioProyectoFormulario(forms.Form):
     rol=forms.ModelChoiceField(queryset=Group.objects.all(),widget=forms.Select(),required=True)
 
 
-<<<<<<< HEAD
-
-=======
-class UsuarioProyectoFormulario(forms.ModelForm):
-    class Meta:
-        model:UsuarioProyecto
-        fields="__all__"
->>>>>>> 5be894e3ccf15ee9fa5f2ecbd8fdb9a0cec7bedd
 
 
 User = get_user_model()
