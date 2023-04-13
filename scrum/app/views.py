@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth.models import User
+from .models import *
 from django.utils import timezone
 from .forms import ProyectoModelForm, UsuarioProyectoFormulario, UserModelForm
 
@@ -109,4 +110,13 @@ def editar_perfil(request):
     context ={
     }
     return render(request,'modificar_usuario.html',context)
+
+def ver_proyectos(request):
+
+    proyectos = Proyecto.objects.all()
+    context = {'proyectos': proyectos}
+
+    return render(request, "ver_proyectos.html",context)
+
+
 
