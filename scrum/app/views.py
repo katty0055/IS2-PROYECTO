@@ -4,15 +4,9 @@ from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.utils import timezone
-<<<<<<< HEAD
-from .forms import ProyectoModelForm, UsuarioProyectoFormulario
+from .forms import ProyectoModelForm, UsuarioProyectoFormulario, UserModelForm
 
 
-=======
-from .forms import ProyectoUsuarioModelForm, UsuarioProyectoFormulario, UserModelForm
-#from usuario_proyecto.models import UsuarioProyecto
-from .models import UsuarioProyecto
->>>>>>> 5be894e3ccf15ee9fa5f2ecbd8fdb9a0cec7bedd
 
 # Create your views here.
 
@@ -44,7 +38,6 @@ def cerrar (request):
     logout(request)
     return redirect('login')
 
-<<<<<<< HEAD
 
 def crear_proyecto2(request):
    
@@ -63,21 +56,9 @@ def crear_proyecto2(request):
    
    return render(request, 'crear_proyecto2.html', context)
    
-=======
-
-def crear_proyecto (request):
-    #proyecto_usuario=UsuarioProyectoFormulario(request.POST or None)
-    #context={"proyecto_usuario":proyecto_usuario}
-    usuario=UsuarioProyecto.objects.all()
-    context={"usuario":usuario}
-    return render(request,"crear_proyecto.html",context)
-
-
->>>>>>> 5be894e3ccf15ee9fa5f2ecbd8fdb9a0cec7bedd
 def agregar_usuario(request):
     form_usuario=UsuarioProyectoFormulario(request or None)
 
-<<<<<<< HEAD
     if form_usuario.is_valid():
        print("valido")
        instancia2=form_usuario.save(commit=False)
@@ -90,13 +71,6 @@ def agregar_usuario(request):
     context={'form_usuario':form_usuario}
 
     return render(request, 'crear_proyecto2.html', context)
-=======
-
-def agregar_registro(request):
-    usuario=request.POST['Usuario']
-    rol=request.POST['Rol']
-    usuario_proyecto=UsuarioProyecto()
->>>>>>> 5be894e3ccf15ee9fa5f2ecbd8fdb9a0cec7bedd
 
 
 def crear_usuario(request):

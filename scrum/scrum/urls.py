@@ -25,14 +25,11 @@ urlpatterns = [
     path('login',views.crear_usuario,name='crear_usuario'),
     path('inicio/',views.inicio, name='inicio'),
     path('cerrar/', views.cerrar, name='cerrar'),
-<<<<<<< HEAD
     path('crear_proyecto2/',views.crear_proyecto2,name='crear_proyecto2'),
-=======
-    path('crear_proyecto/',views.crear_proyecto,name='crear_proyecto'),
+    #path('crear_proyecto/',views.crear_proyecto,name='crear_proyecto'),
     path('agregar_usuario/',views.agregar_usuario,name='agregar_usuario'),
     path('ver_perfil/',views.ver_perfil,name='ver_perfil'),
     path('modificar_perfil/',views.editar_perfil,name='editar_perfil'),
->>>>>>> 5be894e3ccf15ee9fa5f2ecbd8fdb9a0cec7bedd
 ]    
     
 
