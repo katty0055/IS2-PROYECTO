@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">  
     <title>Document</title>
     <style>
         :root{
@@ -32,12 +33,12 @@
         }
         .pagina{
             display: grid;   
-            grid-template-rows: 10% 7% 83%; 
+            grid-template-rows: 10% 7% 8% 75%; 
             grid-template-columns: 50% 50%;
             width: 100%;
             height: 100vh;
             min-height: 400px;
-            min-width: 400px; 
+            min-width: 500px; 
         }
         .barra{
             grid-column-start: 1;
@@ -48,7 +49,7 @@
             grid-template-columns: 70% 30%;   
 
         }
-        .container{
+        .contenedor{
             grid-row-start: 1;
             grid-row-end:2;
             display:flex;
@@ -70,6 +71,19 @@
             display:flex;
             align-items:center;
             justify-content:center;
+           
+
+        }
+        .saludo2{
+
+            grid-column-start: 1;
+            grid-column-end:3; 
+            grid-row-start: 3;
+            grid-row-end:4;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+           
 
         }
         h2{
@@ -127,15 +141,54 @@
             display:block;
         }
         .contenido{
-          
-
             grid-column-start: 1;
             grid-column-end:3; 
-            grid-row-start: 3;
-            grid-row-end:4;
+            grid-row-start: 4;
+            grid-row-end:5;
             display: flex;
-            align-items:center;
-            justify-content:center;
+            flex-direction: column;
+        }
+        .titulo{
+            font-size: calc(1vh+1vw) ;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .encabezado{
+            border-radius: 8px;
+            border: none;
+            color: var(--black);
+            display: grid;
+        }
+        .tabla{
+            border:1px solid black;
+            width: 95%;
+        }
+        .filas{
+            background-color:var(--text-input-field);
+            text-align: left;
+            vertical-align: top;
+            border:1px solid black;
+        }
+        .contenido-tabla{
+            /*border:1px solid black;*/
+            /*width: 95%;*/
+            place-items: center;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            height: 80vh;
+        }
+        .columnas{
+            background-color: var(--very-light-pink);
+            text-align: center;
+            vertical-align: top;
+            border:1px solid black;
+        }
+        .fila{
+            background-color:var(--text-input-field);
+            text-align: left;
+            text-align: center;
+            vertical-align: top;
+            border:1px solid black;
         }
         @media (max-width:640px) {
             
@@ -146,8 +199,7 @@
             }
             .nav li ul a{
                 font-size: calc(0.5vh + 0.5vw);
-            }
-           
+            }   
 
         }
         #botones{
@@ -156,16 +208,21 @@
               display: flex;
               align-items:center;
         }
+        #oculto{
+
+            display: none;
+
+        }
     </style>
 </head>
 <body>
     <div class="pagina" >
         <div class="barra">
-            <div class="container" >
+            <div class="contenedor" >
                 <h1> {{nombre}}</h1>         
             </div>
             
-            <div class="container" id="botones" >
+            <div class="contenedor" id="botones" >
                 <ul class="nav">
                     <li>
                         <input type="image" src="{% static '/img/usuario.png' %}" class="barra-button" value="Usuario"></input>  
@@ -194,11 +251,53 @@
             </div>
         </div>
         <div class="saludo" >
-            <h2 > {{saludo}}</h2>        
+                <h1 class="titulo">Listado de Proyectos</h1>  
+        </div>
+        <div class="saludo2" >
+                {% include 'paginator.html' %}   
         </div>
         <div class="contenido">
-             
-        </div>
+            
+            <div class="contenido-tabla">
+                <table class="tabla">
+                    <thead>
+                        <tr>
+                            <th class="columnas">N°</th>
+                            <th class="columnas">Backlog ID</th>
+                            <th class="columnas">Nombre Proyecto</th>
+                            <th class="columnas">Fecha Inicio</th>
+                            <th class="columnas">Fecha Fin</th>
+                            <th class="columnas"></th>
+                            <th class="columnas"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for proyecto in entity %}
+                        <tr>
+                            <td class="fila">{{forloop.counter}}</td>
+                            <td class="filas">{{proyecto.backlog_id}}</td>
+                            <td class="filas">{{proyecto.nombre}}</td>
+                            <td class="filas">{{proyecto.fecha_inicio}}</td>
+                            <td class="filas">{{proyecto.fecha_fin}}</td>
+                            <td class="filas">
+                                <a href="{% url 'modificar_proyecto' %}">Modificar</a> 
+                            </td>
+                            <td class="filas">borrar</td>
+                        </tr>
+                    {% endfor%}
+                    </tbody>
+                </table>
+              </div>
+            
+              
+            <!-- Compiled and minified JavaScript -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> 
+        </div>  
+       
     </div>
 </body>
 </html>
+
+
+
+

@@ -1,8 +1,9 @@
 from django import forms
-from .models import Proyecto
+from .models import Proyecto, UsuarioProyecto
 from django.contrib.auth.models import User, Group
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.admin import widgets
 
 
 
@@ -29,15 +30,45 @@ class ProyectoModelForm(forms.ModelForm):
             'placeholder':'',
             'class':'input input-date'
         })
+     
        
     class Meta:
         model=Proyecto
         fields=["nombre","fecha_fin","fecha_inicio"]
 
 
+class ProyectoFormModel(forms.ModelForm):  
+    class Meta:
+        model=Proyecto
+        fields=["nombre","fecha_fin","fecha_inicio"]
+
+
+
+class UsuarioProyectoModelForm(forms.ModelForm):  
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["id_user"].widget.attrs.update({
+            'class':'desplegable '
+        })
+        self.fields["id_group"].widget.attrs.update({
+            'class':'desplegable '
+        })
+
+    class Meta:
+        model=UsuarioProyecto
+        fields=["id_user","id_group"]
+       
+
+
 class UsuarioProyectoFormulario(forms.Form):
     usuario=forms.ModelChoiceField(queryset=User.objects.all(),widget=forms.Select(),required=True)
     rol=forms.ModelChoiceField(queryset=Group.objects.all(),widget=forms.Select(),required=True)
+
+
+
+
+
+
 
 
 

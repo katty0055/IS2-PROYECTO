@@ -1,0 +1,65 @@
+ <form id= "form1" method= "POST" action ="">{%csrf_token%}
+   
+    <label class="label">Nombre Proyecto</label>
+    <input type="text" name="nombre_nuevo" value={{proyecto.nombre}}>
+    <br>
+
+    {% comment %} <label class="label">Fecha Inicio Actual</label>
+    {{proyecto.fecha_inicio}}
+    <br> {% endcomment %}
+    <label class="label">Nueva Fecha Inicio</label>
+    <input type="date" name="fecha_inicio_nuevo"  value="{{ proyecto.fecha_inicio|date:'Y-m-d' }}">
+     <br>
+
+    {% comment %} <label class="label">Fecha Fin Actual</label>
+    {{proyecto.fecha_fin}}
+    {{ proyecto.fecha_fin|date:'Y-m-d' }} {% endcomment %}
+    <br>
+    <label class="label">Nueva Fecha Fin</label>
+    <input type="date"  name="fecha_fin_nuevo" value="{{ proyecto.fecha_fin|date:'Y-m-d' }}" >
+    <br>
+    
+    <input type="submit" value="modificar_proyecto"/>
+    
+  
+
+
+</form>  
+
+</form> 
+<form method= "POST" action ="">{%csrf_token%}
+    <label class="label">Usuario</label>
+    {{form_usuario.id_user}}
+    <label class="label">Rol</label>
+    {{form_usuario.id_group}}
+    <input type="submit" value="Guardar"/>
+    
+
+</form>
+<form method= "POST" action ="">{%csrf_token%}
+    <label name= "id"> backlog_id {{proyecto.backlog_id}} </label>
+
+{%for usuario in lista%}
+        <input type="checkbox" value="{{usuario.id_usu_proy_rol}}" name="id_user"> 
+         {{usuario.id_user}}
+         {{usuario.id_group}}
+</input> 
+        
+{% empty %}
+        <p>No hay usuarios registrados.</p>
+
+{%endfor%}
+{% if lista|length > 0%}
+    <button id="miboton">Eliminar</button>
+{%endif%}
+</form>
+
+
+{% if messages %}
+{% for message in messages %}
+    <span id="errorMessage"> {{message}}</span><br><br>
+{% endfor %}
+{% endif %}
+
+
+

@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,6 +18,7 @@
         --very-light-pink: #c7c7c7;
         --text-input-field: #f7f7f7;
         --hospital-green: #acd9b2;
+        --verde-mirto:#357266;
         --red:rgb(216, 74, 74);
         /* variables de tamanos de letras que usamo (chico, medio, largo) */
         --sm: 14px;
@@ -26,55 +28,74 @@
         }   
         body{
             background-color: var(--text-input-field);
-            font-family: 'Quicksand', sans-serif;
-            justify-content: center;       
+            font-family: 'Quicksand', sans-serif;             
+            margin:0;
+        }
+        .pagina{
+            display: grid;   
+            grid-template-rows: 10% 7% 83%; 
+            grid-template-columns: 50% 50%;
+            width: 100%;
+            height: 100vh;
+            min-height: 400px;
+            min-width: 400px; 
         }
         .barra{
-            width: 100%;
-            height: 9vh;
-            display: grid;
-            place-items: center;
-            grid-template-columns: 1fr 1fr ;  
+            grid-column-start: 1;
+            grid-column-end:3; 
+            grid-row: 1/2;
+            display: grid;   
+            grid-template-rows: 1fr; 
+            grid-template-columns: 70% 30%;   
 
         }
         .container{
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            width: 100%;
-            height: 8vh;
+            grid-row-start: 1;
+            grid-row-end:2;
+            display:flex;
+            align-items:center;
             border-radius: 0px;
-            padding: 5px 5px 5px 5px;  
-            justify-content: flex-end;
-            min-height: 30px;  
-            min-width: 40px;    
+            padding: 5px 5px 5px 5px;      
             background-color: var(--hospital-green);   
-            align-items:center;     
+        }   
+        h1{
+            font-size: calc(2.5vh + 1vw);
+            margin:0;
         }
-        .tittle-nombre {
-            font-size: 3vh;
-            margin-bottom: 8px;
-            text-align: start;
+        .saludo{
+
+            grid-column-start: 1;
+            grid-column-end:3; 
+            grid-row-start: 2;
+            grid-row-end:3;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+        }
+        h2{
+          color: #000000; 
+          font-size: calc(1vh + 1vw);
+          margin:0;
+        }
+        .value{
+            color: var(--very-light-pink);
+            font-size: calc(0.9vh + 0.9vw);
+            margin: 12px 0 32px 0; /*   es equivalente a top, right, bottom y left, sucesivamente */
         }
         .barra-button{
             background-color: var(--hospital-green); 
             border-radius: 8px;
             border-color: var(--very-light-pink); 
             border: 3px solid var(--text-input-field);
-            font-size: 1vw;   
-            font-weight: bold;
-            height: 7vh;
+            height: 6vh;
             width: 4vw;    
-            min-height: 30px;
-            min-width: 40px;   
+            min-height: 12px;
+            min-width: 13px;   
             color: var(--white);
-            cursor: pointer; /* cursor arriba, aparece una mano */         
+            cursor: pointer; /* cursor arriba, aparece una mano */      
         }
-        .saludo{
-            text-align:center;
-            font-size: 2vh;
-            padding: 7px 7px 7px 7px;
-        }
+        
         a{
             text-align: center;
             text-decoration: none; /*quita el subrayado  del link */
@@ -106,49 +127,15 @@
         .nav li:hover > ul{
             display:block;
         }
-        .login{
-            width: 100%;
-            height: 70vh;
-            display: grid;
-            place-items: center;
-            min-height: 80px;
-            min-width: 100px;  
-        }
-        .form-container{
-            display: grid;
-            grid-template-rows: auto 1fr auto;
-            width: 19vw; 
-            border: 2px solid var(--very-light-pink);
-            border-radius: 10px;
-            padding: 20px 20px 20px;            
-        }
-        .tittle {
-            font-size: 3vh;
-            margin-bottom: 12px;
-            text-align: center;
-        }
-        .form{
+        .contenido{
+
+            grid-column-start: 1;
+            grid-column-end:3; 
+            grid-row-start: 3;
+            grid-row-end:4;
             display: flex;
-            flex-direction: column;
-        }
-        .label{
-            font-size: 2vh;
-            font-weight: bold;
-            margin-bottom: 4px;
-        }
-        .value{
-            color: var(--very-light-pink);
-            font-size: 2vh;
-            margin: 8px 0 32px 0; /*   es equivalente a top, right, bottom y left, sucesivamente */
-        }
-        .input{
-            background-color: var(--text-input-field);
-            border: none;
-            border-radius: 8px;
-            height: 30px;
-            font-size: 2vh;
-            padding: 6px;
-            margin-bottom: 12px;
+            align-items:center;
+            justify-content:center;
         }
         .secondary-button{
             background-color: var(--white);
@@ -167,7 +154,6 @@
         
         }
         .delete-button{
-            background-color: var(--white);
             border-radius: 8px;
             border: 1px solid var(--red);
             color: var(--red);
@@ -179,36 +165,74 @@
             width: 19vw;    
             min-height: 30px;
             min-width: 40px; 
-            margin: 5px 0px 0px 0px; /*   es equivalente a top, right, bottom y left, sucesivamente */
-           }
-       
+            margin: 5px 0px 0px 0px; /*   es equivalente a top, right, bottom y left, sucesivamente */ 
+        }
+        .tittle {
+            margin-bottom: 12px;
+            text-align: center;
+        } 
+        .form-container{
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            width: 24vw;
+            border: 2px solid var(--very-light-pink);
+            border-radius: 10px;
+            padding: 20px 20px 20px;
+            
+        }
+        .form{
+            display: flex;
+            flex-direction: column;
+        }
+        .label{
+            font-size: calc(0.9vh + 0.9vw);
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+        .input{
+            background-color: var(--text-input-field);
+            border: none;
+            border-radius: 8px;
+            height: 30px;
+            font-size: var(--md);
+            padding: 6px;
+            margin-bottom: 12px;
+        }
         @media (max-width:640px) {
+            
             .barra-button {
                 bottom: 0;
-                margin-bottom: 24px;
+               
                 position: relative;
+            }
+            .nav li ul a{
+                font-size: calc(0.5vh + 0.5vw);
             }
             .secondary-button {
                 bottom: 0;
                 margin-bottom: 3%;
                 position: relative;
             }
-            
-        }
-        #titulo{
-            justify-content: flex-start;
-            margin: 12px 0px 32px 5px; 
+            .delete-button {
+                bottom: 0;
+               
+                position: relative;
+            }
         }
         #botones{
-            margin: 12px 10px 32px 0px;
+            justify-content:end;
+
+              display: flex;
+              align-items:center;
+            
         }
     </style>
 </head>
 <body>
-    <body>
+    <div class="pagina" >
         <div class="barra">
-            <div class="container" id="titulo">
-                <h1 class="tittle-nombre"> {{nombre}}</h1>         
+            <div class="container" >
+                <h1> {{nombre}}</h1>         
             </div>
             
             <div class="container" id="botones" >
@@ -227,41 +251,42 @@
                         <input type="image" src="{% static '/img/proyecto.png' %}" class="barra-button" value="Proyecto" ></input>
                         <ul>
                             <li>
-                                <a href="{%url 'crear_proyecto2'%}"> Nuevo proyecto </a>
-                                <a href=""> Ver proyectos </a>
-                                <a href=""> Modificar proyecto</a>
-                                <a href=""> Eliminar proyecto</a>
+                                <a href="{%url 'crear_proyecto'%}"> Nuevo proyecto </a>
+                                <a href="{%url 'listar_proyectos'%}"> Ver proyectos </a>
                             </li>
                         </ul>
                     </li>
                 </ul>             
                 <a href= "{% url 'cerrar'%}"> 
                     <input  type="image" src="{% static '/img/salir.png' %}" class="barra-button" ></input>
-                 </a>       
-    
+                </a>       
+
             </div>
         </div>
-        <h2 class="saludo"> {{saludo}}</h2>
-    <div class="login">
-        <div class="form-container">
-            <h1 class="tittle">Perfil</h1>
-            <form action="" class="form">
-                <label for="name" class="label">Nombre</label>
-                <p class="value">{{request.user.first_name}}</p>
+        <div class="saludo" >
+            <h2 > {{saludo}}</h2>        
+        </div>
+        <div class="contenido">
+                <div class="form-container">
+                    <h2 class="tittle">Perfil</h2>
+                    <form action="" class="form">
+                        <label for="name" class="label">Nombre</label>
+                        <p class="value">{{request.user.first_name}}</p>
+        
+                        <label for="name" class="label">Apellido</label>
+                        <p class="value">{{request.user.last_name}}</p>
+                   
+                        <label for="email" class="label">Correo <Address></Address></label>
+                        <p class="value">{{request.user.email}}</p>
+                   
+                        <a href= "{% url 'editar_perfil'%}"> 
+                            <input type="button" value="Editar" class="secondary-button edit-button"> 
+                        </a>
 
-                <label for="name" class="label">Apellido</label>
-                <p class="value">{{request.user.last_name}}</p>
-           
-                <label for="email" class="label">Correo <Address></Address></label>
-                <p class="value">{{request.user.email}}</p>
-           
-                <a href= "{% url 'editar_perfil'%}"> 
-                    <input type="button" value="Editar" class="secondary-button edit-button"> 
-                </a>
-                
-                <button class="delete-button">
-                    Eliminar</button> 
-            </form>
+                        <a href= "{% url 'editar_perfil'%}"> 
+                            <input type="button" value="Eliminar" class="delete-button"> 
+                        </a>
+                </div>
         </div>
     </div>
 </body>

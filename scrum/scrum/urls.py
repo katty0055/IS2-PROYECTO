@@ -25,13 +25,15 @@ urlpatterns = [
     path('login',views.crear_usuario,name='crear_usuario'),
     path('inicio/',views.inicio, name='inicio'),
     path('cerrar/', views.cerrar, name='cerrar'),
-    path('crear_proyecto2/',views.crear_proyecto2,name='crear_proyecto2'),
-    path('agregar_usuario/',views.agregar_usuario,name='agregar_usuario'),
     path('ver_perfil/',views.ver_perfil,name='ver_perfil'),
     path('modificar_perfil/',views.editar_perfil,name='editar_perfil'),
-    path('ver_proyectos/', views.ver_proyectos, name='ver_proyectos')
-]    
-    
+    path('crear_proyecto/',views.crear_proyecto,name='crear_proyecto'),
+    path('agregar_usuario_proyecto/<str:pk>/',views.agregar_usuario_proyecto,name='agregar_usuario_proyecto'),
+  
+    path('modificar_proyecto/<str:pk>/',views.modificar_proyecto,name='modificar_proyecto'),
+    # path('modificar_proyecto/',views.modificar_proyecto,name='modificar_proyecto'),
+    path('listar_proyectos/', views.listar_proyectos, name='listar_proyectos')
+] 
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
