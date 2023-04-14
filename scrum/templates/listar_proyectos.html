@@ -1,16 +1,26 @@
+<<<<<<< HEAD
 {% load static %}
 
+=======
+>>>>>>> 5579f1e685c112585fd8cedb3d02cdeb70da3718
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">  
     <title>Document</title>
+=======
+    <title>Document</title>
+     <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+>>>>>>> 5579f1e685c112585fd8cedb3d02cdeb70da3718
     <style>
         :root{
      /* variables de colores que se usan en esta parte */
@@ -19,6 +29,7 @@
         --very-light-pink: #c7c7c7;
         --text-input-field: #f7f7f7;
         --hospital-green: #acd9b2;
+<<<<<<< HEAD
         --verde-mirto:#357266;
         /* variables de tamanos de letras que usamo (chico, medio, largo) */
         --sm: 14px;
@@ -154,6 +165,21 @@
             text-align: center;
         }
         .encabezado{
+=======
+        /* variables de tamanos de letras que usamo (chico, medio, largo) */
+        --sm: 14px;
+        --md:16px;
+        --lg:50px;
+
+        }
+        .titulo{
+            font-size: var(--lg) ;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .encabezado{
+            background-color: var(--hospital-green);
+>>>>>>> 5579f1e685c112585fd8cedb3d02cdeb70da3718
             border-radius: 8px;
             border: none;
             color: var(--black);
@@ -169,13 +195,21 @@
             vertical-align: top;
             border:1px solid black;
         }
+<<<<<<< HEAD
         .contenido-tabla{
+=======
+        .contenido{
+>>>>>>> 5579f1e685c112585fd8cedb3d02cdeb70da3718
             /*border:1px solid black;*/
             /*width: 95%;*/
             place-items: center;
             display: grid;
             grid-template-rows: auto 1fr auto;
+<<<<<<< HEAD
             height: 80vh;
+=======
+            height: 100vh;
+>>>>>>> 5579f1e685c112585fd8cedb3d02cdeb70da3718
         }
         .columnas{
             background-color: var(--very-light-pink);
@@ -190,6 +224,7 @@
             vertical-align: top;
             border:1px solid black;
         }
+<<<<<<< HEAD
         @media (max-width:640px) {
             
             .barra-button {
@@ -301,3 +336,40 @@
 
 
 
+=======
+    </style>  
+</head>
+<body>
+    <div class="encabezado">
+        <h1 class="titulo">Listado de Proyectos</h1>
+    </div> <br><br>
+    <div class="contenido">
+        <table class="tabla">
+            <thead>
+                <tr>
+                    <th class="columnas">N°</th>
+                    <th class="columnas">Backlog ID</th>
+                    <th class="columnas">Nombre Proyecto</th>
+                    <th class="columnas">Fecha Inicio</th>
+                    <th class="columnas">Fecha Fin</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for proyecto in proyectos %}
+                <tr>
+                    <td class="fila">{{forloop.counter}}</td>
+                    <td class="filas">{{proyecto.backlog_id}}</td>
+                    <td class="filas">{{proyecto.nombre}}</td>
+                    <td class="filas">{{proyecto.fecha_inicio}}</td>
+                    <td class="filas">{{proyecto.fecha_fin}}</td>
+                </tr>
+            {% endfor%}
+            </tbody>
+        </table>
+      </div>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
+>>>>>>> 5579f1e685c112585fd8cedb3d02cdeb70da3718
