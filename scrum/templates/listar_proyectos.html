@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <style>
+        :root{
+     /* variables de colores que se usan en esta parte */
+        --white:#FFFFFF;
+        --black: #000000;
+        --very-light-pink: #c7c7c7;
+        --text-input-field: #f7f7f7;
+        --hospital-green: #acd9b2;
+        /* variables de tamanos de letras que usamo (chico, medio, largo) */
+        --sm: 14px;
+        --md:16px;
+        --lg:50px;
+
+        }
+        .titulo{
+            font-size: var(--lg) ;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .encabezado{
+            background-color: var(--hospital-green);
+            border-radius: 8px;
+            border: none;
+            color: var(--black);
+            display: grid;
+        }
+        .tabla{
+            border:1px solid black;
+            width: 95%;
+        }
+        .filas{
+            background-color:var(--text-input-field);
+            text-align: left;
+            vertical-align: top;
+            border:1px solid black;
+        }
+        .contenido{
+            /*border:1px solid black;*/
+            /*width: 95%;*/
+            place-items: center;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            height: 100vh;
+        }
+        .columnas{
+            background-color: var(--very-light-pink);
+            text-align: center;
+            vertical-align: top;
+            border:1px solid black;
+        }
+        .fila{
+            background-color:var(--text-input-field);
+            text-align: left;
+            text-align: center;
+            vertical-align: top;
+            border:1px solid black;
+        }
+    </style>  
+</head>
+<body>
+    <div class="encabezado">
+        <h1 class="titulo">Listado de Proyectos</h1>
+    </div> <br><br>
+    <div class="contenido">
+        <table class="tabla">
+            <thead>
+                <tr>
+                    <th class="columnas">N°</th>
+                    <th class="columnas">Backlog ID</th>
+                    <th class="columnas">Nombre Proyecto</th>
+                    <th class="columnas">Fecha Inicio</th>
+                    <th class="columnas">Fecha Fin</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for proyecto in proyectos %}
+                <tr>
+                    <td class="fila">{{forloop.counter}}</td>
+                    <td class="filas">{{proyecto.backlog_id}}</td>
+                    <td class="filas">{{proyecto.nombre}}</td>
+                    <td class="filas">{{proyecto.fecha_inicio}}</td>
+                    <td class="filas">{{proyecto.fecha_fin}}</td>
+                </tr>
+            {% endfor%}
+            </tbody>
+        </table>
+      </div>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

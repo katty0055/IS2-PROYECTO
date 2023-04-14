@@ -29,7 +29,7 @@ urlpatterns = [
     path('agregar_usuario/',views.agregar_usuario,name='agregar_usuario'),
     path('ver_perfil/',views.ver_perfil,name='ver_perfil'),
     path('modificar_perfil/',views.editar_perfil,name='editar_perfil'),
-    path('ver_proyectos/', views.ver_proyectos, name='ver_proyectos')
+    path('listar_proyectos/', views.listar_proyectos, name='listar_proyectos')
 ]    
     
 
