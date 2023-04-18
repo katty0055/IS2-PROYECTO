@@ -205,47 +205,4 @@ def editar_perfil(request):
     }
     return render(request,'modificar_usuario.html',context)
 
-<<<<<<< HEAD
-=======
-def listar_proyectos(request):
-
-    proyectos = Proyecto.objects.all()
-    context = {'proyectos': proyectos}
-
-    return render(request, "listar_proyectos.html",context)
-
-'''
-#####
-#ELIMINACION DIRECTA
-#####
-
- #eliminacion directa sin el metodo POST
-def eliminar(request, backlog_id):
-
-    proyecto = Proyecto.objects.get(backlog_id = backlog_id)
-    #se elimina de la base de datos
-    proyecto.delete()
-    return redirect('ver_proyectos')
-
-#eliminacion directo con el Metodo POST
-def eliminar(request, backlog_id):
-
-    proyecto = Proyecto.objects.get(backlog_id = backlog_id)
-    
-    if request.method == 'POST':
-        proyecto.delete()
-        return redirect('ver_proyectos')
-    
-    context = {'proyecto': proyecto}
-    return render(request, 'eliminar.html',context)
-
-#####
-#ELIMINACION lOGICA
-#cambiar el estado de una instancia en concreto
-#es decir, si tenemos un atributo estado, entonces podriamos
-#cambiar el estado de dicho objeto. ejemplo podriamos haber definido
-#el estado de cada proyecto con TRUE y luego cambiar de estado a FALSE
-#####
-'''
->>>>>>> 5579f1e685c112585fd8cedb3d02cdeb70da3718
 

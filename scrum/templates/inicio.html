@@ -159,7 +159,6 @@
     </style>
 </head>
 <body>
-<<<<<<< HEAD
     <div class="pagina" >
         <div class="barra">
             <div class="container" >
@@ -191,40 +190,6 @@
                 <a href= "{% url 'cerrar'%}"> 
                     <input  type="image" src="{% static '/img/salir.png' %}" class="barra-button" ></input>
                 </a>       
-=======
-    <div class="barra">
-        <div class="container" id="saludo">
-            <h1 class="tittle"> {{saludo}}</h1>
-        </div>
-        
-        <div class="container" id="botones" >
-            <ul class="nav">
-                <li>
-                    <input type="image" src="{% static '/img/usuario.png' %}" class="barra-button" value="Usuario"></input>  
-                    <ul>
-                        <li>
-                            <a href=""> Ver perfil </a>
-                            <a href=""> Modificar Datos </a>
-                            <a href=""> Eliminar perfil</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <input type="image" src="{% static '/img/proyecto.png' %}" class="barra-button" value="Proyecto" ></input>
-                    <ul>
-                        <li>
-                            <a href="{%url 'crear_proyecto2'%}"> Nuevo proyecto </a>
-                            <a href="{%url 'listar_proyectos'%}"> Ver proyectos </a>
-                            <a href=""> Modificar proyecto</a>
-                            <a href=""> Eliminar proyecto</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>             
-            <a href= "{% url 'cerrar'%}"> 
-                <input  type="image" src="{% static '/img/salir.png' %}" class="barra-button" ></input>
-             </a>       
->>>>>>> 5579f1e685c112585fd8cedb3d02cdeb70da3718
 
             </div>
         </div>
