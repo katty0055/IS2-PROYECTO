@@ -206,6 +206,9 @@ def editar_perfil(request):
     return render(request,'modificar_usuario.html',context)
 
 
+<<<<<<< HEAD
 def crear_sprint_proyecto(request):
     
     render(request,"crear_sprint_proyecto.html")
+=======
+>>>>>>> ccae7a61979cfb081a87220231ddad295bede0ab
