@@ -27,19 +27,13 @@ urlpatterns = [
     path('cerrar/', views.cerrar, name='cerrar'),
     path('ver_perfil/',views.ver_perfil,name='ver_perfil'),
     path('modificar_perfil/',views.editar_perfil,name='editar_perfil'),
-<<<<<<< HEAD
     path('crear_proyecto/',views.crear_proyecto,name='crear_proyecto'),
     path('agregar_usuario_proyecto/<str:pk>/',views.agregar_usuario_proyecto,name='agregar_usuario_proyecto'),
-  
     path('modificar_proyecto/<str:pk>/',views.modificar_proyecto,name='modificar_proyecto'),
     # path('modificar_proyecto/',views.modificar_proyecto,name='modificar_proyecto'),
-    path('listar_proyectos/', views.listar_proyectos, name='listar_proyectos')
+    path('listar_proyectos/', views.listar_proyectos, name='listar_proyectos'),
+    path('crear_sprint_proyecto/', views.crear_sprint_proyecto, name='crear_sprint_proyecto'),
 ] 
-=======
-    path('listar_proyectos/', views.listar_proyectos, name='listar_proyectos')
-]    
-    
->>>>>>> 5579f1e685c112585fd8cedb3d02cdeb70da3718
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
