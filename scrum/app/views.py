@@ -207,7 +207,7 @@ def editar_perfil(request):
         '''if models.UserProfileModerForm.objects.filter(username = username).exists()
              messages.error (request, fusernameEl nombre de usuario ya esta registrado'''
         if form.is_valid():
-                if User.objects.filter(email=request.POST['email']).exclude(username=request.POST['username']).exists:
+                if len(User.objects.filter(email=request.POST['email']).exclude(username=request.POST['username']))>0:
                     messages.error(request, 'El email esta registrado a otro usuario')
                 else:
                     messages.success(request, 'Perfil Actualizado !!')
