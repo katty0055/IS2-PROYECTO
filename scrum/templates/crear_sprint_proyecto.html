@@ -288,11 +288,14 @@
             <div class="contenido-form-container">
                <h1 class="tittle">Crear Sprint</h1>
                <form action="" class="contenido-form" method="POST">{% csrf_token %}
-                   <label class="label">Fecha Inicio</label>
-                   <input type="date" id="name" placeholder="" class="input input-date" name="fecha_inicio" required>
-                   <label class="label">Fecha Fin</label>
-                   <input type="date" id="name" placeholder="" class="input input-date" name="fecha_fin" required> 
-                   <input type="submit" value="Crear" class="primary-button loggin-button" /><br/>
+                   
+                    <label class="label">Backlog_ID Proyecto</label>
+                    <input type="text" id="name" placeholder="" class="input input-date" name="backlog_id" required>
+                    <label class="label">Fecha Inicio</label>
+                    <input type="date" id="name" placeholder="" class="input input-date" name="fecha_inicio" required>
+                    <label class="label">Fecha Fin</label>
+                    <input type="date" id="name" placeholder="" class="input input-date" name="fecha_fin" required> 
+                    <input type="submit" value="Crear" class="primary-button loggin-button" /><br/>
                </form>
                <div class="row">  
                </div> 

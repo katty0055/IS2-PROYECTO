@@ -1,10 +1,10 @@
 from django.shortcuts import render,redirect, get_object_or_404
-from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth import authenticate,login,logout,update_session_auth_hash
 from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth.models import User, Group
 from django.utils import timezone
-from .forms import ProyectoModelForm, UsuarioProyectoFormulario, UsuarioProyectoModelForm, UserModelForm
+from .forms import ProyectoModelForm, UsuarioProyectoFormulario, UsuarioProyectoModelForm, UserModelForm, UserProfileModelForm
 from . import models
 from django.core.paginator import Paginator 
 from django.http import Http404
@@ -201,14 +201,39 @@ def ver_perfil(request):
     return render(request,'ver_perfil.html',context)
 
 def editar_perfil(request):
-    context ={
-    }
+    if request.method == "POST":
+        form = UserProfileModelForm(request.POST, instance = request.user)
+        '''if models.UserProfileModerForm.objects.filter(username = username).exists()
+             messages.error (request, fusernameEl nombre de usuario ya esta registrado'''
+        if form.is_valid():
+            messages.success(request, 'Perfil Actualizado !!')
+            form.save()
+
+            return redirect(to='login')
+    else:
+        form = UserProfileModelForm(instance = request.user)
+
+    context = {'form':form}
     return render(request,'modificar_usuario.html',context)
 
+def editar_password(request):
 
-<<<<<<< HEAD
+    if request.method == "POST":
+        form = UserPasswordChangeForm(data=request.POST, user=request.user)
+        if form.is_valid():
+            messages.success(request, 'Contraseña Actualizada !!')
+            form.save()
+            update_session_auth_hash(request, form.user)
+            return redirect(to='login')
+        else:
+            return redirect('modificar_password')
+    else:
+        form = UserPasswordChangeForm(user=request.user)
+    
+    context = {'form':form}
+
+    return render(request, 'modificar_password.html', context)
+
 def crear_sprint_proyecto(request):
     
     render(request,"crear_sprint_proyecto.html")
-=======
->>>>>>> ccae7a61979cfb081a87220231ddad295bede0ab

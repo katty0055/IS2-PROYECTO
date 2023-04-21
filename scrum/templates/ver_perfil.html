@@ -242,7 +242,7 @@
                         <ul>
                             <li>
                                 <a href="{%url 'ver_perfil'%}"> Ver perfil </a>
-                                <a href=""> Modificar Datos </a>
+                                <a href="{%url 'modificar_usuario'%}"> Modificar Datos </a>
                                 <a href=""> Eliminar perfil</a>
                             </li>
                         </ul>
@@ -279,11 +279,11 @@
                         <label for="email" class="label">Correo <Address></Address></label>
                         <p class="value">{{request.user.email}}</p>
                    
-                        <a href= "{% url 'editar_perfil'%}"> 
+                        <a href= "{% url 'modificar_usuario'%}"> 
                             <input type="button" value="Editar" class="secondary-button edit-button"> 
                         </a>
 
-                        <a href= "{% url 'editar_perfil'%}"> 
+                        <a href= "{% url 'modificar_usuario'%}"> 
                             <input type="button" value="Eliminar" class="delete-button"> 
                         </a>
                 </div>

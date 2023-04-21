@@ -2,7 +2,7 @@ from django import forms
 from .models import Proyecto, UsuarioProyecto
 from django.contrib.auth.models import User, Group
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.admin import widgets
 
 
@@ -66,13 +66,6 @@ class UsuarioProyectoFormulario(forms.Form):
 
 
 
-
-
-
-
-
-
-
 User = get_user_model()
 class UserModelForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
@@ -118,3 +111,36 @@ class UserModelForm(UserCreationForm):
         model= User
         fields=["username","first_name","last_name","email","password1","password2"]
 
+
+#User = get_user_model()
+class UserProfileModelForm(UserChangeForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["username"].widget.attrs.update({
+            'required': '',
+            'type':'text',
+            'placeholder':'',
+            'class':'input input-name' 
+        })
+        self.fields["first_name"].widget.attrs.update({
+            'required': '',
+            'type':'text',
+            'placeholder':'',
+            'class':'input input-name' 
+        })
+        self.fields["last_name"].widget.attrs.update({
+            'required': '',
+            'type':'text',
+            'placeholder':'',
+            'class':'input input-name' 
+        })
+        self.fields["email"].widget.attrs.update({
+            'required': '',
+            'type':'email',
+            'placeholder':'',
+            'class':'input input-email' 
+        })
+        
+    class Meta:
+        model= User
+        fields=["username","first_name","last_name","email"]
