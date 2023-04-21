@@ -1,5 +1,5 @@
 from django import forms
-from .models import Proyecto, UsuarioProyecto
+from .models import Proyecto, UsuarioProyecto, UserStory
 from django.contrib.auth.models import User, Group
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
@@ -144,3 +144,73 @@ class UserProfileModelForm(UserChangeForm):
     class Meta:
         model= User
         fields=["username","first_name","last_name","email"]
+
+
+class UserStoryModelForm(forms.ModelForm): 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["user_story_name"].widget.attrs.update({
+            'required': '',
+            'type':'text',
+            'placeholder':'',
+            'class':'input input-name',
+            'id': 'name',
+            'name': 'nombre',
+        })
+        self.fields["descripcion"].widget.attrs.update({
+            'placeholder':'',
+            'class':'input input-description',
+            'id': '',
+            'name': 'descripcion',
+        })
+        self.fields["story_points"].widget.attrs.update({
+            'type':'number',
+            'placeholder':'',
+            'class':'input input-name',
+            'id': 'name',
+            'name': 'story_points',
+        })
+        self.fields["id_prioridad"].widget.attrs.update({
+            'required': '',
+            'class':'input input-prioridad',
+            'name': 'prioridad',
+        })
+        self.fields["id_estado"].widget.attrs.update({
+            'required': '',
+            'class':'input input-prioridad',
+            'name': 'estado',
+        })
+        self.fields["fecha_inicio"].widget.attrs.update({
+            'required': '',
+            'type':'date',
+            'placeholder':'',
+            'class':'input input-date',
+            'id': 'name',
+            'name': 'fecha_inicio',
+        })
+        self.fields["fecha_fin"].widget.attrs.update({
+            'type':'date',
+            'placeholder':'',
+            'class':'input input-date',
+            'id': 'name',
+            'name': 'fecha_fin',
+        })
+
+        self.fields["definicion_hecho"].widget.attrs.update({
+            'required': '',
+            'placeholder':'',
+            'class':'input input-description',
+            'id': 'name',
+            'name': 'definicion_hecho',
+        })
+
+    class Meta:
+        model=UserStory
+        fields=["user_story_name","descripcion","story_points","definicion_hecho","id_prioridad","id_estado","fecha_inicio","fecha_fin"]
+
+        widgets = {
+            'fecha_inicio': forms.DateInput(attrs={'type': 'date'}),
+            'fecha_fin': forms.DateInput(attrs={'type': 'date'}),
+            'definicion_hecho':forms.Textarea(attrs={'cols': 30, 'rows': 8}),
+            'descripcion':forms.Textarea(attrs={'cols': 30, 'rows': 10}),
+        }
