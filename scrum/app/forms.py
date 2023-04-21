@@ -2,7 +2,7 @@ from django import forms
 from .models import Proyecto, UsuarioProyecto
 from django.contrib.auth.models import User, Group
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.admin import widgets
 
 
@@ -113,7 +113,7 @@ class UserModelForm(UserCreationForm):
 
 
 #User = get_user_model()
-class UserProfileModelForm(UserChangeForm):
+class UserProfileModelForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields["username"].widget.attrs.update({
@@ -144,3 +144,28 @@ class UserProfileModelForm(UserChangeForm):
     class Meta:
         model= User
         fields=["username","first_name","last_name","email"]
+
+class UserPasswordModelForm(PasswordChangeForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["old_password"].widget.attrs.update({
+            'required': '',
+            'type':'password',
+            'placeholder':'',
+            'class':'input input-password' 
+        })
+        self.fields["new_password1"].widget.attrs.update({
+            'required': '',
+            'type':'password',
+            'placeholder':'',
+            'class':'input input-password'  
+        })
+        self.fields["new_password2"].widget.attrs.update({
+            'required': '',
+            'type':'password',
+            'placeholder':'',
+            'class':'input input-password'  
+        })
+    class Meta:
+        model= User
+        fields=["old_password","new_password1","new_password2"]

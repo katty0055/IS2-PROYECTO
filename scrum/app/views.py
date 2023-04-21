@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth.models import User, Group
 from django.utils import timezone
-from .forms import ProyectoModelForm, UsuarioProyectoFormulario, UsuarioProyectoModelForm, UserModelForm, UserProfileModelForm
+from .forms import ProyectoModelForm, UsuarioProyectoFormulario, UsuarioProyectoModelForm, UserModelForm, UserProfileModelForm, UserPasswordModelForm
 from . import models
 from django.core.paginator import Paginator 
 from django.http import Http404
@@ -219,16 +219,16 @@ def editar_perfil(request):
 def editar_password(request):
 
     if request.method == "POST":
-        form = UserPasswordChangeForm(data=request.POST, user=request.user)
+        form = UserPasswordModelForm(data=request.POST, user=request.user)
         if form.is_valid():
             messages.success(request, 'Contraseña Actualizada !!')
             form.save()
             update_session_auth_hash(request, form.user)
             return redirect(to='login')
-        else:
-            return redirect('modificar_password')
+        #else:
+            #return redirect('modificar_password')
     else:
-        form = UserPasswordChangeForm(user=request.user)
+        form = UserPasswordModelForm(user=request.user)
     
     context = {'form':form}
 
