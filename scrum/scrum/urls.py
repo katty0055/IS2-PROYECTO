@@ -32,7 +32,8 @@ urlpatterns = [
     path('agregar_usuario_proyecto/<str:pk>/',views.agregar_usuario_proyecto,name='agregar_usuario_proyecto'),
     path('modificar_proyecto/<str:pk>/',views.modificar_proyecto,name='modificar_proyecto'),
     path('listar_proyectos/', views.listar_proyectos, name='listar_proyectos'),
-    path('crear_sprint_proyecto/', views.crear_sprint_proyecto, name='crear_sprint_proyecto'),
+    path('listar_proyectos/crear_sprint_proyecto/<str:pk>/', views.crear_sprint_proyecto, name='crear_sprint_proyecto'),
+    path('listar_proyectos/user_story/<str:pk>/', views.crear_user_story, name='crear_user_story'),
 ] 
 
 if settings.DEBUG:
