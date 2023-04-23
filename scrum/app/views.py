@@ -5,10 +5,17 @@ from django.conf import settings
 from django.contrib.auth.models import User, Group
 from django.utils import timezone
 <<<<<<< HEAD
+<<<<<<< HEAD
 from .forms import ProyectoModelForm, UsuarioProyectoFormulario, UsuarioProyectoModelForm, UserModelForm, UserProfileModelForm, UserPasswordModelForm
 =======
 from .forms import ProyectoModelForm, UsuarioProyectoFormulario, UsuarioProyectoModelForm, UserModelForm, UserProfileModelForm, UserStoryModelForm
 >>>>>>> 37ab90e6fc56c54368d822ab705611a9dcba60fa
+=======
+from .forms import ProyectoModelForm, UsuarioProyectoFormulario, UsuarioProyectoModelForm, UserModelForm, UserProfileModelForm, UserStoryModelForm
+=======
+from .forms import ProyectoModelForm, UsuarioProyectoFormulario, UsuarioProyectoModelForm, UserModelForm, UserProfileModelForm
+>>>>>>> cbe336df6a5b3db4be61d6126e1c63ab1ff058b6
+>>>>>>> 502610b61c3f0e4e1a962215a6f3e3700a490e91
 from . import models
 from django.core.paginator import Paginator 
 from django.http import Http404
@@ -210,6 +217,7 @@ def editar_perfil(request):
         form = UserProfileModelForm(request.POST, instance = request.user)
         '''if models.UserProfileModerForm.objects.filter(username = username).exists()
              messages.error (request, fusernameEl nombre de usuario ya esta registrado'''
+        print(len(User.objects.filter(email=request.POST['email']).exclude(username=request.POST['username'])))
         if form.is_valid():
                 if len(User.objects.filter(email=request.POST['email']).exclude(username=request.POST['username']))>0:
                     messages.error(request, 'El email esta registrado a otro usuario')
