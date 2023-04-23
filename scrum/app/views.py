@@ -4,11 +4,7 @@ from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth.models import User, Group
 from django.utils import timezone
-<<<<<<< HEAD
-from .forms import ProyectoModelForm, UsuarioProyectoFormulario, UsuarioProyectoModelForm, UserModelForm, UserProfileModelForm, UserPasswordModelForm
-=======
 from .forms import ProyectoModelForm, UsuarioProyectoFormulario, UsuarioProyectoModelForm, UserModelForm, UserProfileModelForm, UserStoryModelForm
->>>>>>> 37ab90e6fc56c54368d822ab705611a9dcba60fa
 from . import models
 from django.core.paginator import Paginator 
 from django.http import Http404
