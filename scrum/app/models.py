@@ -5,6 +5,7 @@
 # #   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
 # #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # # Feel free to rename the models, but don't rename db_table values or field names.
+from datetime import date, timedelta
 from django.db import models
 from django.contrib.auth.models import User, Group
 
@@ -127,8 +128,9 @@ class Sprint(models.Model):
     backlog_id_sprint = models.AutoField(primary_key=True)
     fecha_inicio = models.DateField()
     fecha_fin = models.DateField()
-    fecha_inicio_real = models.DateField()
-    fecha_fin_real = models.DateField()
+    fecha_inicio_real = models.DateField(blank=True, null=True)
+    fecha_fin_real = models.DateField(blank=True, null=True)
+    backlog_id = models.ForeignKey(Proyecto, on_delete=models.CASCADE, db_column='backlog_id')
 
     class Meta:
         db_table = 'sprint'
@@ -151,6 +153,9 @@ class PrioridadUserStory(models.Model):
     nombre_prioridad = models.CharField(max_length=20)
     descripcion = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.nombre_prioridad
+
     class Meta:
         db_table = 'prioridad_user_story'
 
@@ -159,6 +164,9 @@ class EstadosUserStory(models.Model):
     id_estado = models.AutoField(primary_key=True)
     nombre_estado = models.CharField(max_length=50)
     descripcion = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.nombre_estado
 
     class Meta:
         db_table = 'estados_user_story'
@@ -174,6 +182,7 @@ class ComentariosUserStory(models.Model):
 
 class UserStory(models.Model):
     id_user_story = models.AutoField(primary_key=True)
+    user_story_name = models.CharField(max_length=100)
     id_usu_proy_rol = models.ForeignKey(UsuarioProyecto, on_delete=models.CASCADE, db_column='id_usu_proy_rol')
     descripcion = models.CharField(max_length=200, blank=True, null=True)
     story_points = models.IntegerField(blank=True, null=True)

@@ -27,11 +27,13 @@ urlpatterns = [
     path('cerrar/', views.cerrar, name='cerrar'),
     path('ver_perfil/',views.ver_perfil,name='ver_perfil'),
     path('modificar_usuario',views.editar_perfil,name='modificar_usuario'),
+    path('modificar_password',views.editar_password,name='modificar_password'),
     path('crear_proyecto/',views.crear_proyecto,name='crear_proyecto'),
     path('agregar_usuario_proyecto/<str:pk>/',views.agregar_usuario_proyecto,name='agregar_usuario_proyecto'),
     path('modificar_proyecto/<str:pk>/',views.modificar_proyecto,name='modificar_proyecto'),
     path('listar_proyectos/', views.listar_proyectos, name='listar_proyectos'),
-    path('crear_sprint_proyecto/', views.crear_sprint_proyecto, name='crear_sprint_proyecto'),
+    path('listar_proyectos/crear_sprint_proyecto/<str:pk>/', views.crear_sprint_proyecto, name='crear_sprint_proyecto'),
+    path('listar_proyectos/user_story/<str:pk>/', views.crear_user_story, name='crear_user_story'),
 ] 
 
 if settings.DEBUG:

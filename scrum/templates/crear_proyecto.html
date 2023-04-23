@@ -140,8 +140,7 @@
             justify-content:center;
             border-radius: 10px;
             padding: 10px 10px 10px;
-            --grid-colum:2/3;
-            
+            grid-colum:2/3;
         }
 
         .contenido-form{
@@ -261,7 +260,7 @@
                         <ul>
                             <li>
                                 <a href="{%url 'ver_perfil'%}"> Ver perfil </a>
-                                <a href=""> Modificar Datos </a>
+                                <a href="{% url 'modificar_usuario'%}"> Modificar Datos </a>
                                 <a href=""> Eliminar perfil</a>
                             </li>
                         </ul>

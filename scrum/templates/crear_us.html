@@ -285,7 +285,7 @@
                         <ul>
                             <li>
                                 <a href="{%url 'ver_perfil'%}"> Ver perfil </a>
-                                <a href=""> Modificar Datos </a>
+                                <a href="{% url 'modificar_usuario'%}"> Modificar Datos </a>
                                 <a href=""> Eliminar perfil</a>
                             </li>
                         </ul>
@@ -312,45 +312,42 @@
         <div class="pagina-contenido"> 
                  <div class="contenido-form-container">
                     <h1 class="tittle">Crear Historia</h1>
-                    <form action="" class="contenido-form" method="POST">{% csrf_token %}                       
-                        <label class="label">Nombre</label>
-                        <input type="text" id="name" placeholder="" class="input input-name" name="nombre" required>
-
-                        <label for="descripcion" class="label">Descripción (máximo 200 caracteres):</label>
-                        <textarea name="descripcion" id="" class="input input-description" cols="30" rows="10" requiered placeholder=""></textarea>
-
-                        <label for="story_points" class="label">Story Points:</label>    
-                        <input type="number" id="name" placeholder="" class="input input-name" name="story_points" required>
-
-                        <label for="prioridad" class="label">Prioridad</label>    
-                        <select class="input input-prioridad" name="prioridad" required>
-                            <option value="opcion1">Baja</option>
-                            <option value="opcion2">media</option>
-                            <option value="opcion3">Alta</option>
-                          </select>
-
-                          <label for="estado" class="label" >Estado</label>    
-                        <select class="input input-prioridad" name="estado" required>
-                            <option value="opcion1">Por hacer</option>
-                            <option value="opcion2">En curso</option>
-                            <option value="opcion3">Listo</option>
-                          </select>
-                          
-
-                        <label class="label">Fecha Inicio</label>
-                        <input type="date" id="name" placeholder="" class="input input-date" name="fecha_inicio" required>
-
-                        <label class="label">Fecha Fin</label>
-                        <input type="date" id="name" placeholder="" class="input input-date" name="fecha_fin" required> 
-
-                        <input type="submit" value="Crear" class="primary-button loggin-button" /><br/>
-                    </form>
-                    
-                    <!-- {% if messages %}
+                    {% if messages %}
                     {% for message in messages %}
                         <span id="errorMessage"> {{message}}</span><br><br>
                     {% endfor %}
-                    {% endif %} -->
+                    {% endif %}
+                    <form action="" class="contenido-form" method="POST">{% csrf_token %}                       
+                        <label class="label">Nombre</label>
+                        {{form.user_story_name}} 
+
+                        <label for="descripcion" class="label">Descripción (máximo 200 caracteres):</label>
+                        {{form.descripcion}}
+
+                        <label for="definicion" class="label">Defincion de Hecho (máximo 200 caracteres):</label>
+                        {{form.definicion_hecho}}
+                        
+                        <label for="story_points" class="label">Story Points:</label>  
+                        {{form.story_points}}  
+                        
+
+                        <label for="prioridad" class="label">Prioridad</label>    
+                        {{form.id_prioridad}}  
+                        
+                        <label for="estado" class="label" >Estado</label>    
+                        {{form.id_estado}}
+                          
+
+                        <label class="label">Fecha Inicio</label>
+                        {{form.fecha_inicio}}
+
+                        <label class="label">Fecha Fin</label>
+                        {{form.fecha_fin}} 
+                        
+                        <input type="submit" value="Crear" class="primary-button loggin-button" /><br/>
+                    </form>
+                    
+                    
 
                     <div class="row">  
                     </div> 
