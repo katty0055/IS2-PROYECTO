@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +18,7 @@
         --very-light-pink: #c7c7c7;
         --text-input-field: #f7f7f7;
         --hospital-green: #acd9b2;
-        --red:rgb(216, 74, 74);
+        --verde-mirto:#357266;
         /* variables de tamanos de letras que usamo (chico, medio, largo) */
         --sm: 14px;
         --md:16px;
@@ -24,45 +26,66 @@
 
         }   
         body{
-            font-family: 'Quicksand', sans-serif;
-            margin: 0;
-            
+            background-color: var(--text-input-field);
+            font-family: 'Quicksand', sans-serif;             
+            margin:0;
         }
-        .login{
+        .pagina{
+            display: grid;   
+            grid-template-rows: 10% 7% 83%; 
+            grid-template-columns: 50% 50%;
             width: 100%;
             height: 100vh;
-            display: grid;
-            place-items: center;
+            min-height: 400px;
+            min-width: 400px; 
+        }
+        .barra{
+            grid-column-start: 1;
+            grid-column-end:3; 
+            grid-row: 1/2;
+            display: grid;   
+            grid-template-rows: 1fr; 
+            grid-template-columns: 70% 30%;   
 
         }
-        .form-container{
-            display: grid;
-            grid-template-rows: auto 1fr auto;
-            width: 300px;
-            border: 2px solid var(--very-light-pink);
-            border-radius: 10px;
-            padding: 20px 20px 20px;
-            
+        .container{
+            grid-row-start: 1;
+            grid-row-end:2;
+            display:flex;
+            align-items:center;
+            border-radius: 0px;
+            padding: 5px 5px 5px 5px;      
+            background-color: var(--hospital-green);   
+        }   
+        h1{
+            font-size: calc(2.5vh + 1vw);
+            margin:0;
         }
-       
-        .tittle {
-            font-size: var(--lg) ;
-            margin-bottom: 12px;
-            text-align: center;
+        .saludo{
+
+            grid-column-start: 1;
+            grid-column-end:3; 
+            grid-row-start: 2;
+            grid-row-end:3;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
         }
-        .form{
-            display: flex;
-            flex-direction: column;
+        h2{
+          color: #000000; 
+          font-size: calc(1vh + 1vw);
+          margin:0;
+        }
+        .value{
+            color: var(--very-light-pink);
+            font-size: var(--md);
+            margin: 12px 0 32px 0; /*   es equivalente a top, right, bottom y left, sucesivamente */
         }
         .label{
             font-size: var(--sm);
             font-weight: bold;
             margin-bottom: 4px;
-        }
-        .value{
-            color: var(--very-light-pink);
-            font-size: var(--md);
-            margin: 8px 0 32px 0; /*   es equivalente a top, right, bottom y left, sucesivamente */
         }
         .input{
             background-color: var(--text-input-field);
@@ -73,7 +96,68 @@
             padding: 6px;
             margin-bottom: 12px;
         }
+        .barra-button{
+            background-color: var(--hospital-green); 
+            border-radius: 8px;
+            border-color: var(--very-light-pink); 
+            border: 3px solid var(--text-input-field);
+            height: 6vh;
+            width: 4vw;    
+            min-height: 12px;
+            min-width: 13px;   
+            color: var(--white);
+            cursor: pointer; /* cursor arriba, aparece una mano */      
+        }
         
+        a{
+            text-align: center;
+            text-decoration: none; /*quita el subrayado  del link */
+            display:block;
+        }
+        ul, ol{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        } 
+        .nav li a{
+            background-color: var(--hospital-green);
+            color: var( --white);
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+        .nav li a:hover{
+            background-color: var( --verde-mirto);
+        }
+        .nav > li{
+            float: left;
+        }
+        .nav li ul{
+            display:none;
+            position: absolute;
+            min-width: 5vw;       
+        }
+        .nav li:hover > ul{
+            display:block;
+        }
+        .contenido{
+          
+
+            grid-column-start: 1;
+            grid-column-end:3; 
+            grid-row-start: 3;
+            grid-row-end:4;
+            display: flex;
+            align-items:center;
+            justify-content:center;
+        }
+        .login{
+            width: 100%;
+            height: 100vh;
+            display: grid;
+            place-items: center;
+
+        }
         .secondary-button{
             background-color: var(--white);
             border-radius: 8px;
@@ -100,52 +184,127 @@
             width: 300px;
             margin: 8px 0 0; /*   es equivalente a top, right, bottom y left, sucesivamente */
            }
+        
+        .form-container{
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            width: 300px;
+            border: 2px solid var(--very-light-pink);
+            border-radius: 10px;
+            padding: 20px 20px 20px;
+            
+        }
+       
+        .tittle {
+            font-size: var(--lg) ;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        .form{
+            display: flex;
+            flex-direction: column;
+        }
        
         @media (max-width:640px) {
             
+            .barra-button {
+                bottom: 0;
+               
+                position: relative;
+            }
+            .nav li ul a{
+                font-size: calc(0.5vh + 0.5vw);
+            }
             .secondary-button {
                 bottom: 0;
                 margin-bottom: 24px;
                 position: absolute;
             }
-            
+           
+
+        }
+        #botones{
+            justify-content:end;
+
+              display: flex;
+              align-items:center;
         }
     </style>
 </head>
 <body>
-    <div class="login">
-        <div class="form-container">
+    <div class="pagina" >
+        <div class="barra">
+            <div class="container" >
+                <h1> {{nombre}}</h1>         
+            </div>
+            
+            <div class="container" id="botones" >
+                <ul class="nav">
+                    <li>
+                        <input type="image" src="{% static '/img/usuario.png' %}" class="barra-button" value="Usuario"></input>  
+                         <ul>
+                            <li>
+                                <a href="{%url 'ver_perfil'%}"> Ver perfil </a>
+                                <a href="{% url 'modificar_usuario'%}"> Modificar Datos </a>
+                                <a href=""> Eliminar perfil</a>
+                            </li>
+                        </ul> 
+                    </li>
+                    <li>
+                        <input type="image" src="{% static '/img/proyecto.png' %}" class="barra-button" value="Proyecto" ></input>
+                        <ul>
+                            <li>
+                                <a href="{%url 'crear_proyecto'%}"> Nuevo proyecto </a>
+                                <a href="{%url 'listar_proyectos'%}"> Ver proyectos </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>             
+                <a href= "{% url 'cerrar'%}"> 
+                    <input  type="image" src="{% static '/img/salir.png' %}" class="barra-button" ></input>
+                </a>       
+
+            </div>
+        </div>
+        <div class="saludo" >
+            <h2 > {{saludo}}</h2>        
+        </div>
+        <div class="contenido">
+            <div class="login">
+                <div class="form-container">
+                
+                    <h1 class="tittle">Editar Usuario</h1>
         
-            <h1 class="tittle">Editar Usuario</h1>
-
-            <form method="POST" action="" class="form" name="formulario">{% csrf_token %}
-                
-                <div class="error-container">  
-                    {{form.errors}} 
-                    {% if messages %}
-                                        {% for message in messages %}
-                                            <span id="errorMessage"> {{message}}</span><br><br>
-                                        {% endfor %}
-                    {% endif %}
-                </div> 
-
-                <label class="label">Usuario</label>
-                {{form.username}}
-
-                <label class="label">Nombre</label>
-                {{form.first_name}}
-           
-                <label class="label">Apellido</label>
-                {{form.last_name}}
-
-                <label class="label">Correo <Address></Address></label>
-                {{form.email}} 
-                 
-                <input type="submit" value="Guardar Cambios" class="secondary-button edit-button">  
-                
-                <button class="delete-button">
-                    Eliminar</button> 
-            </form>
+                    <form method="POST" action="" class="form" name="formulario">{% csrf_token %}
+                        
+                        <div class="error-container">  
+                            {{form.errors}} 
+                            {% if messages %}
+                                                {% for message in messages %}
+                                                    <span id="errorMessage"> {{message}}</span><br><br>
+                                                {% endfor %}
+                            {% endif %}
+                        </div> 
+        
+                        <label class="label">Usuario</label>
+                        {{form.username}}
+        
+                        <label class="label">Nombre</label>
+                        {{form.first_name}}
+                   
+                        <label class="label">Apellido</label>
+                        {{form.last_name}}
+        
+                        <label class="label">Correo <Address></Address></label>
+                        {{form.email}} 
+                         
+                        <input type="submit" value="Guardar Cambios" class="secondary-button edit-button">  
+                        
+                        {% comment %} <button class="delete-button">
+                            Eliminar</button>  {% endcomment %}
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </body>

@@ -245,7 +245,17 @@
         }
 
     </style>
-
+    <script>
+        function sumarDias(fecha, dias) {
+            fecha.setDate(fecha.getDate() + dias);
+            return fecha;
+        }
+    
+        function myFunction() {
+            var x = document.getElementById("fecha_inicio").value;
+            document.getElementById("fecha_fin").value = sumarDias(new Date(x), 14).toISOString().substring(0, 10);;
+          }
+    </script>
 </head> 
  <body>
     <div class="pagina">    
@@ -260,7 +270,7 @@
                         <ul>
                             <li>
                                 <a href="{%url 'ver_perfil'%}"> Ver perfil </a>
-                                <a href=""> Modificar Datos </a>
+                                <a href="{% url 'modificar_usuario'%}"> Modificar Datos </a>
                                 <a href=""> Eliminar perfil</a>
                             </li>
                         </ul>
@@ -287,16 +297,20 @@
         <div class="pagina-contenido"> 
             <div class="contenido-form-container">
                <h1 class="tittle">Crear Sprint</h1>
-               <form action="" class="contenido-form" method="POST">{% csrf_token %}
-                   
+               <form action="" class="contenido-form" method="POST">{% csrf_token %}    
                     <label class="label">Backlog_ID Proyecto</label>
-                    <input type="text" id="name" placeholder="" class="input input-date" name="backlog_id" required>
+                    <input type="text" id="name" placeholder="" class="input input-date" value={{pk}} name="backlog_id" readonly>
                     <label class="label">Fecha Inicio</label>
-                    <input type="date" id="name" placeholder="" class="input input-date" name="fecha_inicio" required>
+                    <input type="date" id="fecha_inicio" oninput="myFunction()" name="fecha_inicio" class="input input-date" required> 
                     <label class="label">Fecha Fin</label>
-                    <input type="date" id="name" placeholder="" class="input input-date" name="fecha_fin" required> 
+                    <input type="date"  id="fecha_fin" name="fecha_fin" class="input input-date" readonly >  
                     <input type="submit" value="Crear" class="primary-button loggin-button" /><br/>
                </form>
+               {% if messages %}
+               {% for message in messages %}
+                   <span id="errorMessage"> {{message}}</span><br><br>
+               {% endfor %}
+               {% endif %}
                <div class="row">  
                </div> 
            </div>         
