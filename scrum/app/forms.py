@@ -1,8 +1,8 @@
 from django import forms
-from .models import Proyecto, UsuarioProyecto, UserStory
+from .models import Proyecto, UsuarioProyecto
 from django.contrib.auth.models import User, Group
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.admin import widgets
 
 
@@ -113,7 +113,7 @@ class UserModelForm(UserCreationForm):
 
 
 #User = get_user_model()
-class UserProfileModelForm(UserCreationForm):
+class UserProfileModelForm(UserChangeForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields["username"].widget.attrs.update({
@@ -144,6 +144,7 @@ class UserProfileModelForm(UserCreationForm):
     class Meta:
         model= User
         fields=["username","first_name","last_name","email"]
+<<<<<<< HEAD
 
 
 class UserStoryModelForm(forms.ModelForm): 
@@ -214,3 +215,5 @@ class UserStoryModelForm(forms.ModelForm):
             'definicion_hecho':forms.Textarea(attrs={'cols': 30, 'rows': 8}),
             'descripcion':forms.Textarea(attrs={'cols': 30, 'rows': 10}),
         }
+=======
+>>>>>>> cbe336df6a5b3db4be61d6126e1c63ab1ff058b6

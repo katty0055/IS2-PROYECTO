@@ -4,7 +4,11 @@ from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth.models import User, Group
 from django.utils import timezone
+<<<<<<< HEAD
 from .forms import ProyectoModelForm, UsuarioProyectoFormulario, UsuarioProyectoModelForm, UserModelForm, UserProfileModelForm, UserStoryModelForm
+=======
+from .forms import ProyectoModelForm, UsuarioProyectoFormulario, UsuarioProyectoModelForm, UserModelForm, UserProfileModelForm
+>>>>>>> cbe336df6a5b3db4be61d6126e1c63ab1ff058b6
 from . import models
 from django.core.paginator import Paginator 
 from django.http import Http404
@@ -201,85 +205,39 @@ def ver_perfil(request):
     return render(request,'ver_perfil.html',context)
 
 def editar_perfil(request):
-    nombre = "Proyecto Scrum"
     if request.method == "POST":
         form = UserProfileModelForm(request.POST, instance = request.user)
         '''if models.UserProfileModerForm.objects.filter(username = username).exists()
              messages.error (request, fusernameEl nombre de usuario ya esta registrado'''
         if form.is_valid():
-                if len(User.objects.filter(email=request.POST['email']).exclude(username=request.POST['username']))>0:
-                    messages.error(request, 'El email esta registrado a otro usuario')
-                else:
-                    messages.success(request, 'Perfil Actualizado !!')
-                    form.save()
+            messages.success(request, 'Perfil Actualizado !!')
+            form.save()
 
-                    return redirect(to='login')
-
-            
+            return redirect(to='login')
     else:
         form = UserProfileModelForm(instance = request.user)
 
-    context = {"form":form,
-               "nombre": nombre,}
+    context = {'form':form}
     return render(request,'modificar_usuario.html',context)
 
 def editar_password(request):
 
     if request.method == "POST":
-        form = UserPasswordModelForm(data=request.POST, user=request.user)
+        form = UserPasswordChangeForm(data=request.POST, user=request.user)
         if form.is_valid():
             messages.success(request, 'Contraseña Actualizada !!')
             form.save()
             update_session_auth_hash(request, form.user)
             return redirect(to='login')
-        #else:
-            #return redirect('modificar_password')
+        else:
+            return redirect('modificar_password')
     else:
-        form = UserPasswordModelForm(user=request.user)
+        form = UserPasswordChangeForm(user=request.user)
     
-    context = {"form":form}
+    context = {'form':form}
 
     return render(request, 'modificar_password.html', context)
 
-def crear_sprint_proyecto(request, pk):
-    print(pk)
-    if request.method=='POST':
-        fecha_inicioform=request.POST['fecha_inicio']
-        fecha_finform=request.POST['fecha_fin']
-        proyecto=models.Proyecto.objects.get(backlog_id=pk)
-        print(proyecto.backlog_id)
-        if fecha_inicioform == "":
-            messages.error(request,"Favor ingrese una fecha de inicio")
-        else:
-            
-            obj= models.Sprint.objects.create(
-                                                fecha_inicio = fecha_inicioform,
-                                                fecha_fin = fecha_finform,
-                                                backlog_id=proyecto
-                                            )
-            messages.success(request,"Sprint creado con exito")
-            return redirect('crear_sprint_proyecto',pk=pk)
+def crear_sprint_proyecto(request):
     
-    context ={
-        "pk": pk,
-    }
-    
-    return render(request,'crear_sprint_proyecto.html',context)
-
-
-def crear_user_story(request,pk):
-    # print(pk)
-    form= UserStoryModelForm(request.POST or None)
-    if form.is_valid():
-        # print("hola")
-        instance= form.save(commit=False)
-        # print(request.user)
-        # id_usu_proy_rol=models.UsuarioProyecto.objects.get(backlog=pk,id_user= request.user)
-        # print(id_usu_proy_rol)
-        messages.success(request,"US creado con exito")
-    #     # instance= form.save() 
-    context = {
-        "form": form,
-        "pk": pk,
-    }
-    return render(request,"crear_us.html",context)
+    render(request,"crear_sprint_proyecto.html")
