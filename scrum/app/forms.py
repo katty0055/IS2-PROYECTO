@@ -145,32 +145,6 @@ class UserProfileModelForm(UserCreationForm):
         model= User
         fields=["username","first_name","last_name","email"]
 
-<<<<<<< HEAD
-class UserPasswordModelForm(PasswordChangeForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields["old_password"].widget.attrs.update({
-            'required': '',
-            'type':'password',
-            'placeholder':'',
-            'class':'input input-password' 
-        })
-        self.fields["new_password1"].widget.attrs.update({
-            'required': '',
-            'type':'password',
-            'placeholder':'',
-            'class':'input input-password'  
-        })
-        self.fields["new_password2"].widget.attrs.update({
-            'required': '',
-            'type':'password',
-            'placeholder':'',
-            'class':'input input-password'  
-        })
-    class Meta:
-        model= User
-        fields=["old_password","new_password1","new_password2"]
-=======
 
 class UserStoryModelForm(forms.ModelForm): 
     def __init__(self, *args, **kwargs):
@@ -240,4 +214,3 @@ class UserStoryModelForm(forms.ModelForm):
             'definicion_hecho':forms.Textarea(attrs={'cols': 30, 'rows': 8}),
             'descripcion':forms.Textarea(attrs={'cols': 30, 'rows': 10}),
         }
->>>>>>> 37ab90e6fc56c54368d822ab705611a9dcba60fa
