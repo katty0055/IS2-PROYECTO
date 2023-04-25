@@ -144,6 +144,7 @@ class UserProfileModelForm(forms.ModelForm):
     class Meta:
         model= User
         fields=["username","first_name","last_name","email"]
+<<<<<<< HEAD
 
 class UserPasswordModelForm(PasswordChangeForm):
     def __init__(self, *args, **kwargs):
@@ -169,6 +170,14 @@ class UserPasswordModelForm(PasswordChangeForm):
     class Meta:
         model= User
         fields=["old_password","new_password1","new_password2"]
+<<<<<<< HEAD
+=======
+=======
+=======
+<<<<<<< HEAD
+
+>>>>>>> 502610b61c3f0e4e1a962215a6f3e3700a490e91
+>>>>>>> 4c64a9c3002187c984c5f71d06f4532e9a5e1cc1
 
 class UserStoryModelForm(forms.ModelForm): 
     def __init__(self, *args, **kwargs):
@@ -238,3 +247,12 @@ class UserStoryModelForm(forms.ModelForm):
             'definicion_hecho':forms.Textarea(attrs={'cols': 30, 'rows': 8}),
             'descripcion':forms.Textarea(attrs={'cols': 30, 'rows': 10}),
         }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 37ab90e6fc56c54368d822ab705611a9dcba60fa
+=======
+=======
+>>>>>>> cbe336df6a5b3db4be61d6126e1c63ab1ff058b6
+>>>>>>> 502610b61c3f0e4e1a962215a6f3e3700a490e91
+>>>>>>> 4c64a9c3002187c984c5f71d06f4532e9a5e1cc1
