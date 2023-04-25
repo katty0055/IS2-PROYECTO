@@ -28,6 +28,7 @@ urlpatterns = [
     path('ver_perfil/',views.ver_perfil,name='ver_perfil'),
     path('modificar_usuario',views.editar_perfil,name='modificar_usuario'),
     path('modificar_password',views.editar_password,name='modificar_password'),
+    path('eliminar_usuario',views.eliminar_usuario,name='eliminar_usuario'),
     path('crear_proyecto/',views.crear_proyecto,name='crear_proyecto'),
     path('agregar_usuario_proyecto/<str:pk>/',views.agregar_usuario_proyecto,name='agregar_usuario_proyecto'),
     path('modificar_proyecto/<str:pk>/',views.modificar_proyecto,name='modificar_proyecto'),

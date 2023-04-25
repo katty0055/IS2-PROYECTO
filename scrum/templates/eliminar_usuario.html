@@ -1,4 +1,4 @@
-{% load static %}
+{%load static %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -154,9 +154,11 @@
         
         }
         .delete-button{
+            background-color: var(--white);
             border-radius: 8px;
             border: 1px solid var(--red);
             color: var(--red);
+            border-color: var(--red);
             width: 100%; /*para que sea lo mas grande posible */
             cursor: pointer; /* cursor arriba, aparece una mano */
             font-size: 2vh;        
@@ -165,7 +167,7 @@
             width: 19vw;    
             min-height: 30px;
             min-width: 40px; 
-            margin: 5px 0px 0px 0px; /*   es equivalente a top, right, bottom y left, sucesivamente */ 
+            /*margin: 5px 0px 0px 0px;    es equivalente a top, right, bottom y left, sucesivamente */ 
         }
         .tittle {
             margin-bottom: 12px;
@@ -269,28 +271,37 @@
         </div>
         <div class="contenido">
                 <div class="form-container">
-                    <h2 class="tittle">Perfil</h2>
-                    <form action="" class="form">
-                        <label for="name" class="label">Nombre</label>
-                        <p class="value">{{request.user.first_name}}</p>
+                    <h2 class="tittle">Eliminar Usuario</h2>
+                    <form method="POST" action="" class="form" name="formulario" enctype="multipart/form-data">{% csrf_token %}
+                        
+                        <div class="error-container">  
+                            {{form.username.errors}} 
+                            {% if messages %}
+                                                {% for message in messages %}
+                                                    <span id="errorMessage"> {{message}}</span><br><br>
+                                                {% endfor %}
+                            {% endif %}
+                            {{form.errors}} 
+                          
+                        </div> 
+
+                        <label class="label">Username</label>
+                        <p class="value">{{form.username}}</p>
+
+                        <label class="label">Nombre</label>
+                        <p class="value">{{form.first_name}}</p>
         
-                        <label for="name" class="label">Apellido</label>
-                        <p class="value">{{request.user.last_name}}</p>
+                        <label class="label">Apellido</label>
+                        <p class="value">{{form.last_name}}</p>
                    
-                        <label for="email" class="label">Correo <Address></Address></label>
-                        <p class="value">{{request.user.email}}</p>
-                   
-                        <a href= "{% url 'modificar_usuario'%}"> 
-                            <input type="button" value="Editar Perfil" class="secondary-button edit-button"> 
-                        </a>
+                        <label class="label">Correo <Address></Address></label>
+                        <p class="value">{{form.email}}</p>
+                        
+                        <input type="submit" value="Eliminar Usuario" class="delete-button">
                         <br>
-                        <a href= "{% url 'modificar_password'%}"> 
-                            <input type="button" value="Cambiar Contraseña" class="secondary-button edit-button"> 
-                        </a>
-                        <br>
-                        <a href= "{% url 'eliminar_usuario'%}"> 
-                            <input type="button" value="Eliminar Perfil" class="secondary-button edit-button"> 
-                        </a>
+                        <a href= "{%url 'inicio'%}"> 
+                            <input type="button" value="Volver Inicio" class="secondary-button loggin-button"> 
+                        </a>     
                 </div>
         </div>
     </div>

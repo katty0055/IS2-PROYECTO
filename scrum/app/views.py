@@ -4,15 +4,12 @@ from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth.models import User, Group
 from django.utils import timezone
-<<<<<<< HEAD
-from .forms import ProyectoModelForm, UsuarioProyectoFormulario, UsuarioProyectoModelForm, UserModelForm, UserProfileModelForm, UserPasswordModelForm
-=======
-from .forms import ProyectoModelForm, UsuarioProyectoFormulario, UsuarioProyectoModelForm, UserModelForm, UserProfileModelForm, UserStoryModelForm
->>>>>>> 37ab90e6fc56c54368d822ab705611a9dcba60fa
+from .forms import ProyectoModelForm, UsuarioProyectoFormulario, UsuarioProyectoModelForm, UserModelForm, UserProfileModelForm, UserPasswordModelForm, UserStoryModelForm
 from . import models
 from django.core.paginator import Paginator 
 from django.http import Http404
-
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 import datetime
 
 
@@ -204,29 +201,28 @@ def ver_perfil(request):
     }
     return render(request,'ver_perfil.html',context)
 
+@login_required(login_url='login')
 def editar_perfil(request):
     nombre = "Proyecto Scrum"
+    
     if request.method == "POST":
-        form = UserProfileModelForm(request.POST, instance = request.user)
-        '''if models.UserProfileModerForm.objects.filter(username = username).exists()
-             messages.error (request, fusernameEl nombre de usuario ya esta registrado'''
+        form = UserProfileModelForm(data=request.POST or None, instance=request.user)
         if form.is_valid():
-                if len(User.objects.filter(email=request.POST['email']).exclude(username=request.POST['username']))>0:
-                    messages.error(request, 'El email esta registrado a otro usuario')
-                else:
-                    messages.success(request, 'Perfil Actualizado !!')
-                    form.save()
-
-                    return redirect(to='login')
-
-            
+            if len(User.objects.filter(email=request.POST['email']).exclude(username=request.POST['username']))>0:
+                messages.error(request, 'El email esta registrado a otro usuario')
+            else:
+                form.save()
+                messages.success(request, 'Perfil Actualizado !!')
+                return redirect('login')     
     else:
         form = UserProfileModelForm(instance = request.user)
-
+    
     context = {"form":form,
                "nombre": nombre,}
     return render(request,'modificar_usuario.html',context)
 
+
+@login_required(login_url='login')
 def editar_password(request):
 
     if request.method == "POST":
@@ -242,9 +238,30 @@ def editar_password(request):
         form = UserPasswordModelForm(user=request.user)
     
     context = {"form":form}
-
     return render(request, 'modificar_password.html', context)
 
+@login_required(login_url='login')
+def eliminar_usuario(request):
+   
+    form = UserProfileModelForm(instance = request.user)
+    
+    if request.method == 'POST':
+        #obtener usuario de inicio de sesion
+        user = User.objects.get(username = request.user)
+        #if form.is_valid():
+        # Verifique que el usuario de inicio de sesión y el usuario que se va a eliminar sean los mismos
+        if request.user == user:
+            user.delete()
+            messages.success(request, 'Tu perfil ha sido borrado con exito')
+            return redirect("login")
+        else:
+            messages.error(request, 'No tienes permiso para borrar este perfil')
+            return redirect("login")
+        
+    context ={"form":form}
+    return render(request, 'eliminar_usuario.html',context)
+
+   
 def crear_sprint_proyecto(request, pk):
     print(pk)
     if request.method=='POST':

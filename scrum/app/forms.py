@@ -113,7 +113,7 @@ class UserModelForm(UserCreationForm):
 
 
 #User = get_user_model()
-class UserProfileModelForm(UserCreationForm):
+class UserProfileModelForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields["username"].widget.attrs.update({
@@ -145,7 +145,6 @@ class UserProfileModelForm(UserCreationForm):
         model= User
         fields=["username","first_name","last_name","email"]
 
-<<<<<<< HEAD
 class UserPasswordModelForm(PasswordChangeForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -170,7 +169,6 @@ class UserPasswordModelForm(PasswordChangeForm):
     class Meta:
         model= User
         fields=["old_password","new_password1","new_password2"]
-=======
 
 class UserStoryModelForm(forms.ModelForm): 
     def __init__(self, *args, **kwargs):
@@ -240,4 +238,3 @@ class UserStoryModelForm(forms.ModelForm):
             'definicion_hecho':forms.Textarea(attrs={'cols': 30, 'rows': 8}),
             'descripcion':forms.Textarea(attrs={'cols': 30, 'rows': 10}),
         }
->>>>>>> 37ab90e6fc56c54368d822ab705611a9dcba60fa

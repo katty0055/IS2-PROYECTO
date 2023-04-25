@@ -246,7 +246,8 @@
                             <li>
                                 <a href="{%url 'ver_perfil'%}"> Ver perfil </a>
                                 <a href="{% url 'modificar_usuario'%}"> Modificar Datos </a>
-                                <a href=""> Eliminar perfil</a>
+                                <a href="{%url 'modificar_password'%}"> Modificar Contraseña </a>
+                                <a href="{%url 'eliminar_usuario'%}"> Eliminar perfil</a>
                             </li>
                         </ul> 
                     </li>
@@ -275,15 +276,17 @@
                 
                     <h1 class="tittle">Editar Usuario</h1>
         
-                    <form method="POST" action="" class="form" name="formulario">{% csrf_token %}
+                    <form method="POST" action="" class="form" name="formulario_modificar_usuario">{% csrf_token %}
                         
                         <div class="error-container">  
-                            {{form.errors}} 
+                            {{form.username.errors}} 
                             {% if messages %}
                                                 {% for message in messages %}
                                                     <span id="errorMessage"> {{message}}</span><br><br>
                                                 {% endfor %}
                             {% endif %}
+                            {{form.errors}} 
+                          
                         </div> 
         
                         <label class="label">Usuario</label>
@@ -299,9 +302,10 @@
                         {{form.email}} 
                          
                         <input type="submit" value="Guardar Cambios" class="secondary-button edit-button">  
-                        
-                        {% comment %} <button class="delete-button">
-                            Eliminar</button>  {% endcomment %}
+                        <br>
+                        <a href= "{%url 'inicio'%}"> 
+                            <input type="button" value="Volver Inicio" class="secondary-button loggin-button"> 
+                        </a>  
                     </form>
                 </div>
             </div>
