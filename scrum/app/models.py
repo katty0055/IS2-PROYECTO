@@ -119,6 +119,7 @@ class Proyecto(models.Model):
     nombre = models.CharField(max_length=100, blank=True, null=True)
     fecha_inicio = models.DateField()
     fecha_fin = models.DateField(blank=True, null=True)
+    estado = models.BooleanField(default=True)
 
     class Meta:
         db_table = 'proyecto'

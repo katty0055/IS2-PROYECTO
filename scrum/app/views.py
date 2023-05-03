@@ -4,24 +4,14 @@ from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth.models import User, Group
 from django.utils import timezone
-<<<<<<< HEAD
 from .forms import ProyectoModelForm, UsuarioProyectoFormulario, UsuarioProyectoModelForm, UserModelForm, UserProfileModelForm, UserPasswordModelForm, UserStoryModelForm
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
 from .forms import ProyectoModelForm, UsuarioProyectoFormulario, UsuarioProyectoModelForm, UserModelForm, UserProfileModelForm, UserPasswordModelForm
-=======
 from .forms import ProyectoModelForm, UsuarioProyectoFormulario, UsuarioProyectoModelForm, UserModelForm, UserProfileModelForm, UserStoryModelForm
->>>>>>> 37ab90e6fc56c54368d822ab705611a9dcba60fa
-=======
 from .forms import ProyectoModelForm, UsuarioProyectoFormulario, UsuarioProyectoModelForm, UserModelForm, UserProfileModelForm, UserStoryModelForm
-=======
-from .forms import ProyectoModelForm, UsuarioProyectoFormulario, UsuarioProyectoModelForm, UserModelForm, UserProfileModelForm
->>>>>>> cbe336df6a5b3db4be61d6126e1c63ab1ff058b6
->>>>>>> 502610b61c3f0e4e1a962215a6f3e3700a490e91
->>>>>>> 4c64a9c3002187c984c5f71d06f4532e9a5e1cc1
+from .forms import ProyectoModelForm, UsuarioProyectoFormulario, UsuarioProyectoModelForm, UserModelForm, UserProfileModelForm, Proyecto
+from django.db.models import Q
 from . import models
-from django.core.paginator import Paginator 
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import Http404
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
@@ -34,22 +24,64 @@ from .models import UsuarioProyecto
 
 # Create your views here.
 
-def  listar_proyectos(request):
+'''def  listar_proyectos(request):
     nombre = "Proyecto Scrum"
     proyectos = models.Proyecto.objects.all()
+    proyectos_activos = []
+    
+    for proyecto in proyectos:
+        if proyecto.estado:
+            proyectos_activos.append(proyecto)
+    
     page = request.GET.get('page',1)
     try:
         paginator= Paginator(proyectos,8)
-        proyectos= paginator.page(page)
+        proyectos_activos= paginator.page(page)
     except:
         raise Http404
     context = {
-        'entity': proyectos,
+        'entity': proyectos_activos,
         'paginator': paginator,
         "nombre": nombre,
     }
-    return render(request, "listar_proyectos.html",context)
+    return render(request, "listar_proyectos.html",context)'''
 
+def  listar_proyectos(request):
+    nombre = "Proyecto Scrum"
+    proyectos = models.Proyecto.objects.all()
+    proyectos_activos = []
+    solicitud_busqueda = request.GET.get("buscar")
+
+    if solicitud_busqueda:
+        proyectos = models.Proyecto.objects.filter(
+            #Q revisa el o los campos del modelo (en este caso campos del Proyecto)
+            #icontains hace que no sea exacto la busqueda, ejemplo: si se recibe "scrum", en la base de datos podria estar asi "Scrum"
+            Q(nombre__icontains = solicitud_busqueda) |
+            Q(fecha_inicio__icontains = solicitud_busqueda)
+        ).distinct() #se usa distinct para el caso de que haya coincidencias
+   
+    for proyecto in proyectos:
+        if proyecto.estado:
+            proyectos_activos.append(proyecto)
+   
+    page = request.GET.get('page',1)
+    
+    try:
+        paginator= Paginator(proyectos_activos,8)
+        proyectos_activos= paginator.page(page)
+    #except PageNotAnInteger:
+        #proyectos_activos = paginator.page(1)
+    #except EmptyPage:
+        #proyectos_activos = paginator.page(paginator.num_pages)
+    except:
+        raise Http404
+    
+    context = {
+        'entity': proyectos_activos,
+        "nombre": nombre,
+        'paginator':paginator,
+    }
+    return render(request, "listar_proyectos.html",context)
 
 def login_usuario(request):
     if request.method=='POST':
@@ -180,7 +212,22 @@ def modificar_proyecto(request,pk):
     return render(request, 'modificar_proyecto.html', {})
 
 
-
+def eliminar_proyecto(request, pk):
+    nombre = "Proyecto Scrum"
+    proyecto = models.Proyecto.objects.get(backlog_id = pk)
+    #recupera los datos del formulario del proyecto asociada a la pk
+    form = ProyectoModelForm(data=request.POST or None, instance=proyecto)
+   
+    if request.method == 'POST':
+        #cambia el estado del proyecto de True a False
+        #models.Proyecto.objects.filter(backlog_id= pk).update(estado=False)
+        proyecto.estado = False
+        proyecto.save()
+        messages.success(request, 'El proyecto ha sido borrado con exito')
+        return redirect("listar_proyectos")
+    
+    context = {"form":form, "nombre":nombre, "backlog_id":pk}
+    return render(request, 'eliminar_proyecto.html', context)
 
 
 
@@ -221,14 +268,7 @@ def editar_perfil(request):
     nombre = "Proyecto Scrum"
     
     if request.method == "POST":
-<<<<<<< HEAD
         form = UserProfileModelForm(data=request.POST or None, instance=request.user)
-=======
-        form = UserProfileModelForm(request.POST, instance = request.user)
-        '''if models.UserProfileModerForm.objects.filter(username = username).exists()
-             messages.error (request, fusernameEl nombre de usuario ya esta registrado'''
-        print(len(User.objects.filter(email=request.POST['email']).exclude(username=request.POST['username'])))
->>>>>>> 4c64a9c3002187c984c5f71d06f4532e9a5e1cc1
         if form.is_valid():
             if len(User.objects.filter(email=request.POST['email']).exclude(username=request.POST['username']))>0:
                 messages.error(request, 'El email esta registrado a otro usuario')
@@ -262,6 +302,7 @@ def editar_password(request):
     context = {"form":form}
     return render(request, 'modificar_password.html', context)
 
+
 @login_required(login_url='login')
 def eliminar_usuario(request):
    
@@ -270,10 +311,11 @@ def eliminar_usuario(request):
     if request.method == 'POST':
         #obtener usuario de inicio de sesion
         user = User.objects.get(username = request.user)
-        #if form.is_valid():
         # Verifique que el usuario de inicio de sesión y el usuario que se va a eliminar sean los mismos
         if request.user == user:
-            user.delete()
+            #cambia el estado del usuario de True a False
+            user.is_active = False
+            user.save()
             messages.success(request, 'Tu perfil ha sido borrado con exito')
             return redirect("login")
         else:
@@ -282,7 +324,6 @@ def eliminar_usuario(request):
         
     context ={"form":form}
     return render(request, 'eliminar_usuario.html',context)
-
    
 def crear_sprint_proyecto(request, pk):
     print(pk)
