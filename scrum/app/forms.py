@@ -1,5 +1,5 @@
 from django import forms
-from .models import Proyecto, UsuarioProyecto, UserStory
+from .models import Proyecto, UsuarioProyecto, UserStory, EstadosUserStory
 from django.contrib.auth.models import User, Group
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
@@ -53,12 +53,12 @@ class UsuarioProyectoModelForm(forms.ModelForm):
         self.fields["id_group"].widget.attrs.update({
             'class':'desplegable '
         })
+        self.fields["id_group"].queryset=Group.objects.exclude(name="Creador")
 
     class Meta:
         model=UsuarioProyecto
         fields=["id_user","id_group"]
        
-
 
 class UsuarioProyectoFormulario(forms.Form):
     usuario=forms.ModelChoiceField(queryset=User.objects.all(),widget=forms.Select(),required=True)
@@ -228,6 +228,8 @@ class UserStoryModelForm(forms.ModelForm):
             'id': 'name',
             'name': 'definicion_hecho',
         })
+
+        self.fields["id_estado"].queryset=EstadosUserStory.objects.filter(nombre_estado="To do") 
 
     class Meta:
         model=UserStory

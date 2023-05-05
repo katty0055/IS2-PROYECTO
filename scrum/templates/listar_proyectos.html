@@ -358,18 +358,18 @@
                     {% for proyecto in entity %}
                         <tr>
                             <td class="fila">{{forloop.counter}}</td>
-                            <td class="filas">{{proyecto.backlog_id}}</td>
-                            <td class="filas">{{proyecto.nombre}}</td>
-                            <td class="filas">{{proyecto.fecha_inicio}}</td>
-                            <td class="filas">{{proyecto.fecha_fin}}</td>
+                            <td class="filas">{{proyecto.backlog.backlog_id}}</td>
+                            <td class="filas">{{proyecto.backlog.nombre}}</td>
+                            <td class="filas">{{proyecto.backlog.fecha_inicio}}</td>
+                            <td class="filas">{{proyecto.backlog.fecha_fin}}</td>
                             <td class="filas">
-                                <a href="crear_sprint_proyecto/{{proyecto.backlog_id}}"> Sprint </a>
+                                <a href="crear_sprint_proyecto/{{proyecto.backlog.backlog_id}}"> Sprint </a>
                             </td>
                             <td class="filas">
-                                <a href="user_story/{{proyecto.backlog_id}}"> US </a>
+                                <a href="user_story/{{proyecto.backlog.backlog_id}}"> US </a>
                             </td>
                             <td class="filas">
-                                <a href="modificar_proyecto/{{proyecto.backlog_id}}"> Modificar Proyecto</a>
+                                <a href="modificar_proyecto/{{proyecto.backlog.backlog_id}}"> Modificar Proyecto</a>
                             </td>
                             <td class="filas">
                                 <a href="eliminar_proyecto/{{proyecto.backlog_id}}"> Borrar </a>

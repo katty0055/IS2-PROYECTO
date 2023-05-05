@@ -48,20 +48,25 @@ from .models import UsuarioProyecto
 
 def  listar_proyectos(request):
     nombre = "Proyecto Scrum"
-    proyectos = models.Proyecto.objects.all()
+    # proyectos = models.Proyecto.objects.all()
+    proyectos = models.UsuarioProyecto.objects.filter(id_user=request.user).exclude(id_group=4) #Se excluye por id del rol CREADOR, para evitar que aparezcan duplicados los proyectos
     proyectos_activos = []
     solicitud_busqueda = request.GET.get("buscar")
 
     if solicitud_busqueda:
-        proyectos = models.Proyecto.objects.filter(
-            #Q revisa el o los campos del modelo (en este caso campos del Proyecto)
-            #icontains hace que no sea exacto la busqueda, ejemplo: si se recibe "scrum", en la base de datos podria estar asi "Scrum"
-            Q(nombre__icontains = solicitud_busqueda) |
-            Q(fecha_inicio__icontains = solicitud_busqueda)
-        ).distinct() #se usa distinct para el caso de que haya coincidencias
+        # proyectos = models.Proyecto.objects.filter(
+        #     #Q revisa el o los campos del modelo (en este caso campos del Proyecto)
+        #     #icontains hace que no sea exacto la busqueda, ejemplo: si se recibe "scrum", en la base de datos podria estar asi "Scrum"
+        #     Q(nombre__icontains = solicitud_busqueda) |
+        #     Q(fecha_inicio__icontains = solicitud_busqueda)
+        # ).distinct() #se usa distinct para el caso de que haya coincidencias
+        proyectos = proyectos.filter(
+             Q(backlog__nombre__icontains = solicitud_busqueda) |
+             Q(backlog__fecha_inicio__icontains = solicitud_busqueda)
+        ).distinct()
    
     for proyecto in proyectos:
-        if proyecto.estado:
+        if proyecto.backlog.estado: #proyectos almacena la tabla usuarioProyecto, desde esa tabla accedo por la relacion a la tabla proyectos a traves de backog y luego el estado
             proyectos_activos.append(proyecto)
    
     page = request.GET.get('page',1)
@@ -129,6 +134,11 @@ def crear_proyecto(request):
                                                 nombre=nombre_p,
                                                 fecha_inicio=fecha_inicio_p,
                                                 fecha_fin= fecha_fin_p)
+            models.UsuarioProyecto.objects.create(
+                                                backlog_id= backlog_id_p,
+                                                id_user=request.user,
+                                                id_group=models.Group.objects.get(name="Creador"),   
+            )
             return redirect('agregar_usuario_proyecto',pk=obj.backlog_id)
     context ={
         "nombre": nombre,
@@ -142,17 +152,19 @@ def agregar_usuario_proyecto(request,pk):
     nombre = "Proyecto Scrum"
     usuarios_eliminados=request.POST.getlist('id_user')
     proyecto= models.Proyecto.objects.get(backlog_id= pk)
-    lista_usuarios= models.UsuarioProyecto.objects.filter(backlog_id= pk)
+    lista_usuarios= models.UsuarioProyecto.objects.filter(backlog_id= pk).exclude(id_group=models.Group.objects.get(name="Creador"))
     form_usuario= UsuarioProyectoModelForm(request.POST or None)  
     scrum_master= models.Group.objects.get(name="Scrum Master") 
     product_owner= models.Group.objects.get(name="Product Owner") 
     if form_usuario.is_valid():
         instancia=form_usuario.save(commit=False)
         instancia.backlog_id= pk  
-        if lista_usuarios.count()==9:
+        if lista_usuarios.count()==10:
             messages.error (request, "Miembros llenos, no es posible asociar")
         else:  
-            if models.UsuarioProyecto.objects.filter(backlog_id=pk,id_user=instancia.id_user).exists(): 
+            usuarios_seleccionados=models.UsuarioProyecto.objects.filter(backlog_id=pk).exclude(id_group=models.Group.objects.get(name="Creador"))
+            print(usuarios_seleccionados.filter(id_user=instancia.id_user))
+            if usuarios_seleccionados.filter(id_user=instancia.id_user).exists(): 
                 messages.error (request, "El usuario ya forma parte de este proyecto, no es posible asociar")     
             elif (lista_usuarios.filter(id_group=product_owner.id).count()==1) and (str(instancia.id_group)==product_owner.name):   
                 messages.error (request, "Ya existe un rol Product Owner, no es posible asociar")  
@@ -171,7 +183,6 @@ def agregar_usuario_proyecto(request,pk):
         "saludo": saludo,
     }
     return render(request, 'agregar_usuario.html', context)
-
 
 def modificar_proyecto(request,pk): 
     nombre = "Proyecto Scrum"
@@ -373,13 +384,12 @@ def crear_user_story(request,pk):
     # print(pk)
     form= UserStoryModelForm(request.POST or None)
     if form.is_valid():
-        # print("hola")
         instance= form.save(commit=False)
-        # print(request.user)
-        # id_usu_proy_rol=models.UsuarioProyecto.objects.get(backlog=pk,id_user= request.user)
-        # print(id_usu_proy_rol)
+        id_usu_proy_rol=models.UsuarioProyecto.objects.filter(backlog=pk,id_user=request.user).first()
+        instance.id_usu_proy_rol=id_usu_proy_rol
+        instance = form.save()
+        form= UserStoryModelForm() #Blanquea el formulario
         messages.success(request,"US creado con exito")
-    #     # instance= form.save() 
     context = {
         "form": form,
         "pk": pk,
