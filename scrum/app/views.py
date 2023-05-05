@@ -49,7 +49,8 @@ from .models import UsuarioProyecto
 def  listar_proyectos(request):
     nombre = "Proyecto Scrum"
     # proyectos = models.Proyecto.objects.all()
-    proyectos = models.UsuarioProyecto.objects.filter(id_user=request.user).exclude(id_group=4) #Se excluye por id del rol CREADOR, para evitar que aparezcan duplicados los proyectos
+    proyectos = models.UsuarioProyecto.objects.filter(id_user=request.user).distinct('backlog')
+    # me trae los distontos proyectos a los que esta asociado un usuario
     proyectos_activos = []
     solicitud_busqueda = request.GET.get("buscar")
 
@@ -66,7 +67,7 @@ def  listar_proyectos(request):
         ).distinct()
    
     for proyecto in proyectos:
-        if proyecto.backlog.estado: #proyectos almacena la tabla usuarioProyecto, desde esa tabla accedo por la relacion a la tabla proyectos a traves de backog y luego el estado
+        if proyecto.backlog.estado: #proyectos almacena la tabla usuarioProyecto, desde esa tabla accedo por la relacion a la tabla proyectos a traves de backlog y luego el estado
             proyectos_activos.append(proyecto)
    
     page = request.GET.get('page',1)
@@ -187,7 +188,7 @@ def agregar_usuario_proyecto(request,pk):
 def modificar_proyecto(request,pk): 
     nombre = "Proyecto Scrum"
     usuarios_eliminados=request.POST.getlist('id_user')
-    lista_usuarios= models.UsuarioProyecto.objects.filter(backlog_id= pk)
+    lista_usuarios= models.UsuarioProyecto.objects.filter(backlog_id= pk).exclude(id_group=models.Group.objects.get(name="Creador"))
     form_usuario=UsuarioProyectoModelForm(request.POST or None)
     scrum_master= models.Group.objects.get(name="Scrum Master") 
     product_owner= models.Group.objects.get(name="Product Owner") 
