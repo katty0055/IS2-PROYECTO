@@ -174,42 +174,60 @@ def agregar_usuario_proyecto(request,pk):
 
 
 def modificar_proyecto(request,pk): 
-    print(type(pk))
-    print(pk)
-    # proyecto= models.Proyecto.objects.get(backlog_id= pk)
-    # usuarios_eliminados=request.POST.getlist('id_user')
-    # lista_usuarios= models.UsuarioProyecto.objects.filter(backlog_id= pk)
-    # form_usuario=UsuarioProyectoModelForm(request.POST or None)
-    # if request.method=='POST':
-    #     nombre_nuevo=request.POST['nombre_nuevo']
-    #     fecha_inicio_nuevo=request.POST['fecha_inicio_nuevo']
-    #     fecha_fin_nuevo=request.POST['fecha_fin_nuevo']  
-    #     if fecha_inicio_nuevo >= fecha_fin_nuevo:
-    #         messages.error (request, "Fecha de inicio menor o igual que la fecha fin, "
-    #                             +"ingrese de vuelta") 
-    #     else:  
-    #         models.Proyecto.objects.filter(backlog_id= pk).update(
-    #                                                     nombre=nombre_nuevo,
-    #                                                     fecha_inicio=fecha_inicio_nuevo,
-    #                                                     fecha_fin= fecha_fin_nuevo)   
-    #     if form_usuario.is_valid():
-    #             instancia=form_usuario.save(commit=False)
-    #             instancia.backlog_id= pk
-    #             if models.UsuarioProyecto.objects.filter(backlog_id=pk,id_user=instancia.id_user).exists():
-    #                 messages.error (request, "El usuario ya forma parte de este proyecto, no es posible asociar")    
-    #             else:
-    #                 instancia=form_usuario.save()
-    #                 print(lista_usuarios)
-    #                 print(models.UsuarioProyecto.objects.filter(backlog_id= pk))
-    #             return redirect('modificar_proyecto',pk=pk)
-    #     for u in usuarios_eliminados:
-    #             print(lista_usuarios.filter(id_usu_proy_rol=u).delete())
-    # context={
-    #         "form_usuario":form_usuario,
-    #         "lista": lista_usuarios,
-    #         "proyecto": proyecto,
-    #     }           
-    return render(request, 'modificar_proyecto.html', {})
+    nombre = "Proyecto Scrum"
+    usuarios_eliminados=request.POST.getlist('id_user')
+    lista_usuarios= models.UsuarioProyecto.objects.filter(backlog_id= pk)
+    form_usuario=UsuarioProyectoModelForm(request.POST or None)
+    scrum_master= models.Group.objects.get(name="Scrum Master") 
+    product_owner= models.Group.objects.get(name="Product Owner") 
+
+
+    # proyecto= models.Proyecto.objects.get(backlog_id= pk) 
+    # form_proyecto = ProyectoModelForm(request.POST,instance=proyecto)
+    if request.method=='POST':
+        nombre_nuevo=request.POST.get('nombre_nuevo', False)
+        fecha_inicio_nuevo=request.POST.get('fecha_inicio_nuevo', False)
+        fecha_fin_nuevo=request.POST.get('fecha_fin_nuevo', False)# Se usa get para evitar un error en caso que no se modifique la fecha
+        if fecha_fin_nuevo != False or  fecha_inicio_nuevo != False:#Solo entra si uno de los valores cambio
+            if fecha_inicio_nuevo >= fecha_fin_nuevo:
+                messages.error (request, "Fecha de inicio mayor o igual que la fecha fin, "
+                                    +"ingrese de vuelta") 
+            else:  
+                models.Proyecto.objects.filter(backlog_id= pk).update(
+                                                            nombre=nombre_nuevo,
+                                                            fecha_inicio=fecha_inicio_nuevo,
+                                                            fecha_fin= fecha_fin_nuevo)   
+        if form_usuario.is_valid():
+            instancia=form_usuario.save(commit=False)
+            instancia.backlog_id= pk  
+            if lista_usuarios.count()==10:
+                messages.error (request, "Miembros llenos, no es posible asociar")
+            else:  
+                usuarios_seleccionados=models.UsuarioProyecto.objects.filter(backlog_id=pk).exclude(id_group=models.Group.objects.get(name="Creador"))
+                print(usuarios_seleccionados.filter(id_user=instancia.id_user))
+                if usuarios_seleccionados.filter(id_user=instancia.id_user).exists(): 
+                    messages.error (request, "El usuario ya forma parte de este proyecto, no es posible asociar")     
+                elif (lista_usuarios.filter(id_group=product_owner.id).count()==1) and (str(instancia.id_group)==product_owner.name):   
+                    messages.error (request, "Ya existe un rol Product Owner, no es posible asociar")  
+                elif (lista_usuarios.filter(id_group=scrum_master.id).count()==1) and (str(instancia.id_group)== scrum_master.name):   
+                    messages.error (request, "Ya existe un rol Scrum Master, no es posible asociar")     
+                else:
+                    instancia=form_usuario.save()
+            return redirect('modificar_proyecto',pk=pk)
+        for u in usuarios_eliminados:
+            lista_usuarios.filter(id_usu_proy_rol=u).delete()    
+
+   
+    proyecto= models.Proyecto.objects.get(backlog_id= pk) 
+    context={
+            "form_usuario":form_usuario,
+            "lista": lista_usuarios,
+            "proyecto": proyecto,
+            "nombre": nombre,
+            # "form_p": form_proyecto,
+            
+        }           
+    return render(request, 'modificar_proyecto.html', context)
 
 
 def eliminar_proyecto(request, pk):
