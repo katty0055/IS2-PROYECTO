@@ -170,7 +170,7 @@ class UserPasswordModelForm(PasswordChangeForm):
     class Meta:
         model= User
         fields=["old_password","new_password1","new_password2"]
-
+##Este es para modificar US, NO BORRAR
 class UserStoryModelForm(forms.ModelForm): 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -206,7 +206,6 @@ class UserStoryModelForm(forms.ModelForm):
             'name': 'estado',
         })
         self.fields["fecha_inicio"].widget.attrs.update({
-            'required': '',
             'type':'date',
             'placeholder':'',
             'class':'input input-date',
@@ -228,8 +227,8 @@ class UserStoryModelForm(forms.ModelForm):
             'id': 'name',
             'name': 'definicion_hecho',
         })
-
-        self.fields["id_estado"].queryset=EstadosUserStory.objects.filter(nombre_estado="To do") 
+        #Comenté porque a la hora de crear un user story no se puede seleccionar el estado.
+        #self.fields["id_estado"].queryset=EstadosUserStory.objects.filter(nombre_estado="To do") 
 
     class Meta:
         model=UserStory

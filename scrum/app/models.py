@@ -188,7 +188,7 @@ class UserStory(models.Model):
     descripcion = models.CharField(max_length=200, blank=True, null=True)
     story_points = models.IntegerField(blank=True, null=True)
     definicion_hecho = models.CharField(max_length=200)
-    fecha_inicio = models.DateField()
+    fecha_inicio = models.DateField(blank=True, null=True)
     fecha_fin = models.DateField(blank=True, null=True)
     id_estado = models.ForeignKey(EstadosUserStory, on_delete=models.CASCADE, db_column='id_estado')
     backlog_id_sprint = models.ForeignKey(Sprint, on_delete=models.CASCADE, db_column='backlog_id_sprint', blank=True, null=True)

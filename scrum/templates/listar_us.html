@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,11 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
-    <!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"-->
-    <!-- Load icon library -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">  
     <title>Document</title>
     <style>
         :root{
@@ -79,10 +76,10 @@
         }
         .saludo2{
 
-            /*grid-column-start: 1;
+            grid-column-start: 1;
             grid-column-end:3; 
             grid-row-start: 3;
-            grid-row-end:4;*/
+            grid-row-end:4;
             display:flex;
             align-items:center;
             justify-content:center;
@@ -216,75 +213,6 @@
             display: none;
 
         }
-        .container {
-            max-width: 1200px;
-        }
-        .primary-button{
-            background-color: var(--hospital-green);
-            border-radius: 0px 50px 50px 0px;
-            border: none;
-            color: var(--white);
-            width: 5vw; /*para que sea lo mas grande posible */
-            cursor: pointer; /* cursor arriba, aparece una mano */
-            font-size: calc(0.7vh + 0.7vw);    
-            font-weight: bold;
-            height: 5vh;
-            margin-bottom: 12px;
-            transition-duration: 0.4s;
-        }
-        .primary-button:hover {
-
-            color:#c7c7c7;
-        }
-        .search { 
-            grid-column-start: 1;
-            grid-column-end:3; 
-            grid-row-start: 3;
-            grid-row-end:4;
-            display:grid;
-            align-items:center;
-            justify-content:center;
-           
-        }
-        .form-control {
-            background-color: var(--text-input-field);
-            border: solid 1px;
-            border-color: #000000;
-            border-radius: 50px 0px 0px 50px;
-            height: 40px;
-            font-size: var(--md);
-            padding: 6px;
-            margin-bottom: 12px;
-            width: 40vw;
-        }
-        .search-input {
-            display: flex;
-            align-items:Center;
-        }
-        ul.pagination li a {
-            color:#000000;
-            float: left;
-            border: 1px solid var(--black);
-            border-radius: 5px;
-            font-size: 22px;
-            padding: 8px 16px;
-            margin: 0 2px;
-            text-decoration: none;
-            transition: background-color .3s;
-        }
-        ul.pagination li a.active{
-            border-radius: 5px;
-            background-color: var(--hospital-green);
-            color: white;
-        }
-        ul.pagination li a:hover:not(.active){
-            background-color: #c7c7c7;
-        }
-        .page-link:nth-child(1) {
-            background-color: var(--hospital-green);
-            color: white;
-            border-color: var(--very-light-pink);
-        }
     </style>
 </head>
 <body>
@@ -301,7 +229,7 @@
                          <ul>
                             <li>
                                 <a href="{%url 'ver_perfil'%}"> Ver perfil </a>
-                                <a href=""> Modificar Datos </a>
+                                <a href="{% url 'modificar_usuario'%}"> Modificar Datos </a>
                                 <a href=""> Eliminar perfil</a>
                             </li>
                         </ul> 
@@ -322,80 +250,46 @@
 
             </div>
         </div>
-
         <div class="saludo" >
                 <h1 class="titulo">Listado de Proyectos</h1>  
         </div>
-       
-        <div class="search">
-            <div class="container-fluid">
-                <a class="navbar-brand"></a>
-                <form class="d-flex" method="GET" role="search" action="">{% csrf_token %} 
-                    <div class="search-input">
-                        <input class="form-control" type="text" placeholder="Buscar por nombre o por fecha" aria-label="Search" name="buscar" value="{{request.GET.buscar}}">
-                        <button class="primary-button" type="submit"><i class="fa fa-search"></i></button>
-                    </div>
-                </form>
-            </div>
+        <div class="saludo2" >
+                {% include 'paginator.html' %}   
         </div>
-        <br><br>
         <div class="contenido">
-            <div class="contenido-tabla">
+            
+            
+               
+              <div class="contenido-tabla">
                 <table class="tabla">
                     <thead>
                         <tr>
                             <th class="columnas">N°</th>
-                            <th class="columnas">Backlog ID</th>
-                            <th class="columnas">Nombre Proyecto</th>
-                            <th class="columnas">Fecha Inicio</th>
-                            <th class="columnas">Fecha Fin</th>
-                            <th class="columnas"></th>
-                            <th class="columnas"></th>
-                            <th class="columnas"></th>
+                            <th class="columnas">ID Us</th>
+                            <th class="columnas">Descripcion</th>
+                            <th class="columnas">User Story Name</th>
                         </tr>
                     </thead>
                     <tbody>
-                    {% for proyecto in entity %}
-                        <tr>
+                    {% for user_story in entity %}
+                        <tr>        
                             <td class="fila">{{forloop.counter}}</td>
-                            <td class="filas">{{proyecto.backlog.backlog_id}}</td>
-                            <td class="filas">{{proyecto.backlog.nombre}}</td>
-                            <td class="filas">{{proyecto.backlog.fecha_inicio}}</td>
-                            <td class="filas">{{proyecto.backlog.fecha_fin}}</td>
+                            <td class="filas">{{user_story.id_user_story}}</td>
+                            <td class="filas">{{user_story.descripcion}}</td>
+                            <td class="filas">{{user_story.user_story_name}}</td>
                             <td class="filas">
-                                <a href="crear_sprint_proyecto/{{proyecto.backlog.backlog_id}}"> Sprint </a>
-                            </td>
-                            <td class="filas">
-                                <a href="user_story/{{proyecto.backlog.backlog_id}}"> US </a>
-                            </td>
-                            <td class="filas">
-                                <a href="modificar_proyecto/{{proyecto.backlog.backlog_id}}"> Modificar Proyecto</a>
-                            </td>
-                            <td class="filas">
-                                <a href="eliminar_proyecto/{{proyecto.backlog_id}}"> Borrar </a>
-                            </td>
-                            <td class="filas">
-                                <a href="listar_us"> Listar US </a>
+                                <a href="{% url 'modificar_user_story' user_story.id_user_story %}">Editar</a>
                             </td>
                         </tr>
                     {% endfor%}
                     </tbody>
                 </table>
-
-                {% block content %}
-                <div class="saludo2" >
-                    {% include 'paginator.html' %}   
-                </div>
-                {% endblock %}
-
-            </div>
-
-        </div> 
+              </div>    
+            <!-- Compiled and minified JavaScript -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> 
+        </div>  
+       
     </div>
-   
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-    <!--script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script-->
 </body>
 </html>
 
