@@ -229,7 +229,7 @@ class UserStoryModelForm(forms.ModelForm):
             'name': 'definicion_hecho',
         })
 
-        self.fields["id_estado"].queryset=EstadosUserStory.objects.filter(nombre_estado="To do") 
+        self.fields["id_estado"].queryset=EstadosUserStory.objects.filter(nombre_estado="ToDo") 
 
     class Meta:
         model=UserStory
