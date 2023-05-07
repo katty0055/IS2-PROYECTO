@@ -16,6 +16,7 @@ from django.http import Http404
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 import datetime
+from datetime import datetime,date
 
 
 from .forms import  UsuarioProyectoFormulario, UserModelForm, ProyectoFormModel
@@ -396,3 +397,60 @@ def crear_user_story(request,pk):
         "pk": pk,
     }
     return render(request,"crear_us.html",context)
+
+def editar_user_story(request,pk):
+    nombre = "Proyecto Scrum"
+    user_story=models.UserStory.objects.get(id_user_story=pk)
+    if request.method == "POST":
+        form = UserStoryModelForm(request.POST, instance = user_story)
+        # '''if models.UserProfileModerForm.objects.filter(username = username).exists()
+        #      messages.error (request, fusernameEl nombre de usuario ya esta registrado'''
+        
+        nueva_fecha_fin= datetime.strptime(request.POST['fecha_fin_nuevo'], '%Y-%m-%d').date()
+        nueva_fecha_inicio= datetime.strptime(request.POST['fecha_inicio_nuevo'], '%Y-%m-%d').date()
+
+        print("Date:", datetime.strptime(request.POST['fecha_fin_nuevo'], '%Y-%m-%d').date())
+        print ("nueva fecha fin tipo: ",type(nueva_fecha_fin))
+        print("Fecha anterior: ",type(user_story.fecha_fin))
+        print("Del formulario: ",type(request.POST['fecha_fin_nuevo']))
+
+        
+        if form.is_valid():
+                ##if len(User.objects.filter(email=request.POST['email']).exclude(username=request.POST['username']))>0:
+                  ##  messages.error(request, 'El email esta registrado a otro usuario')
+                ##else:
+                    
+                    instance = form.save(commit=False)
+                    instance.fecha_inicio= nueva_fecha_inicio
+                    instance.fecha_fin= nueva_fecha_fin
+                
+                    print(instance.fecha_inicio)
+                    print(instance.fecha_fin)
+
+                    messages.success(request, 'US Actualizado !!')
+                    instance.save()
+                    print('entroo aqui?')
+
+                    return redirect(to='listar_proyectos')
+        else: 
+            print("No es valido")   
+    else:  
+        form = UserStoryModelForm(instance = user_story)
+    context = {"form":form, "us": user_story}       
+    return render(request,'modificar_user_story.html',context)
+
+def  listar_us(request):
+    nombre = "Proyecto Scrum"
+    proyectos = models.UserStory.objects.all()
+    page = request.GET.get('page',1)
+    try:
+        paginator= Paginator(proyectos,8)
+        proyectos= paginator.page(page)
+    except:
+        raise Http404
+    context = {
+        'entity': proyectos,
+        'paginator': paginator,
+        "nombre": nombre,
+    }
+    return render(request, "listar_us.html",context)

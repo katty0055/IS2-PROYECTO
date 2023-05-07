@@ -36,6 +36,9 @@ urlpatterns = [
     path('listar_proyectos/eliminar_proyecto/<str:pk>/', views.eliminar_proyecto, name='eliminar_proyecto'),
     path('listar_proyectos/crear_sprint_proyecto/<str:pk>/', views.crear_sprint_proyecto, name='crear_sprint_proyecto'),
     path('listar_proyectos/user_story/<str:pk>/', views.crear_user_story, name='crear_user_story'),
+    ##
+    path('listar_proyectos/listar_us/', views.listar_us, name='listar_us'),
+    path('modificar_user_story/<int:pk>/', views.editar_user_story, name='modificar_user_story')
 ] 
 
 if settings.DEBUG:
