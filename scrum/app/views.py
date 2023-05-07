@@ -4,11 +4,7 @@ from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth.models import User, Group
 from django.utils import timezone
-from .forms import ProyectoModelForm, UsuarioProyectoFormulario, UsuarioProyectoModelForm, UserModelForm, UserProfileModelForm, UserPasswordModelForm, UserStoryModelForm
-from .forms import ProyectoModelForm, UsuarioProyectoFormulario, UsuarioProyectoModelForm, UserModelForm, UserProfileModelForm, UserPasswordModelForm
-from .forms import ProyectoModelForm, UsuarioProyectoFormulario, UsuarioProyectoModelForm, UserModelForm, UserProfileModelForm, UserStoryModelForm
-from .forms import ProyectoModelForm, UsuarioProyectoFormulario, UsuarioProyectoModelForm, UserModelForm, UserProfileModelForm, UserStoryModelForm
-from .forms import ProyectoModelForm, UsuarioProyectoFormulario, UsuarioProyectoModelForm, UserModelForm, UserProfileModelForm, Proyecto
+from .forms import ProyectoModelForm,  UsuarioProyectoModelForm, UserModelForm, UserProfileModelForm, UserPasswordModelForm, UserStoryModelForm, UserStoryCreacionModelForm
 from django.db.models import Q
 from . import models
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -17,10 +13,6 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 import datetime
 from datetime import datetime,date
-
-
-from .forms import  UsuarioProyectoFormulario, UserModelForm, ProyectoFormModel
-#from usuario_proyecto.models import UsuarioProyecto
 from .models import UsuarioProyecto
 
 # Create your views here.
@@ -384,7 +376,7 @@ def crear_sprint_proyecto(request, pk):
 
 def crear_user_story(request,pk):
     # print(pk)
-    form= UserStoryModelForm(request.POST or None)
+    form= UserStoryCreacionModelForm(request.POST or None)
     if form.is_valid():
         instance= form.save(commit=False)
         id_usu_proy_rol=models.UsuarioProyecto.objects.filter(backlog=pk,id_user=request.user).first()

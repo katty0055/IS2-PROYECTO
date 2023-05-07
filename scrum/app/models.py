@@ -194,7 +194,7 @@ class UserStory(models.Model):
     backlog_id_sprint = models.ForeignKey(Sprint, on_delete=models.CASCADE, db_column='backlog_id_sprint', blank=True, null=True)
     id_prioridad = models.ForeignKey(PrioridadUserStory, on_delete=models.CASCADE, db_column='id_prioridad', blank=True, null=True)
     id_comentario = models.ForeignKey(ComentariosUserStory, on_delete=models.CASCADE, db_column='id_comentario', blank=True, null=True)
-    usuario = models.CharField(max_length=100)
+    # usuario = models.CharField(max_length=100)
 
     class Meta:
         db_table = 'user_story'
