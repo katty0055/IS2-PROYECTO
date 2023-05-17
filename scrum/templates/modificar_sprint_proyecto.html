@@ -297,7 +297,7 @@
         </div>
         <div class="pagina-contenido"> 
             <div class="contenido-form-container">
-               <h1 class="tittle">Crear Sprint</h1>
+               <h1 class="tittle">Modificar Sprint</h1>
                <form action="" class="contenido-form" method="POST">{% csrf_token %}    
                     <label class="label">Backlog_ID Proyecto</label>
                     <input type="text" id="name" placeholder="" class="input input-date" value={{pk}} name="backlog_id" readonly>
@@ -305,8 +305,11 @@
                     <input type="date" id="fecha_inicio" oninput="myFunction()" name="fecha_inicio" class="input input-date" required> 
                     <label class="label">Fecha Fin</label>
                     <input type="date"  id="fecha_fin" name="fecha_fin" class="input input-date" readonly >  
-                    <input type="submit" value="Crear" class="primary-button loggin-button" /><br/>
-                    <a href="modificar_sprint/{{pk}}"> Modificar Sprint</a>
+                    <!--label class="label">Fecha Inicio Real</label>
+                    <input type="date" id="fecha_inicio" oninput="myFunction()" name="fecha_inicio_real" class="input input-date" required>
+                    <label class="label">Fecha Fin Real</label>
+                    <input type="date"  id="fecha_fin" name="fecha_fin_real" class="input input-date" readonly-->
+                    <input type="submit" value="Modificar" class="primary-button loggin-button" /><br/>
                </form>
                {% if messages %}
                {% for message in messages %}
@@ -319,4 +322,4 @@
         </div>
     </div>
 </body>
-</html> 
+</html>

@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth.models import User, Group
 from django.utils import timezone
-from .forms import ProyectoModelForm,  UsuarioProyectoModelForm, UserModelForm, UserProfileModelForm, UserPasswordModelForm, UserStoryModelForm, UserStoryCreacionModelForm
+from .forms import ProyectoModelForm,  UsuarioProyectoModelForm, UserModelForm, UserProfileModelForm, UserPasswordModelForm, UserStoryModelForm, UserStoryCreacionModelForm, SprintModelForm
 from django.db.models import Q
 from . import models
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -13,7 +13,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 import datetime
 from datetime import datetime,date
-from .models import UsuarioProyecto
+from .models import UsuarioProyecto, Sprint
 
 # Create your views here.
 
@@ -373,6 +373,47 @@ def crear_sprint_proyecto(request, pk):
     
     return render(request,'crear_sprint_proyecto.html',context)
 
+def listar_sprint_proyecto(request):
+    nombre = "Proyecto Scrum"
+    sprints = Sprint.objects.all()
+    #proyectos = models.UsuarioProyecto.objects.filter(id_user=request.user).distinct('backlog')
+    page = request.GET.get('page',1)
+    try:
+        paginator= Paginator(sprints,8)
+        sprints= paginator.page(page)
+    except:
+        raise Http404
+    context = {
+        'entity': sprints,
+        'paginator': paginator,
+        "nombre": nombre,
+    }
+    return render(request, "listar_sprint_proyecto.html",context)
+
+def modificar_sprint_proyecto(request,pk):
+    nombre = "Proyecto Scrum"
+    sprint_proyecto=models.Sprint.objects.get(backlog_id_sprint=pk)
+    #form=SprintModelForm(data=request.POST or None, instance=sprint_proyecto)
+
+    if request.method == "POST":
+        fecha_inicioform=request.POST['fecha_inicio']
+        fecha_finform=request.POST['fecha_fin']
+        if fecha_inicioform == "":
+            messages.error(request,"Favor ingrese una fecha de inicio")
+        else:
+            
+            models.Sprint.objects.filter(backlog_id_sprint=pk).update(
+                                            fecha_inicio = fecha_inicioform,
+                                            fecha_fin = fecha_finform,
+                                        )
+            messages.success(request,"Sprint Modificado con exito")
+            return redirect('listar_sprint_proyecto')
+
+    context = {
+        
+        "pk": pk,
+    }
+    return render(request,"modificar_sprint_proyecto.html",context)
 
 def crear_user_story(request,pk):
     # print(pk)
@@ -389,6 +430,7 @@ def crear_user_story(request,pk):
         "pk": pk,
     }
     return render(request,"crear_us.html",context)
+
 
 def editar_user_story(request,pk):
     nombre = "Proyecto Scrum"

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Proyecto, UsuarioProyecto, UserStory, EstadosUserStory
+from .models import Proyecto, UsuarioProyecto, UserStory, EstadosUserStory, Sprint
 from django.contrib.auth.models import User, Group
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
@@ -312,3 +312,44 @@ class UserStoryCreacionModelForm(forms.ModelForm):
             'descripcion':forms.Textarea(attrs={'cols': 30, 'rows': 10}),
         }
 
+class SprintModelForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["backlog_id"].widget.attrs.update({
+            'type':'name',
+            'placeholder':'',
+            'class':'input input-name',
+            'id': 'name',
+            'name': 'backlog_id',
+        })
+        self.fields["fecha_inicio"].widget.attrs.update({
+            'type':'date',
+            'placeholder':'',
+            'class':'input input-date',
+            'id': 'name',
+            'name': 'fecha_inicio',
+        })
+        self.fields["fecha_fin"].widget.attrs.update({
+            'type':'date',
+            'placeholder':'',
+            'class':'input input-date',
+            'id': 'name',
+            'name': 'fecha_fin',
+        })
+        self.fields["fecha_inicio_real"].widget.attrs.update({
+            'type':'date',
+            'placeholder':'',
+            'class':'input input-date',
+            'id': 'name',
+            'name': 'fecha_inicio_real',
+        })
+        self.fields["fecha_fin_real"].widget.attrs.update({
+            'type':'date',
+            'placeholder':'',
+            'class':'input input-date',
+            'id': 'name',
+            'name': 'fecha_fin_real',
+        })
+    class Meta:
+        model=Sprint
+        fields=["backlog_id","fecha_inicio","fecha_fin","fecha_inicio_real","fecha_fin_real"]
