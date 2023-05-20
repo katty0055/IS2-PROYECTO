@@ -14,6 +14,7 @@ from django.http import HttpResponse
 import datetime
 from datetime import datetime,date
 from .models import UsuarioProyecto, Sprint
+# from .forms import SelectUserModelForm
 
 # Create your views here.
 
@@ -398,6 +399,7 @@ def modificar_sprint_proyecto(request,pk):
     if request.method == "POST":
         fecha_inicioform=request.POST['fecha_inicio']
         fecha_finform=request.POST['fecha_fin']
+        nombre_s= nombreform=request.POST['nombre']
         if fecha_inicioform == "":
             messages.error(request,"Favor ingrese una fecha de inicio")
         else:
@@ -405,12 +407,15 @@ def modificar_sprint_proyecto(request,pk):
             models.Sprint.objects.filter(backlog_id_sprint=pk).update(
                                             fecha_inicio = fecha_inicioform,
                                             fecha_fin = fecha_finform,
+                                            nombre=nombre_s
                                         )
             messages.success(request,"Sprint Modificado con exito")
-            return redirect('listar_sprint_proyecto')
+            print(pk)
+            return redirect('backlog',pk=sprint_proyecto.backlog_id)
+
 
     context = {
-        
+        "sprint":sprint_proyecto,
         "pk": pk,
     }
     return render(request,"modificar_sprint_proyecto.html",context)
@@ -488,3 +493,35 @@ def  listar_us(request):
         "nombre": nombre,
     }
     return render(request, "listar_us.html",context)
+
+
+def backlog(request, pk):
+    print(pk)
+    usuario=request.POST.get('user')
+    id_us=request.POST.get('id')
+    print(usuario)
+    print(id_us)
+    nombre = "Proyecto Scrum"
+    us = models.UserStory.objects.filter(id_usu_proy_rol__backlog=pk)
+    sprint = models.Sprint.objects.filter(backlog_id=pk)
+    user= models.UsuarioProyecto.objects.filter(backlog_id=pk).exclude(id_group__name="Creador")
+    if request.method == "POST":
+        story=us.filter(id_user_story= id_us)
+        # story.update(id_usu_proy_rol=models.User.objects.get(username=usuario))
+        print("hola")
+        useruser= user.filter(id_user__username= usuario)
+        print(useruser)
+        # for u in useruser:
+        #     print(u)
+        print(us.filter(id_user_story= id_us).update(id_usu_proy_rol= user.get(id_user__username= usuario)))
+        print(id_us)
+        print(usuario)
+
+    context ={
+        "nombre": nombre,
+        "us": us,
+        "user":user,
+
+
+    }
+    return render(request, "backlog.html",context)

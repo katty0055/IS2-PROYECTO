@@ -135,6 +135,7 @@ class Sprint(models.Model):
     fecha_inicio_real = models.DateField(blank=True, null=True)
     fecha_fin_real = models.DateField(blank=True, null=True)
     backlog_id = models.ForeignKey(Proyecto, on_delete=models.CASCADE, db_column='backlog_id')
+    nombre= models.CharField(max_length=100, blank=True, null=True)
 
     #def __str__(self):
         #return self.backlog_id
@@ -149,6 +150,9 @@ class UsuarioProyecto(models.Model):
     id_user = models.ForeignKey(User, on_delete=models.CASCADE, db_column='id_user')
     id_group = models.ForeignKey(Group, on_delete=models.CASCADE, db_column='id_group')
     rol_usuario = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.id_user.username
 
     class Meta:
         db_table = 'usuario_proyecto'

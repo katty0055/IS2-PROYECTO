@@ -353,3 +353,6 @@ class SprintModelForm(forms.ModelForm):
     class Meta:
         model=Sprint
         fields=["backlog_id","fecha_inicio","fecha_fin","fecha_inicio_real","fecha_fin_real"]
+
+
+

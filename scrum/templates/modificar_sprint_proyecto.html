@@ -301,10 +301,12 @@
                <form action="" class="contenido-form" method="POST">{% csrf_token %}    
                     <label class="label">Backlog_ID Proyecto</label>
                     <input type="text" id="name" placeholder="" class="input input-date" value={{pk}} name="backlog_id" readonly>
+                    <label class="label">Nombre</label>
+                    <input type="text"  id="nombre" name="nombre" class="input input-date" value={{sprint.nombre}} >  
                     <label class="label">Fecha Inicio</label>
                     <input type="date" id="fecha_inicio" oninput="myFunction()" name="fecha_inicio" class="input input-date" required> 
                     <label class="label">Fecha Fin</label>
-                    <input type="date"  id="fecha_fin" name="fecha_fin" class="input input-date" readonly >  
+                    <input type="date"  id="fecha_fin" name="fecha_fin" class="input input-date"  >  
                     <!--label class="label">Fecha Inicio Real</label>
                     <input type="date" id="fecha_inicio" oninput="myFunction()" name="fecha_inicio_real" class="input input-date" required>
                     <label class="label">Fecha Fin Real</label>
