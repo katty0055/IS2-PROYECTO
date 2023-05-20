@@ -354,6 +354,7 @@ def crear_sprint_proyecto(request, pk):
     if request.method=='POST':
         fecha_inicioform=request.POST['fecha_inicio']
         fecha_finform=request.POST['fecha_fin']
+        nombreform=request.POST['nombre']
         proyecto=models.Proyecto.objects.get(backlog_id=pk)
         print(proyecto.backlog_id)
         if fecha_inicioform == "":
@@ -361,6 +362,7 @@ def crear_sprint_proyecto(request, pk):
         else:
             
             obj= models.Sprint.objects.create(
+                                                nombre= nombreform,
                                                 fecha_inicio = fecha_inicioform,
                                                 fecha_fin = fecha_finform,
                                                 backlog_id=proyecto
@@ -521,6 +523,7 @@ def backlog(request, pk):
         "nombre": nombre,
         "us": us,
         "user":user,
+        "sprint":sprint,
 
 
     }
