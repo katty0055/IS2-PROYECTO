@@ -1,0 +1,471 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es"> 
+ <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+    <title>ABM Proyectos</title>
+    <style>
+        :root{
+        /* variables de colores que se usan en esta parte */
+        --white:#FFFFFF;
+        --black: #000000;
+        --very-light-pink: #c7c7c7;
+        --text-input-field: #f7f7f7;
+        --hospital-green: #acd9b2;
+        --verde-mirto:#357266;
+        /* variables de tamanos de letras que usamo (chico, medio, largo) */
+        --sm: 14px;
+        --md:16px;
+        --lg:40px;
+        }
+
+        a{
+            text-align: center;
+            text-decoration: none; /*quita el subrayado  del link */
+            display:block;
+        }
+
+        .barra{            
+            grid-column: 1/3;
+            grid-row: 1/2;
+            display: grid;   
+            grid-template-rows: 1fr; 
+            grid-template-columns: 70% 30%;   
+        }  
+
+        .barra-button{
+            background-color: var(--hospital-green); 
+            border-radius: 8px;
+            border-color: var(--very-light-pink); 
+            border: 3px solid var(--text-input-field);
+            height: 6vh;
+            width: 4vw;    
+            min-height: 12px;
+            min-width: 13px;   
+            color: var(--white);
+            cursor: pointer; /* cursor arriba, aparece una mano */      
+        } 
+
+        .barra-container{
+            grid-row: 1/2;
+            display:flex;
+            align-items:center;
+            border-radius: 0px;
+            padding: 5px 5px 5px 5px;      
+            background-color: var(--hospital-green);   
+        }   
+
+        .barra-h1{
+            font-size: calc(1.5vh + 1vw);
+            margin:0;
+        }
+
+        .barra-h2{
+            color: #000000; 
+            font-size: calc(1vh + 1vw);
+            margin:0;
+        }
+        
+        .barra-saludo{
+            grid-column: 1/3;
+            grid-row:2/3;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+
+        ul, ol{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        } 
+
+        .nav li a{
+            background-color: var(--hospital-green);
+            color: var( --white);
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+
+        .nav li a:hover{
+            background-color: var( --verde-mirto);
+        }
+        
+        .nav > li{
+            float: left;
+        }
+
+        .nav li ul{
+            display:none;
+            position: absolute;
+            min-width: 5vw;       
+        }
+
+        .nav li:hover > ul{
+            display:block;
+        }
+
+        body{
+            background-color: var(--text-input-field);
+            font-family: 'Quicksand', sans-serif;             
+            margin:0;
+            
+        }
+
+        .tabla-cabecera{
+            background-color: var(--hospital-green);
+            text-align: center;
+            font-size: calc(0.6vh + 0.7vw);
+        }
+        .tabla-fila{
+            text-align: center;
+            font-size: calc(0.5vh + 0.6vw);
+        }
+
+        .contenido-form-container{
+            border: 2px solid var(--very-light-pink);
+            {% comment %} display:relative; {% endcomment %}
+            align-items:center;
+            justify-content:center;
+            border-radius: 10px;
+            padding: 10px 10px 10px;    
+            width:auto;
+        }
+
+        .contenido-form-container2{
+            {% comment %} border: 2px solid var(--very-light-pink); {% endcomment %}
+            display:flex;
+            flex-direction: column;
+            justify-content:center;
+            border-radius:10px;
+            align-items:center;
+
+           
+        }
+
+        .contenido-form{
+            border: 2px solid var(--very-light-pink);
+            padding: 5px 5px 5px 5px;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: baseline;
+            
+        }
+
+        .desplegable{
+
+            width: 15%;
+            height: 3vh;
+            font-size: calc(0.5vh + 0.5vw);     
+            margin-bottom: 12px;
+        }
+
+        .input{
+            background-color: var(--very-light-pink);
+            width: 19%;
+            border: none;
+            border-radius: 8px;
+            height: 2vh;
+            font-size: calc(0.5vh + 0.5vw);     
+            padding: 6px;
+            margin: 6px;
+        }
+
+        .input-name,
+        .input-date {   
+            {% comment %} margin-bottom: 15px; {% endcomment %}
+
+        }
+
+        .label{
+            font-size: calc(0.5vh + 0.6vw);
+            margin:0;
+            font-weight: bold;
+            margin: 2px;
+         
+        }   
+
+        .pagina{  
+            display: grid;   
+            grid-template-rows: 10% 7% 83%; 
+            grid-template-columns: 50% 50%;
+            width: 100%;
+            height: 100vh;
+            min-height: 400px;
+            min-width: 400px; 
+        }
+
+        .pagina-contenido{
+            
+            grid-column: 1/3;
+            grid-row: 3/4;
+            display: grid;   
+            justify-self:center;
+            width:65%;
+            height: 80vh;
+        }
+
+        .primary-button{
+            background-color: var(--hospital-green);
+            border-radius: 8px;
+            border: none;
+            color: var(--black);
+            width: 10vw; /*para que sea lo mas grande posible */
+            cursor: pointer; /* cursor arriba, aparece una mano */
+            font-size: calc(0.7vh + 0.7vw);     
+            font-weight: bold;
+            height: 5vh;
+            margin: 2vh;
+        }
+        .delete-button{
+            background-color: #B80000;
+            border-radius: 8px;
+            border: none;
+            color: var(--white);
+            width: 5vw; /*para que sea lo mas grande posible */
+            cursor: pointer; /* cursor arriba, aparece una mano */
+            font-size: calc(0.4vh + 0.4vw);     
+            font-weight: bold;
+            height: 3vh;
+            margin: 1%;
+        }
+
+        .table-title{
+            text-align: center;
+            font-size: calc(0.5vh + 1vw);
+            color: var(--black);
+        }
+
+        .table{
+            border: 2px solid var(--very-light-pink);
+            border-radius:10px;
+            width:100%;
+        }
+
+        .tittle {
+            background-color: var(--hospital-green);
+            font-size: calc(1.5vh + 1vw);
+            margin:0;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .value{
+            color: var(--very-light-pink);
+            font-size: var(--md);
+            margin: 12px 0 32px 0; /*   es equivalente a top, right, bottom y left, sucesivamente */
+        }
+
+        @media (max-width:640px) {
+            
+        .barra-button {
+            bottom: 0;
+            position: relative;
+        }
+        }
+
+        #botones{
+            justify-content:end;
+            display: flex;
+            align-items:center;
+        }
+
+    </style>
+
+</head> 
+<body>
+    <div class="pagina">    
+        <div class="barra">
+            <div class="barra-container" >
+                <h1 class="barra-h1">{{nombre}}</h1> 
+            </div>
+            <div class="barra-container" id="botones" >
+                <ul class="nav">
+                    <li>
+                        <input type="image" src="{% static '/img/usuario.png' %}" class="barra-button" value="Usuario"></input>  
+                        <ul>
+                            <li>
+                                <a href="{%url 'ver_perfil'%}"> Ver perfil </a>
+                                <a href="{% url 'modificar_usuario'%}"> Modificar Datos </a>
+                                <a href="{%url 'modificar_password'%}"> Modificar Contraseña </a>
+                                <a href="{%url 'eliminar_usuario'%}"> Eliminar perfil</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <input type="image" src="{% static '/img/proyecto.png' %}" class="barra-button" value="Proyecto" ></input>
+                        <ul>
+                            <li>
+                                <a href="{%url 'crear_proyecto'%}"> Nuevo proyecto </a>
+                                <a href="{%url 'listar_proyectos'%}"> Ver proyectos </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>             
+                <a href= "{% url 'cerrar'%}"> 
+                    <input  type="image" src="{% static '/img/salir.png' %}" class="barra-button" ></input>
+                </a>       
+
+            </div>
+        </div>
+        <div class="barra-saludo" >
+            <h2 class="barra-h2">{{saludo}}</h2>        
+        </div>
+        <div class="pagina-contenido"> 
+                <div class="contenido-form-container">
+                    <h1 class="tittle"> Sprint_ID #{{sprint.backlog_id_sprint}} </h1>
+                    <div class="contenido-form">
+                    
+                        <label class="label">Nombre Sprint </label>
+                        <input type="text" name="nombre_nuevo" placeholder="" class="input input-name" value="{{sprint.nombre}}" readonly >
+                        <label class="label">Fecha Inicio </label>
+                        <input type="date" name="fecha_inicio_nuevo" placeholder="" class="input input-date" value="{{ sprint.fecha_inicio|date:'Y-m-d' }}" readonly>
+                        <label class="label">Fecha Fin</label>
+                        <input type="date" name="fecha_fin_nuevo" placeholder="" class="input input-date" value="{{ sprint.fecha_fin|date:'Y-m-d' }}"  readonly>                        
+                 
+                    {% if messages %}
+                    {% for message in messages %}
+                        <span id="errorMessage"> {{message}}</span><br><br>
+                    {% endfor %}
+                    {% endif %}
+                    </div>
+                    <div class="row"> 
+                        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                            <h2 class="tittle">Asignar US</h2>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="">            
+                                        <div class="">
+                                            <form method= "POST" action ="" class="" id="asignados">{%csrf_token%}                                               
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="tabla-cabecera"></th>
+                                                            <th class="tabla-cabecera">ID US</th>
+                                                            <th class="tabla-cabecera">Nombre</th>
+                                                            <th class="tabla-cabecera">Estado</th>
+                                                            <th class="tabla-cabecera">Story Points</th>
+                                                            <th class="tabla-cabecera">Usuario Asignado</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            {%for item in lista%}
+                                                            <tr>
+                                                                <td class="tabla-fila"><input type="checkbox" value="{{item.id_user_story}}" name="id_us" class="tabla-fila"> </td>
+                                                                <td class="tabla-fila">{{item.id_user_story}}</td>
+                                                                <td class="tabla-fila">{{item.user_story_name}}</td> 
+                                                                <td class="tabla-fila">{{item.id_estado}}</td>
+                                                                <td class="tabla-fila">{{item.story_points}}</td>
+                                                                <td class="tabla-fila">
+                                                                    {% if item.id_usu_proy_rol.id_group.name == "Creador" %}
+                                                                        Sin Asignar
+                                                                    {%else%}        
+                                                                        {{item.id_usu_proy_rol}}                                  
+                                                                    {% endif %}                                      
+                                                                </td>
+                                                                
+                                                                </input> 
+                                                            </tr>
+                                                            {% empty %}
+                                                            <p>No hay users storys en el proyecto.</p>
+                                                            {%endfor%}
+                                                            <td>
+                                                                {% if lista|length > 0%}
+                                                                <button name="miboton" class="primary-button" form="asignados">Asignar</button>
+                                                            {%endif%}
+                                                            </td>
+                                                    </tbody> 
+                                                     
+                                                </table>
+                                             
+                                            </form>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>     
+                    </div> 
+                      
+                    <div class="row"> 
+                        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                            <h2 class="tittle">US del Sprint</h2>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="">            
+                                        <div class="">
+                                                                                        
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="tabla-cabecera">ID US</th>
+                                                            <th class="tabla-cabecera">Nombre</th>
+                                                            <th class="tabla-cabecera">Estado</th>
+                                                            <th class="tabla-cabecera">Story Points</th>
+                                                            <th class="tabla-cabecera">Usuario Asignado</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {% if us_sprint|length > 0%}
+                                                            {%for item in us_sprint%}
+                                                            <tr>   
+                                                                <form method= "POST" action ="" class="" id="{{item.id_user_story}}">{%csrf_token%}
+                                                                <input type="hidden" name="item" value="{{item.id_user_story}}">                                                            
+                                                                <td class="tabla-fila">{{item.id_user_story}}</td>
+                                                                <td class="tabla-fila">{{item.user_story_name}}</td> 
+                                                                <td class="tabla-fila">{{item.id_estado}}</td>
+                                                                <td class="tabla-fila">{{item.story_points}}</td>
+                                                                <td class="tabla-fila">
+                                                                    {% if item.id_usu_proy_rol.id_group.name == "Creador" %}
+                                                                        Sin Asignar
+                                                                    {%else%}        
+                                                                        {{item.id_usu_proy_rol}}                                  
+                                                                    {% endif %}                                      
+                                                                </td>
+                                                                <td>
+                                                                    {% comment %} <a href="eliminar/{{item.id_user_story}}"> {% endcomment %}
+                                                                    <button name="delete" class="delete-button" form="{{item.id_user_story}}">Eliminar</button>
+                                                                    {% comment %} </a>             {% endcomment %}
+                                                                </td>
+                                                                </form>
+                                                            </tr>
+                                                            {%endfor%}
+                                                           
+                                                        {%else%} 
+                                                            <p>No hay users storys en el proyecto.</p>
+                                                        {%endif%}
+                                                    </tbody> 
+                                                    
+                                                </table>
+                                            
+                                           
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>     
+                    </div> 
+                </div> 
+            </div>   
+        </div> 
+    </div> 
+</body>
+</html> 
+
+
+
+
+
+
+ 
+ 
+

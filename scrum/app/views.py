@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth.models import User, Group
 from django.utils import timezone
-from .forms import ProyectoModelForm,  UsuarioProyectoModelForm, UserModelForm, UserProfileModelForm, UserPasswordModelForm, UserStoryModelForm, UserStoryCreacionModelForm, SprintModelForm
+from .forms import ProyectoModelForm,  UsuarioProyectoModelForm, UserModelForm, UserProfileModelForm, UserPasswordModelForm, UserStoryModelForm, UserStoryCreacionModelForm, SprintModelForm, UserStoryEliminarModelForm
 from django.db.models import Q
 from . import models
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -14,6 +14,11 @@ from django.http import HttpResponse
 import datetime
 from datetime import datetime,date
 from .models import UsuarioProyecto, Sprint
+import matplotlib.pyplot
+import numpy
+import io
+import urllib, base64
+
 # from .forms import SelectUserModelForm
 
 # Create your views here.
@@ -221,7 +226,15 @@ def modificar_proyecto(request,pk):
                     instancia=form_usuario.save()
             return redirect('modificar_proyecto',pk=pk)
         for u in usuarios_eliminados:
-            lista_usuarios.filter(id_usu_proy_rol=u).delete()    
+            tareas=models.UserStory.objects.filter(id_usu_proy_rol__backlog=pk, id_usu_proy_rol=u)
+            print(tareas)
+            if len(tareas)>0:
+                print(models.UsuarioProyecto.objects.filter(backlog_id= pk,id_group=models.Group.objects.get(name="Creador")))
+                creador=models.UsuarioProyecto.objects.get(backlog_id= pk,id_group=models.Group.objects.get(name="Creador"))
+                tareas.update(id_usu_proy_rol=creador)
+                lista_usuarios.filter(id_usu_proy_rol=u).delete() 
+              
+                   
 
    
     proyecto= models.Proyecto.objects.get(backlog_id= pk) 
@@ -440,45 +453,68 @@ def crear_user_story(request,pk):
 
 
 def editar_user_story(request,pk):
+    cerrado=True
+    sum=0
     nombre = "Proyecto Scrum"
     user_story=models.UserStory.objects.get(id_user_story=pk)
-    if request.method == "POST":
-        form = UserStoryModelForm(request.POST, instance = user_story)
-        # '''if models.UserProfileModerForm.objects.filter(username = username).exists()
-        #      messages.error (request, fusernameEl nombre de usuario ya esta registrado'''
-        
-        nueva_fecha_fin= datetime.strptime(request.POST['fecha_fin_nuevo'], '%Y-%m-%d').date()
-        nueva_fecha_inicio= datetime.strptime(request.POST['fecha_inicio_nuevo'], '%Y-%m-%d').date()
-
-        print("Date:", datetime.strptime(request.POST['fecha_fin_nuevo'], '%Y-%m-%d').date())
-        print ("nueva fecha fin tipo: ",type(nueva_fecha_fin))
-        print("Fecha anterior: ",type(user_story.fecha_fin))
-        print("Del formulario: ",type(request.POST['fecha_fin_nuevo']))
-
-        
-        if form.is_valid():
-                ##if len(User.objects.filter(email=request.POST['email']).exclude(username=request.POST['username']))>0:
-                  ##  messages.error(request, 'El email esta registrado a otro usuario')
-                ##else:
-                    
-                    instance = form.save(commit=False)
-                    instance.fecha_inicio= nueva_fecha_inicio
-                    instance.fecha_fin= nueva_fecha_fin
-                
-                    print(instance.fecha_inicio)
-                    print(instance.fecha_fin)
-
-                    messages.success(request, 'US Actualizado !!')
-                    instance.save()
-                    print('entroo aqui?')
-
-                    return redirect(to='listar_proyectos')
-        else: 
-            print("No es valido")   
-    else:  
-        form = UserStoryModelForm(instance = user_story)
-    context = {"form":form, "us": user_story}       
-    return render(request,'modificar_user_story.html',context)
+    print(type(user_story.id_usu_proy_rol.id_user.username))
+    print(user_story.id_usu_proy_rol.id_group.name)
+    id_proyecto=user_story.id_usu_proy_rol.backlog
+    # print(user_story.id_usu_proy_rol.backlog)
+    usuarios=models.UsuarioProyecto.objects.filter(backlog= id_proyecto)
+    print(usuarios)
+    print(type(str(request.user)))
+    if ((user_story.id_usu_proy_rol.id_user.username==str(request.user) and
+        user_story.id_usu_proy_rol.id_group.name!="Creador")
+        or usuarios.filter(
+        id_user__username= str(request.user), id_group__name="Scrum Master").exists()):
+        print("entro")
+        if request.method == "POST" :
+            print("post")
+            form = UserStoryModelForm(request.POST, instance = user_story)
+            nueva_fecha_fin=request.POST.get('fecha_fin_nuevo')
+            nueva_fecha_inicio=request.POST.get('fecha_inicio_nuevo')
+            print(nueva_fecha_fin)
+            # nueva_fecha_fin= datetime.strptime(request.POST['fecha_fin_nuevo'], '%Y-%m-%d').date()
+            # nueva_fecha_inicio= datetime.strptime(request.POST['fecha_inicio_nuevo'], '%Y-%m-%d').date()      
+            if form.is_valid():
+                        print("valido")
+                        instance = form.save(commit=False)
+                        if nueva_fecha_inicio !="":
+                            instance.fecha_inicio= nueva_fecha_inicio
+                            print(instance.fecha_inicio)
+                            print("hola")
+                        if nueva_fecha_fin != "":
+                            instance.fecha_fin= nueva_fecha_fin
+                            print("que")
+                            print(instance.fecha_fin)
+                        messages.success(request, 'US Actualizado !!')
+                        instance.save()
+                        sprints= models.Sprint.objects.filter(backlog_id=id_proyecto)
+                        ultima_sprint=sprints.filter(fecha_fin_real=None, estado=True)
+                        print(ultima_sprint.count())
+                        if ultima_sprint.count()==1:
+                            print(ultima_sprint.get())
+                            print(user_story.backlog_id_sprint)
+                            if user_story.backlog_id_sprint == ultima_sprint.get():
+                                cerrado==True
+                            user_stories=models.UserStory.objects.filter(id_usu_proy_rol__backlog_id=id_proyecto)
+                            for u in user_stories:
+                                print("for")
+                                if u.id_estado.descripcion =="ToDo" or u.id_estado.descripcion =="Doing":
+                                    print("false")
+                                    cerrado=False
+                            if cerrado==True:
+                                print("cambio")
+                                models.Proyecto.objects.filter(backlog_id=id_proyecto).update(fecha_fin_real=timezone.now())
+                        return redirect('backlog',pk=user_story.id_usu_proy_rol.backlog)
+        else:  
+            form = UserStoryModelForm(instance = user_story)
+        context = {"form":form, "us": user_story}       
+        return render(request,'modificar_user_story.html',context)
+    else:
+        messages.error(request,"No es el Scrum Master o usuario asignado a la tarea")
+        return redirect('backlog',pk=user_story.id_usu_proy_rol.backlog)
 
 def  listar_us(request):
     nombre = "Proyecto Scrum"
@@ -499,25 +535,31 @@ def  listar_us(request):
 
 def backlog(request, pk):
     print(pk)
-    usuario=request.POST.get('user')
-    id_us=request.POST.get('id')
-    print(usuario)
-    print(id_us)
+    
     nombre = "Proyecto Scrum"
     us = models.UserStory.objects.filter(id_usu_proy_rol__backlog=pk)
-    sprint = models.Sprint.objects.filter(backlog_id=pk)
+    sprint = models.Sprint.objects.filter(backlog_id=pk,estado=True)
     user= models.UsuarioProyecto.objects.filter(backlog_id=pk).exclude(id_group__name="Creador")
     if request.method == "POST":
-        story=us.filter(id_user_story= id_us)
-        # story.update(id_usu_proy_rol=models.User.objects.get(username=usuario))
-        print("hola")
-        useruser= user.filter(id_user__username= usuario)
-        print(useruser)
-        # for u in useruser:
-        #     print(u)
-        print(us.filter(id_user_story= id_us).update(id_usu_proy_rol= user.get(id_user__username= usuario)))
-        print(id_us)
-        print(usuario)
+        if 'cambiar' in request.POST:
+            tarea_id=request.POST['item']
+            print("cambai")
+            print(tarea_id)
+            print(models.UserStory.objects.get(id_user_story=tarea_id))
+            creador=models.UsuarioProyecto.objects.get(backlog_id= pk,id_group=models.Group.objects.get(name="Creador"))
+            print(creador)
+            models.UserStory.objects.filter(id_user_story=tarea_id).update(id_usu_proy_rol=creador)
+        elif 'miboton' in request.POST:
+            usuario=request.POST.get('user')
+            id_us=request.POST.get('id')
+            print(usuario)
+            print(id_us)
+            if usuario != "---":
+                us.filter(id_user_story= id_us).update(id_usu_proy_rol= user.get(id_user__username= usuario))
+            else:
+                redirect('backlog',pk=pk)
+      
+            
 
     context ={
         "nombre": nombre,
@@ -528,3 +570,150 @@ def backlog(request, pk):
 
     }
     return render(request, "backlog.html",context)
+
+
+def eliminar_sprint(request, pk):
+    nombre = "Proyecto Scrum"
+    sprint = models.Sprint.objects.get(backlog_id_sprint= pk)
+    #recupera los datos del formulario del sprint asociada a la pk
+    form = SprintModelForm(data=request.POST or None, instance=sprint)
+   
+    if request.method == 'POST':
+        #cambia el estado del proyecto de True a False
+        #models.Proyecto.objects.filter(backlog_id= pk).update(estado=False)
+        sprint.estado = False
+        sprint.save()
+        messages.success(request, 'El sprint ha sido borrado con exito')
+        return redirect('backlog',pk=sprint.backlog_id)
+    
+    context = {"form":form, "nombre":nombre, "backlog_id":sprint.backlog_id}
+    return render(request, 'eliminar_sprint.html', context)
+
+
+def eliminar_user_story(request, pk):
+    nombre = "Proyecto Scrum"
+    user_story= models.UserStory.objects.get(id_user_story= pk)
+    #recupera los datos del formulario de la user story asociada a la pk
+    form = UserStoryEliminarModelForm(data=request.POST or None, instance=user_story)
+   
+    if request.method == 'POST':
+        #cambia el estado del proyecto de True a False
+        #models.Proyecto.objects.filter(backlog_id= pk).update(estado=False)
+        user_story.id_estado= models.EstadosUserStory.objects.get(descripcion= "Cancelled")
+        user_story.save()
+        messages.success(request, 'La user story ha sido cancelada con exito')
+        return redirect('backlog',pk=user_story.id_usu_proy_rol.backlog)
+    
+    context = {"form":form, "nombre":nombre, }
+    return render(request, 'eliminar_us.html', context)
+
+
+def asignar_us_a_sprint(request,pk): 
+    nombre = "Proyecto Scrum"
+    sprint= models.Sprint.objects.get(backlog_id_sprint= pk) 
+    us_seleccionados=request.POST.getlist('id_us')
+    lista_user_story= models.UserStory.objects.filter(id_usu_proy_rol__backlog = sprint.backlog_id, backlog_id_sprint=None)
+    us_sprint= models.UserStory.objects.filter(backlog_id_sprint  = pk)
+    if request.method=='POST':
+        if 'miboton' in request.POST:
+            for us in us_seleccionados:
+                models.UserStory.objects.filter(id_user_story= us).update(
+                backlog_id_sprint=sprint) 
+        elif 'delete' in request.POST:
+            us_sacar=request.POST['item']
+            models.UserStory.objects.filter(id_user_story= us_sacar).update(
+                backlog_id_sprint=None) 
+    context={
+            "lista": lista_user_story,
+            "sprint": sprint,
+            "nombre": nombre,
+            "us_sprint": us_sprint,
+        }           
+    return render(request,'asignar_us.html', context)
+
+def iniciar_cerrar_sprint(request, pk, accion):
+    print(type(pk))
+    sprint=models.Sprint.objects.get(backlog_id_sprint=pk)
+    sprints= models.Sprint.objects.filter(backlog_id=sprint.backlog_id)
+    activo_sprint=False
+    cerrado=False
+    for s in sprints:
+        print(type(s.backlog_id_sprint))
+        if s.fecha_inicio_real !=None:
+            print("fecha_inicio activo")
+            if s.fecha_fin_real==None and accion=="Iniciar":
+                print("que")
+                activo_sprint=True
+            elif accion=="Cerrar" and s.backlog_id_sprint==int(pk):        
+                print("hola")       
+                sprint.fecha_fin_real= timezone.now()
+                sprint.save()
+                cerrado=True
+     
+
+    if activo_sprint:
+        messages.error(request,"No se puede iniciar el Sprint porque otro esta activo")
+    elif accion=="Iniciar":
+        messages.success(request,"Sprint Iniciado")
+        sprint.fecha_inicio_real= timezone.now()
+        sprint.save()
+        if sprints.exclude(fecha_inicio_real= None).count() == 1:
+            models.Proyecto.objects.filter(backlog_id=sprint.backlog_id).update(fecha_inicio_real=timezone.now())
+    if cerrado:
+        messages.success(request,"Sprint Cerrado")
+    elif accion=="Cerrar":
+        messages.error(request,"No se puede cerrar el Sprint porque no esta activo")
+    return redirect('backlog',pk=sprint.backlog_id)
+
+
+def ver_kanban(request,pk): 
+    nombre = "Proyecto Scrum"
+    user_stories_toDo=models.UserStory.objects.filter(
+        id_usu_proy_rol__backlog_id=pk,id_estado__descripcion="ToDo")
+    user_stories_doing=models.UserStory.objects.filter(
+        id_usu_proy_rol__backlog_id=pk,id_estado__descripcion="Doing")
+    user_stories_done=models.UserStory.objects.filter(
+        id_usu_proy_rol__backlog_id=pk,id_estado__descripcion="Done")
+    print(user_stories_done)
+    context={           
+        "nombre": nombre,  
+        "user_stories_toDo": user_stories_toDo,  
+        "user_stories_doing": user_stories_doing,
+        "user_stories_done": user_stories_done,      
+    }           
+    return render(request,'kanban.html', context)
+
+def burndown_chart(request,pk):
+    nombre = "Proyecto Scrum"
+    # matplotlib.pyplot.style.use('_mpl-gallery')
+
+    # # make data
+    # numpy.random.seed(3)
+    # x = 0.5 + numpy.arange(8)
+    # y = numpy.random.uniform(2, 7, len(x))
+
+    # # plot
+    # fig, ax = matplotlib.pyplot.subplots()
+
+    # ax.step(x, y, linewidth=2.5)
+
+    # ax.set(xlim=(0, 8), xticks=numpy.arange(1, 8),
+    #     ylim=(0, 8), yticks=numpy.arange(1, 8))
+
+    # matplotlib.pyplot.show()
+    x = numpy.arange(0, 5, 1)
+    y = numpy.sin(x)
+    matplotlib.pyplot.plot(x, y)
+    fig= matplotlib.pyplot.gcf()
+    buf=io.BytesIO()
+    fig.savefig(buf, format='png')
+    buf.seek(0)
+    string = base64.b64encode(buf.read())
+    uri=urllib.parse.quote(string)
+    context={           
+        "nombre": nombre,  
+        "data":uri,
+            
+    }           
+    return render(request,'burndown_chart.html', context)
+

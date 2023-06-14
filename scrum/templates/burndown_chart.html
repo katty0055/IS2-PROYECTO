@@ -1,0 +1,287 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        :root{
+     /* variables de colores que se usan en esta parte */
+        --white:#FFFFFF;
+        --black: #000000;
+        --very-light-pink: #c7c7c7;
+        --text-input-field: #f7f7f7;
+        --hospital-green: #acd9b2;
+        --verde-mirto:#357266;
+        /* variables de tamanos de letras que usamo (chico, medio, largo) */
+        --sm: 14px;
+        --md:16px;
+        --lg:18px;
+
+        }   
+        body{
+            background-color: var(--text-input-field);
+            font-family: 'Quicksand', sans-serif;             
+            margin:0;
+        }
+        .pagina{
+            display: grid;   
+            grid-template-rows: 10% 7% 83%; 
+            grid-template-columns: 50% 50%;
+            width: 100%;
+            height: 100vh;
+            min-height: 400px;
+            min-width: 400px; 
+        }
+        .barra{
+            grid-column-start: 1;
+            grid-column-end:3; 
+            grid-row: 1/2;
+            display: grid;   
+            grid-template-rows: 1fr; 
+            grid-template-columns: 70% 30%;   
+
+        }
+        .container{
+            grid-row-start: 1;
+            grid-row-end:2;
+            display:flex;
+            align-items:center;
+            border-radius: 0px;
+            padding: 5px 5px 5px 5px;      
+            background-color: var(--hospital-green);   
+        }   
+        h1{
+            font-size: calc(2.5vh + 1vw);
+            margin:0;
+        }
+        .saludo{
+
+            grid-column-start: 1;
+            grid-column-end:3; 
+            grid-row-start: 2;
+            grid-row-end:3;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+        }
+        h2{
+          color: #000000; 
+          font-size: calc(1vh + 1vw);
+          margin:0;
+        }
+        .value{
+            color: var(--very-light-pink);
+            font-size: var(--md);
+            margin: 12px 0 32px 0; /*   es equivalente a top, right, bottom y left, sucesivamente */
+        }
+        .barra-button{
+            background-color: var(--hospital-green); 
+            border-radius: 8px;
+            border-color: var(--very-light-pink); 
+            border: 3px solid var(--text-input-field);
+            height: 6vh;
+            width: 4vw;    
+            min-height: 12px;
+            min-width: 13px;   
+            color: var(--white);
+            cursor: pointer; /* cursor arriba, aparece una mano */      
+        }
+        
+        a{
+            text-align: center;
+            text-decoration: none; /*quita el subrayado  del link */
+            display:block;
+        }
+        ul, ol{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        } 
+        .nav li a{
+            background-color: var(--hospital-green);
+            color: var( --white);
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+        .nav li a:hover{
+            background-color: var( --verde-mirto);
+        }
+        .nav > li{
+            float: left;
+        }
+        .nav li ul{
+            display:none;
+            position: absolute;
+            min-width: 5vw;       
+        }
+        .nav li:hover > ul{
+            display:block;
+        }
+        .contenido{
+          
+
+            grid-column-start: 1;
+            grid-column-end:3; 
+            grid-row-start: 3;
+            grid-row-end:4;
+            display: flex;
+            align-items:center;
+            justify-content:center;
+        }
+        .tabla{
+            display:flex;
+            flex-direction:column;
+            border:1px solid black;
+            width: 96%;
+            height: 80%;
+            {% comment %} align-items:center; {% endcomment %}
+            border-collapse: separate;
+            border-spacing: 15px 10px;
+             
+        }
+        .filas{
+            display:flex;
+            flex-direction:row;
+            flex-wrap:wrap;
+            background-color:var(--text-input-field);
+            {% comment %} text-align: center; {% endcomment %}
+            margin:0.6%;
+            {% comment %} vertical-align: center; {% endcomment %}
+            border:1px solid black;
+            {% comment %} margin:auto; {% endcomment %}
+            align-content:flex-start;
+           
+        }
+        .columnas{
+            background-color: var(--very-light-pink);
+            {% comment %} text-align: center; {% endcomment %}
+            vertical-align: top;
+            border:1px solid black;
+            width:32%;
+        }
+        .caja{
+            display:flex;
+            flex-direction:column;
+            {% comment %} text-align: center;
+            justify-content:center; {% endcomment %}
+            border:1px solid #89BECF;           
+            margin:1.9%;
+            width:29%;
+            height:15%;
+            background-color: #CAE7F1;
+           
+        }
+        td{
+            display:flex;
+            flex-direction:row;
+            width:100%;
+            height:98%;
+            flex-wrap:wrap;
+            overflow-y: auto;
+            {% comment %} justify-content:flex-start; {% endcomment %}
+        }
+        tr{
+            display:flex;
+            flex-direction:row;
+            width:100%;
+            height:100%;
+        }
+        th{
+            margin:auto;
+        }
+        thead{
+            {% comment %} border:1px solid black; {% endcomment %}
+            display:flex;
+            flex-direction:row;
+            width:100%;
+            height:7%;
+            
+        }
+        tbody{
+            display:flex;
+            flex-direction:row;
+            width:100%;
+            height:92%;
+        }
+        h4{
+         
+            font-size: calc(0.7vh + 0.7vw);
+            margin:auto;
+        }
+
+        @media (max-width:640px) {
+            
+            .barra-button {
+                bottom: 0;
+               
+                position: relative;
+            }
+            .nav li ul a{
+                font-size: calc(0.5vh + 0.5vw);
+            }
+           
+
+        }
+        #botones{
+            justify-content:end;
+
+              display: flex;
+              align-items:center;
+        }
+    </style>
+</head>
+<body>
+    <div class="pagina" >
+        <div class="barra">
+            <div class="container" >
+                <h1> {{nombre}}</h1>         
+            </div>
+            
+            <div class="container" id="botones" >
+                <ul class="nav">
+                    <li>
+                        <input type="image" src="{% static '/img/usuario.png' %}" class="barra-button" value="Usuario"></input>  
+                         <ul>
+                            <li>
+                                <a href="{%url 'ver_perfil'%}"> Ver perfil </a>
+                                <a href="{% url 'modificar_usuario'%}"> Modificar Datos </a>
+                                <a href="{%url 'modificar_password'%}"> Modificar Contraseña </a>
+                                <a href="{%url 'eliminar_usuario'%}"> Eliminar perfil</a>
+                            </li>
+                        </ul> 
+                    </li>
+                    <li>
+                        <input type="image" src="{% static '/img/proyecto.png' %}" class="barra-button" value="Proyecto" ></input>
+                        <ul>
+                            <li>
+                                <a href="{%url 'crear_proyecto'%}"> Nuevo proyecto </a>
+                                <a href="{%url 'listar_proyectos'%}"> Ver proyectos </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>             
+                <a href= "{% url 'cerrar'%}"> 
+                    <input  type="image" src="{% static '/img/salir.png' %}" class="barra-button" ></input>
+                </a>       
+
+            </div>
+        </div>
+        <div class="saludo" >
+            <h2 > Burndown_chart</h2>        
+        </div>
+        <div class="contenido">
+            <img src="data:image/png;base64,{{data}}" height="900" width="900">
+             
+        </div>
+    </div>
+</body>
+</html>

@@ -146,7 +146,7 @@
         .contenido{
             grid-column-start: 1;
             grid-column-end:3; 
-            grid-row-start: 4;
+            grid-row-start: 3;
             grid-row-end:5;
             display: flex;
             flex-direction: column;
@@ -173,12 +173,17 @@
             border:1px solid black;
         }
         .contenido-tabla{
-            /*border:1px solid black;*/
+            {% comment %} border:1px solid black; {% endcomment %}
             /*width: 95%;*/
-            place-items: center;
-            display: grid;
-            grid-template-rows: auto 1fr auto;
+            {% comment %} place-items: center; {% endcomment %}
+            display: flex;
+            flex-direction:column;
+            justify-content:flex-start;
+            align-items:center;
+            gap:20px;
+            {% comment %} grid-template-rows: 1fr 1fr 1fr 1fr; {% endcomment %}
             height: 80vh;
+            margin:2px;
         }
         .columnas{
             background-color: var(--very-light-pink);
@@ -341,6 +346,11 @@
         </div>
         <br><br> {% endcomment %}
         <div class="contenido">
+            {% if messages %}
+            {% for message in messages %}
+                <span id="errorMessage" align="center"> {{message}}</span><br><br>
+            {% endfor %}
+            {% endif %}       
             <div class="contenido-tabla">
                 <table class="tabla">
                     <thead>
@@ -351,6 +361,7 @@
                             <th class="columnas">Story Points</th>
                             <th class="columnas">Usuario Asignado</th>
                             <th class="columnas">Sprint Asignado</th>
+                            <th class="columnas"></th>
                             <th class="columnas"></th>
                             {% comment %} <th class="columnas"></th>
                             <th class="columnas"></th>
@@ -368,8 +379,9 @@
                             <td class="filas">{{item.id_estado}}</td>
                             <td class="filas">{{item.story_points}}</td>
                             <td class="filas">
+                                
                                 {% if item.id_usu_proy_rol.id_group.name == "Creador" %}
-                                        <form action="" method="post">
+                                        <form action="" method="post" id="asignado/{{item.id_user_story}}">
                                             {% csrf_token %}
                                             <select name="user" >
                                             <option value="---">Sin asignar</option>
@@ -378,26 +390,36 @@
                                             {%endfor%}      
                                             </select>
                                             <input name="id" value="{{item.id_user_story}}" hidden>
-                                            <button id="miboton">Asignar</button>
-                                        </form>
-                                {%else%}        
-                                   {{item.id_usu_proy_rol}}                                  
+                                            <button name="miboton" form="asignado/{{item.id_user_story}}">Asignar</button>
+                                        </form>     
+                                {%else%}  
+                                    <form action="" method="post" id="{{item.id_user_story}}">{%csrf_token%}
+                                        <input type="hidden" name="item" value="{{item.id_user_story}}">  
+                                        {{item.id_usu_proy_rol}}  <button name="cambiar" form="{{item.id_user_story}}" >Modificar</button>                                
+                                    </form>
                                 {% endif %}
+                                
                                 {% comment %} <a href="backlog/{{proyecto.backlog.backlog_id}}"> Backlog</a> {% endcomment %}
                             </td>
                             <td class="filas">
-                                {% if item.id_usu_proy_rol.id_group.name == "Creador" %}
+                                {% if item.backlog_id_sprint == None %}
                                     Sin Asignar
+                                {%else%}
+                                    {{item.backlog_id_sprint.backlog_id_sprint}}
                                 {% endif %}
-                                {% comment %} <a href="backlog/{{proyecto.backlog.backlog_id}}"> Backlog</a> {% endcomment %}
+                                
                             </td>
                             <td class="filas">
                                 <a href="{% url 'modificar_user_story' item.id_user_story %}">Editar</a>
+                            </td>
+                            <td class="filas">
+                                <a href="{% url 'cancelar_us' item.id_user_story %}">Cancelar</a>
                             </td>
                         </tr>
                     {% endfor%}
                     </tbody>
                 </table>
+                <h1 class="h1">Sprints</h1>  
                     <table class="tabla">
                         <thead>
                             <tr>
@@ -406,6 +428,9 @@
                                 <th class="columnas">Nombre</th>
                                 <th class="columnas">Fecha Inicio</th>
                                 <th class="columnas">Fecha Fin</th>
+                                <th class="columnas">Accion</th>
+                                <th class="columnas">Accion</th>
+                                <th class="columnas">Accion</th>
                                 <th class="columnas">Accion</th>
                                 <th class="columnas">Accion</th>
                             </tr>
@@ -423,7 +448,29 @@
                                     <a href="modificar_sprint_proyecto/{{item.backlog_id_sprint}}"> Modificar </a>
                                 </td>
                                 <td class="filas">
-                                    <a href=""> Iniciar </a>
+                                    <a href="eliminar_sprint/{{item.backlog_id_sprint}}"> Eliminar </a>
+                                </td>
+                                <td class="filas">
+                                    <a href="seleccionar_us/{{item.backlog_id_sprint}}"> Seleccionar US </a>
+                                </td>
+                                <td class="filas">
+                                    {%if item.fecha_inicio_real%}
+                                        {% if item.fecha_fin_real %}
+                                        <a href="" style="color:#F2BF79;cursor:default"> Cerrado</a>
+                                        {% else %}
+                                        <a href="" style="color:#9BCB74;cursor:default" > Activo</a>
+                                        {% endif %}                                        
+                                    {%else%}
+                                        <a href="iniciar_sprint/{{item.backlog_id_sprint}}/Iniciar"> Iniciar </a>
+                                    {%endif%}                                    
+                                </td>
+                                <td class="filas">
+                                    {%if item.fecha_fin_real%}
+                                        <a href="" style="color:#000001;cursor:default" > ---</a>                                                                              
+                                    {%else%}
+                                        <a href="iniciar_sprint/{{item.backlog_id_sprint}}/Cerrar"> Cerrar </a>   
+                                    {%endif%} 
+                                                 
                                 </td>
                                 <!--td class="filas">{{sprint.fecha_inicio_real}}</td>
                                 <td class="filas">{{sprint.fecha_fin_real}}</td>

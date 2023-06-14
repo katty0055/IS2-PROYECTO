@@ -356,6 +356,7 @@
                             <th class="columnas"></th>
                             <th class="columnas"></th>
                             <th class="columnas"></th>
+                            <th class="columnas"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -384,9 +385,11 @@
                             <td class="filas">
                                 <a href="eliminar_proyecto/{{proyecto.backlog_id}}"> Borrar </a>
                             </td>
-                            {% comment %} <td class="filas">
-                                <a href="listar_us"> Listar US </a>
-                            </td> {% endcomment %}
+                            <td class="filas">
+                                <a href="kanban/{{proyecto.backlog_id}}"> Kanban </a>
+                            </td><td class="filas">
+                                <a href="burndown_chart/{{proyecto.backlog_id}}"> Burndown chart </a>
+                            </td>
                         </tr>
                     {% endfor%}
                     </tbody>

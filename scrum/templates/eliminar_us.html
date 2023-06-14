@@ -151,42 +151,17 @@
             flex-direction: column;
             justify-content: center;
             
-            
         }
-    
 
         .input{
             background-color: var(--very-light-pink);
             width: 25%;
             border: none;
             border-radius: 8px;
-            height: 3vh;
+            {% comment %} height: 2vh; {% endcomment %}
             font-size: calc(0.5vh + 0.5vw);     
             padding: 6px;
             margin-bottom: 12px;
-        }
-        .input-description{
-            background-color: var(--very-light-pink);
-            width: 25%;
-            border: none;
-            border-radius: 8px;
-            height: 10vh;
-            font-size: calc(0.5vh + 0.5vw);     
-            padding: 6px;
-            margin-bottom: 12px;   
-            /*resize: none;*/
-            
-        }
-        .input-prioridad{
-            background-color: var(--very-light-pink);
-            width: 25%;
-            border: none;
-            border-radius: 8px;
-            height: 3.5vh;
-            font-size: calc(0.5vh + 0.5vw);     
-            padding: 6px;
-            margin-bottom: 12px;   
-            
         }
 
         .input-name,
@@ -219,7 +194,7 @@
             display: grid;   
             justify-self:center;
             width:65%;
-            height: 80vh;
+            height: 40vh;
         }
 
         .primary-button{
@@ -232,23 +207,6 @@
             font-size: calc(0.7vh + 0.7vw);     
             font-weight: bold;
             height: 5vh;
-            ;
-        }
-        .delete-button{
-            background-color: var(--hospital-green);
-            border-radius: 8px;
-            border: none;
-            color: var(--black);
-            width: 10vw; /*para que sea lo mas grande posible */
-            cursor: pointer; /* cursor arriba, aparece una mano */
-            font-size: calc(0.7vh + 0.7vw);     
-            font-weight: bold;
-            height: 5vh;
-            text-align: center;
-            text-align-last: center;
-            display: flex;
-  justify-content: center;
-  align-items: center;
         }
 
         .table-title{
@@ -285,91 +243,6 @@
             align-items:center;
         }
 
-/*:::Boton-Modal:::*/
-.boton-modal{
-    padding: 40px;
-    background-color: #fff;
-}
-.boton-modal label{
-    padding: 10px 15px;
-    background-color: #5488a3;
-    color: #fff;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 300ms ease;
-}
-.boton-modal label:hover{
-    background-color: #185E83;
-}
-/*:::Fin Boton-Modal:::*/
-
-/*:::Ventana Modal:::*/
-#btn-modal{
-    display: none;
-}
-.container-modal{
-    width: 100%;
-    height: 100vh;
-    position: fixed;
-    top: 0; left: 0;
-    background-color: rgba(144, 148, 150, 0.8);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
-}
-#btn-modal:checked ~ .container-modal{
-    display: flex;
-}
-.content-modal{
-    width: 100%;
-    max-width: 400px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 4px;
-}
-.content-modal h2{
-    margin-bottom: 15px;
-}
-.content-modal p{
-    padding: 15px 0px;
-    border-top: 1px solid #dbdbdb;
-    border-bottom: 1px solid #dbdbdb;
-}
-.content-modal .btn-cerrar{
-    width: 100%;
-    margin-top: 15px;
-    display: flex;
-    justify-content: flex-end;
-}
-.content-modal .btn-cerrar label{
-    padding: 7px 10px;
-    background-color: var(--hospital-green);
-    color: #fff;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 300ms ease;
-}
-.content-modal .btn-cerrar label:hover{
-    background-color: var(--verde-mirto);
-}
-.content-modal .btn-cerrar-si label:hover{
-    background-color: red;
-}
-.cerrar-modal{
-    width:100%;
-    height: 100vh;
-    position: absolute;
-    top:0; left: 0;
-    z-index: -1;
-}
-@media screen and (max-width:800px) {
-    .content-modal{
-        width: 90%;
-    }
-}
-/*:::Fin Ventana Modal:::*/
-
     </style>
 
 </head> 
@@ -387,7 +260,8 @@
                             <li>
                                 <a href="{%url 'ver_perfil'%}"> Ver perfil </a>
                                 <a href="{% url 'modificar_usuario'%}"> Modificar Datos </a>
-                                <a href=""> Eliminar perfil</a>
+                                <a href="{%url 'modificar_password'%}"> Modificar Contraseña </a>
+                                <a href="{%url 'eliminar_usuario'%}"> Eliminar perfil</a>
                             </li>
                         </ul>
                     </li>
@@ -411,75 +285,48 @@
             <h2 class="barra-h2">{{saludo}}</h2>        
         </div>
         <div class="pagina-contenido"> 
-                 <div class="contenido-form-container">
-                    <h1 class="tittle">Editar Historia</h1>
-                    {% if messages %}
-                    {% for message in messages %}
-                        <span id="errorMessage"> {{message}}</span><br><br>
-                    {% endfor %}
-                    {% endif %}
-                    <form action="" class="contenido-form" method="POST">{% csrf_token %}                       
-                        <label class="label">Nombre</label>
-                        {{form.user_story_name}} 
+            <div class="contenido-form-container">
+               <h1 class="tittle">Cancelar Historia</h1>
+               {% if messages %}
+               {% for message in messages %}
+                   <span id="errorMessage"> {{message}}</span><br><br>
+               {% endfor %}
+               {% endif %}
+               <form action="" class="contenido-form" method="POST">{% csrf_token %}                       
+                   <label class="label">Nombre</label>
+                   {{form.user_story_name}} 
 
-                        <label for="descripcion" class="label">Descripción (máximo 200 caracteres):</label>
-                        {{form.descripcion}}
+                   <label for="descripcion" class="label">Descripción (máximo 200 caracteres):</label>
+                   {{form.descripcion}}
 
-                        <label for="definicion" class="label">Defincion de Hecho (máximo 200 caracteres):</label>
-                        {{form.definicion_hecho}}
-                        
-                        <label for="story_points" class="label">Story Points:</label>  
-                        {{form.story_points}}  
-                        
+                   <label for="definicion" class="label">Defincion de Hecho (máximo 200 caracteres):</label>
+                   {{form.definicion_hecho}}
+                   
+                   <label for="story_points" class="label">Story Points:</label>  
+                   {{form.story_points}}  
+                   
 
-                        <label for="prioridad" class="label">Prioridad</label>    
-                        {{form.id_prioridad}}  
-                        
-                        <label for="estado" class="label" >Estado</label>    
-                        {{form.id_estado}}
-                        
-                        <!-- <label class="label">Fecha Inicio</label>
-                        {{form.fecha_inicio}} 
-                    
-                        <label class="label">Fecha Fin</label>
-                        {{form.fecha_fin}}  -->
+                   <label for="prioridad" class="label">Prioridad</label>    
+                   {{form.id_prioridad}}  
+                   
+                   <label for="estado" class="label" >Estado</label>    
+                   {{form.id_estado}}
 
-                        <label class="label">Fecha Inicio </label>
-                        <input type="date" name="fecha_inicio_nuevo" placeholder="" class="input input-date" value="{{ us.fecha_inicio|date:'Y-m-d' }}" >
-                        
-                        <label class="label">Fecha Fin</label>
-                        <input type="date" name="fecha_fin_nuevo" placeholder="" class="input input-date" value="{{ us.fecha_fin|date:'Y-m-d' }}" >
-                         
-                        <input type="submit" value="Guardar" class="primary-button loggin-button" /><br/>
-                        <input type="submit" value="Atrás" class="primary-button loggin-button" /><br/>
-                         <!--Boton-->
-    
-        
-    
-<!--Fin de Boton-->
-<!--Ventana Modal-->
-    <input type="checkbox" id="btn-modal">
-    <div class="container-modal">
-        <div class="content-modal">
-            <h2>Atención</h2>
-            <p>Está seguro que desea eliminar este US?</p>
-            <div class="btn-cerrar">
-                <label for="btn-modal"> Si </label>
-            </div>
-            <div class="btn-cerrar">
-                <label for="btn-modal">No</label>
-            </div>
-        </div>
-        <label for="btn-modal" class="cerrar-modal"></label>
-    </div>
-<!--Fin de Ventana Modal-->
-                    </form>
-                        
-                            
+                   <label class="label">Fecha Inicio</label>
+                   {{form.fecha_inicio}}
 
-                    <div class="row">  
-                    </div> 
-                </div>         
+                   <label class="label">Fecha Fin</label>
+                   {{form.fecha_fin}} 
+
+                   
+                   <input type="submit" value="Cancelar" class="primary-button loggin-button" /><br/>
+               </form>
+               
+               
+
+               <div class="row">  
+               </div> 
+           </div>      
          </div>
     </div>
 </body>

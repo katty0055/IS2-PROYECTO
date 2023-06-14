@@ -318,9 +318,87 @@ class SprintModelForm(forms.ModelForm):
         self.fields["backlog_id"].widget.attrs.update({
             'type':'name',
             'placeholder':'',
+            'class':'input ',
+            'name': 'backlog_id',
+        })
+        self.fields["fecha_inicio"].widget.attrs.update({
+            'type':'date',
+            'placeholder':'',
+            'class':'input' ,
+            'name': 'fecha_inicio',
+        })
+        self.fields["fecha_fin"].widget.attrs.update({
+            'type':'date',
+            'placeholder':'',
+            'class':'input ',
+            'name': 'fecha_fin',
+        })
+        self.fields["fecha_inicio_real"].widget.attrs.update({
+            'type':'date',
+            'placeholder':'',
+            'class':'input ',
+            'name': 'fecha_inicio_real',
+        })
+        self.fields["fecha_fin_real"].widget.attrs.update({
+            'type':'date',
+            'placeholder':'',
+            'class':'input ',
+            'name': 'fecha_fin_real',
+        })
+        self.fields["nombre"].widget.attrs.update({
+            'type':'text',
+            'placeholder':'',
+            'class':'input ',
+            'name': 'nombre',
+        })
+    class Meta:
+        model=Sprint
+        fields=["backlog_id","fecha_inicio","fecha_fin","fecha_inicio_real","fecha_fin_real","nombre"]
+
+
+
+
+##Este es para borrar US, NO BORRAR porfavoor
+class UserStoryEliminarModelForm(forms.ModelForm): 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["user_story_name"].widget.attrs.update({
+            'required': '',
+            'type':'text',
+            'placeholder':'',
             'class':'input input-name',
             'id': 'name',
-            'name': 'backlog_id',
+            'name': 'nombre',
+            'readonly':'readonly',
+        })
+        self.fields["descripcion"].widget.attrs.update({
+            'placeholder':'',
+            'class':'input input-description',
+            'id': '',
+            'name': 'descripcion',
+            'readonly':'readonly',
+        })
+        self.fields["story_points"].widget.attrs.update({
+            'type':'number',
+            'placeholder':'',
+            'class':'input input-name',
+            'id': 'name',
+            'name': 'story_points',
+            'readonly':'readonly',
+        })
+        self.fields["id_prioridad"].widget.attrs.update({
+            'required': '',
+            'class':'input ',
+            'name': 'prioridad',
+            'readonly':'readonly',
+            'type':'number',
+
+        })
+        self.fields["id_estado"].widget.attrs.update({
+            'required': '',
+            'class':'input input-name',
+            'name': 'estado',
+            'readonly':'readonly',
         })
         self.fields["fecha_inicio"].widget.attrs.update({
             'type':'date',
@@ -328,6 +406,7 @@ class SprintModelForm(forms.ModelForm):
             'class':'input input-date',
             'id': 'name',
             'name': 'fecha_inicio',
+            'readonly':'readonly',
         })
         self.fields["fecha_fin"].widget.attrs.update({
             'type':'date',
@@ -335,24 +414,25 @@ class SprintModelForm(forms.ModelForm):
             'class':'input input-date',
             'id': 'name',
             'name': 'fecha_fin',
+            'readonly':'readonly',
         })
-        self.fields["fecha_inicio_real"].widget.attrs.update({
-            'type':'date',
+
+        self.fields["definicion_hecho"].widget.attrs.update({
+            'required': '',
             'placeholder':'',
-            'class':'input input-date',
+            'class':'input input-description',
             'id': 'name',
-            'name': 'fecha_inicio_real',
+            'name': 'definicion_hecho',
+            'readonly':'readonly',
         })
-        self.fields["fecha_fin_real"].widget.attrs.update({
-            'type':'date',
-            'placeholder':'',
-            'class':'input input-date',
-            'id': 'name',
-            'name': 'fecha_fin_real',
-        })
+
     class Meta:
-        model=Sprint
-        fields=["backlog_id","fecha_inicio","fecha_fin","fecha_inicio_real","fecha_fin_real"]
+        model=UserStory
+        fields=["user_story_name","descripcion","story_points","definicion_hecho","id_prioridad","id_estado","fecha_inicio","fecha_fin"]
 
-
-
+        widgets = {
+            # 'fecha_inicio': forms.DateInput(attrs={'type': 'date'}),
+            # 'fecha_fin': forms.DateInput(attrs={'type': 'date'}),
+            'definicion_hecho':forms.Textarea(attrs={'cols': 30, 'rows': 8}),
+            'descripcion':forms.Textarea(attrs={'cols': 30, 'rows': 10}),
+        }

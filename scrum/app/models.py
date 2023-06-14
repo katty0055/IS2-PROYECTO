@@ -120,6 +120,8 @@ class Proyecto(models.Model):
     fecha_inicio = models.DateField()
     fecha_fin = models.DateField(blank=True, null=True)
     estado = models.BooleanField(default=True)
+    fecha_inicio_real = models.DateField(blank=True, null=True)
+    fecha_fin_real = models.DateField(blank=True, null=True)
 
     def __str__(self):
         return self.backlog_id
@@ -136,6 +138,7 @@ class Sprint(models.Model):
     fecha_fin_real = models.DateField(blank=True, null=True)
     backlog_id = models.ForeignKey(Proyecto, on_delete=models.CASCADE, db_column='backlog_id')
     nombre= models.CharField(max_length=100, blank=True, null=True)
+    estado = models.BooleanField(default=True)
 
     #def __str__(self):
         #return self.backlog_id
@@ -150,6 +153,7 @@ class UsuarioProyecto(models.Model):
     id_user = models.ForeignKey(User, on_delete=models.CASCADE, db_column='id_user')
     id_group = models.ForeignKey(Group, on_delete=models.CASCADE, db_column='id_group')
     rol_usuario = models.CharField(max_length=50)
+    estado = models.BooleanField(default=True)
 
     def __str__(self):
         return self.id_user.username
@@ -194,7 +198,7 @@ class ComentariosUserStory(models.Model):
 class UserStory(models.Model):
     id_user_story = models.AutoField(primary_key=True)
     user_story_name = models.CharField(max_length=100)
-    id_usu_proy_rol = models.ForeignKey(UsuarioProyecto, on_delete=models.CASCADE, db_column='id_usu_proy_rol')
+    id_usu_proy_rol = models.ForeignKey(UsuarioProyecto, on_delete=models.SET_DEFAULT, default=None, null=True, db_column='id_usu_proy_rol')
     descripcion = models.CharField(max_length=200, blank=True, null=True)
     story_points = models.IntegerField(blank=True, null=True)
     definicion_hecho = models.CharField(max_length=200)

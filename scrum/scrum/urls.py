@@ -43,6 +43,12 @@ urlpatterns = [
     path('listar_proyectos/backlog/<str:pk>', views.backlog, name='backlog'),
     path('listar_proyectos/backlog/modificar_sprint_proyecto/<str:pk>/', views.modificar_sprint_proyecto, name='modificar_sprint_proyecto'),
     path('listar_proyectos/backlog/modificar_sprint_proyecto/<str:pk>/backlog/', views.modificar_sprint_proyecto, name='modificar_sprint_proyecto'),
+    path('listar_proyectos/backlog/eliminar_sprint/<str:pk>/', views.eliminar_sprint, name='eliminar_sprint'),
+    path('listar_proyectos/backlog/cancelar_us/<str:pk>/', views.eliminar_user_story, name='cancelar_us'),
+    path('listar_proyectos/backlog/seleccionar_us/<str:pk>/', views.asignar_us_a_sprint, name='seleccionar_us'),
+    path('listar_proyectos/backlog/iniciar_sprint/<str:pk>/<str:accion>/', views.iniciar_cerrar_sprint),
+    path('listar_proyectos/kanban/<str:pk>/', views.ver_kanban, name='kanban'),
+    path('listar_proyectos/burndown_chart/<str:pk>/', views.burndown_chart, name='burndown_chart'),
 ] 
 
 if settings.DEBUG:
