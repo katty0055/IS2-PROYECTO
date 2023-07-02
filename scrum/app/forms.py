@@ -1,5 +1,5 @@
 from django import forms
-from .models import Proyecto, UsuarioProyecto, UserStory, EstadosUserStory, Sprint
+from .models import Proyecto, UsuarioProyecto, UserStory, EstadosUserStory, Sprint, ComentariosUserStory
 from django.contrib.auth.models import User, Group
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
@@ -298,6 +298,7 @@ class UserStoryCreacionModelForm(forms.ModelForm):
             'id': 'name',
             'name': 'definicion_hecho',
         })
+       
 
         self.fields["id_estado"].queryset=EstadosUserStory.objects.filter(nombre_estado="ToDo") 
 
@@ -435,4 +436,21 @@ class UserStoryEliminarModelForm(forms.ModelForm):
             # 'fecha_fin': forms.DateInput(attrs={'type': 'date'}),
             'definicion_hecho':forms.Textarea(attrs={'cols': 30, 'rows': 8}),
             'descripcion':forms.Textarea(attrs={'cols': 30, 'rows': 10}),
+        }
+
+class ComentarioUserStoryModelForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["comentario"].widget.attrs.update({
+            'placeholder':'',
+            'class':'input input-name',
+            'id': 'name',
+            'name': 'comentario',
+            
+        })
+    class Meta:
+        model=ComentariosUserStory
+        fields=["comentario"]
+        widgets = {
+            'comentario':forms.Textarea(attrs={'cols': 30, 'rows': 10}),
         }

@@ -38,6 +38,7 @@ urlpatterns = [
     path('listar_proyectos/listar_sprint_proyecto/', views.listar_sprint_proyecto, name='listar_sprint_proyecto'),
     path('listar_proyectos/listar_sprint_proyecto/modificar_sprint_proyecto/<str:pk>/', views.modificar_sprint_proyecto, name='modificar_sprint_proyecto'),
     path('listar_proyectos/user_story/<str:pk>/', views.crear_user_story, name='crear_user_story'),
+    path('agregar_comentario/<str:id>/<str:pk>/', views.agregar_comentario_us, name='agregar_comentario_us'),
     path('listar_proyectos/listar_us/', views.listar_us, name='listar_us'),
     path('modificar_user_story/<int:pk>/', views.editar_user_story, name='modificar_user_story'),
     path('listar_proyectos/backlog/<str:pk>', views.backlog, name='backlog'),

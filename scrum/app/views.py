@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth.models import User, Group
 from django.utils import timezone
-from .forms import ProyectoModelForm,  UsuarioProyectoModelForm, UserModelForm, UserProfileModelForm, UserPasswordModelForm, UserStoryModelForm, UserStoryCreacionModelForm, SprintModelForm, UserStoryEliminarModelForm
+from .forms import ProyectoModelForm,  UsuarioProyectoModelForm, UserModelForm, UserProfileModelForm, UserPasswordModelForm, UserStoryModelForm, UserStoryCreacionModelForm, SprintModelForm, UserStoryEliminarModelForm, ComentarioUserStoryModelForm
 from django.db.models import Q
 from . import models
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -13,7 +13,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 import datetime
 from datetime import datetime,date
-from .models import UsuarioProyecto, Sprint
+from .models import UsuarioProyecto, Sprint, EstadosUserStory, ComentariosUserStory
 import matplotlib.pyplot
 import numpy
 import io
@@ -435,7 +435,7 @@ def modificar_sprint_proyecto(request,pk):
     }
     return render(request,"modificar_sprint_proyecto.html",context)
 
-def crear_user_story(request,pk):
+'''def crear_user_story(request,pk):
     # print(pk)
     form= UserStoryCreacionModelForm(request.POST or None)
     if form.is_valid():
@@ -445,6 +445,33 @@ def crear_user_story(request,pk):
         instance = form.save()
         form= UserStoryModelForm() #Blanquea el formulario
         messages.success(request,"US creado con exito")
+    context = {
+        "form": form,
+        "pk": pk,
+    }
+    return render(request,"crear_us.html",context)'''
+
+def crear_user_story(request,pk):
+    # print(pk)
+    form= UserStoryCreacionModelForm(request.POST or None)
+    proyecto=models.Proyecto.objects.get(backlog_id=pk)
+    fecha_inicio_proyecto=proyecto.fecha_inicio
+    fecha_fin_proyecto=proyecto.fecha_fin
+    if form.is_valid():
+        instance= form.save(commit=False)
+        id_usu_proy_rol=models.UsuarioProyecto.objects.filter(backlog=pk,id_user=request.user).first()
+        instance.id_usu_proy_rol=id_usu_proy_rol
+        #Fecha Inicio y Fecha Fin: estas fechas deben estar comprendidas dentro del periodo de duración previsto del proyecto.
+        if instance.fecha_inicio < fecha_inicio_proyecto or instance.fecha_inicio > fecha_fin_proyecto:
+            messages.error(request,"Favor ingrese una fecha de inicio dentro de la duracion del proyecto" +" "+str(fecha_inicio_proyecto)+"/"+str(fecha_fin_proyecto))
+        elif instance.fecha_fin > fecha_fin_proyecto or instance.fecha_fin < fecha_inicio_proyecto:
+             messages.error(request,"Favor ingrese una fecha de finalizacion dentro de la duracion del proyecto" +" "+str(fecha_inicio_proyecto)+"/"+str(fecha_fin_proyecto))
+        else:
+            
+            instance = form.save()
+            form= UserStoryModelForm() #Blanquea el formulario
+            messages.success(request,"US creado con exito")
+            return redirect('agregar_comentario_us', instance.id_user_story, pk) 
     context = {
         "form": form,
         "pk": pk,
@@ -515,6 +542,35 @@ def editar_user_story(request,pk):
     else:
         messages.error(request,"No es el Scrum Master o usuario asignado a la tarea")
         return redirect('backlog',pk=user_story.id_usu_proy_rol.backlog)
+
+def agregar_comentario_us(request, id, pk):
+    nombre = "Proyecto Scrum"
+    sprint = models.Sprint.objects.get(backlog_id_sprint= pk)
+    user_story=models.UserStory.objects.get(id_user_story=id)
+    #user_story=models.UserStory.objects.filter(backlog_id_sprint=pk, id_user_story=id)
+    form_comentario= ComentarioUserStoryModelForm(request.POST or None)
+    if form_comentario.is_valid():
+        print("valido=)")
+        instancia=form_comentario.save(commit=False)
+        #si es que no se ingreso ningun comentario
+        if instancia.comentario== None:
+            messages.error(request, 'No se ha asignado ningun comentario')
+        else:
+            comentarios=models.ComentariosUserStory.objects.all()
+            print(comentarios)
+            longitud=len(comentarios)
+            for comentario in comentarios:
+                if comentario.id_comentario==longitud:
+                    models.UserStory.objects.filter(id_user_story=id).update(id_comentario=comentario.id_comentario)
+                    instancia=form_comentario.save()
+            messages.success(request, 'Se ha guardado el comentario')
+    
+    context={ "form_comentario":form_comentario,
+        "user_story": user_story,
+        "nombre": nombre,
+        }
+    
+    return render(request, 'agregar_comentario.html', context) 
 
 def  listar_us(request):
     nombre = "Proyecto Scrum"
@@ -635,6 +691,16 @@ def iniciar_cerrar_sprint(request, pk, accion):
     print(type(pk))
     sprint=models.Sprint.objects.get(backlog_id_sprint=pk)
     sprints= models.Sprint.objects.filter(backlog_id=sprint.backlog_id)
+    us_sprint=models.UserStory.objects.filter(id_usu_proy_rol__backlog = sprint.backlog_id)
+    print("--")
+    print(us_sprint)
+    print("--")
+    #us_sprint=models.UserStory.objects.get(backlog_id_sprint=sprint.backlog_id_sprint)
+    #us_sprint2=models.UserStory.objects.filter(id_user_story=us_sprint.id_user_story)
+    #backlog_id_sprint=us_sprint.backlog_id_sprint,id_usu_proy_rol__backlog = sprint.backlog_id
+    #us_sprint= models.UserStory.objects.filter(backlog_id_sprint  = pk)
+    #estados=models.EstadosUserStory.objects.filter(id_estado)
+    
     activo_sprint=False
     cerrado=False
     for s in sprints:
@@ -654,15 +720,48 @@ def iniciar_cerrar_sprint(request, pk, accion):
     if activo_sprint:
         messages.error(request,"No se puede iniciar el Sprint porque otro esta activo")
     elif accion=="Iniciar":
-        messages.success(request,"Sprint Iniciado")
-        sprint.fecha_inicio_real= timezone.now()
-        sprint.save()
-        if sprints.exclude(fecha_inicio_real= None).count() == 1:
-            models.Proyecto.objects.filter(backlog_id=sprint.backlog_id).update(fecha_inicio_real=timezone.now())
+        #ids=models.UserStory.objects.values_list("backlog_id_sprint", flat=True).distinct()
+        #for i in ids:
+            #print(i)
+        bandera = 0
+        for lista in us_sprint:
+            if lista.backlog_id_sprint is not None and lista.backlog_id_sprint.backlog_id_sprint==sprint.backlog_id_sprint:
+                bandera += 1
+        #No se debe poder iniciar un Sprint cuyo Sprint Backlog no esté asociado a US caso contrario se inicia el Sprint
+        if bandera == 0:
+            messages.error(request,"No se puede iniciar el Sprint porque no esta asociado a un User Story")
+        else: 
+            messages.success(request,"Sprint Iniciado")
+            sprint.fecha_inicio_real= timezone.now()
+            sprint.save()
+            if sprints.exclude(fecha_inicio_real= None).count() == 1:
+                models.Proyecto.objects.filter(backlog_id=sprint.backlog_id).update(fecha_inicio_real=timezone.now())
+    
     if cerrado:
-        messages.success(request,"Sprint Cerrado")
+        print("-------------")
+        print("Hola Man")
+        print("--------------")
+        contador=0 #cuenta cuantos us No estan en Done
+        contador2=0 #cuenta cuantos us estan en Done
+        #verifica si todas las us de un sprint estan en Done
+        for lista in us_sprint:
+            if lista.id_estado == "Done" and lista.backlog_id_sprint.backlog_id_sprint == sprint.backlog_id_sprint:
+                contador2+=1
+            else:
+                contador+=1
+        #Una vez que todas las US de un Sprint están en Done, se puede cerrar el Sprint.
+        if contador2 > 0 and contador==0:
+            messages.success(request,"Sprint Cerrado")
+        elif contador2==0 and contador>0:
+            messages.error(request, "NO se puede cerrar el Sprint porque la(s) US del Sprint NO esta(n) en el estado Done")
+       
     elif accion=="Cerrar":
+        print("-------------")
+        print("Hola Men")
+        print("--------------")
+        #if accion=="Cerrar" and activo_sprint==False:
         messages.error(request,"No se puede cerrar el Sprint porque no esta activo")
+       
     return redirect('backlog',pk=sprint.backlog_id)
 
 
