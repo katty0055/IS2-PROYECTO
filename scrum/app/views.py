@@ -471,7 +471,7 @@ def crear_user_story(request,pk):
             instance = form.save()
             form= UserStoryModelForm() #Blanquea el formulario
             messages.success(request,"US creado con exito")
-            return redirect('agregar_comentario_us', instance.id_user_story, pk) 
+            return redirect('agregar_comentario_us', instance.id_user_story, pk)
     context = {
         "form": form,
         "pk": pk,
@@ -484,60 +484,74 @@ def editar_user_story(request,pk):
     sum=0
     nombre = "Proyecto Scrum"
     user_story=models.UserStory.objects.get(id_user_story=pk)
-    print(type(user_story.id_usu_proy_rol.id_user.username))
-    print(user_story.id_usu_proy_rol.id_group.name)
+    us=user_story.id_estado
+    form_comentario=ComentarioUserStoryModelForm(request.POST or None)
     id_proyecto=user_story.id_usu_proy_rol.backlog
-    # print(user_story.id_usu_proy_rol.backlog)
     usuarios=models.UsuarioProyecto.objects.filter(backlog= id_proyecto)
-    print(usuarios)
-    print(type(str(request.user)))
     if ((user_story.id_usu_proy_rol.id_user.username==str(request.user) and
         user_story.id_usu_proy_rol.id_group.name!="Creador")
         or usuarios.filter(
         id_user__username= str(request.user), id_group__name="Scrum Master").exists()):
-        print("entro")
-        if request.method == "POST" :
-            print("post")
+        if request.method == "POST":
             form = UserStoryModelForm(request.POST, instance = user_story)
             nueva_fecha_fin=request.POST.get('fecha_fin_nuevo')
-            nueva_fecha_inicio=request.POST.get('fecha_inicio_nuevo')
-            print(nueva_fecha_fin)
-            # nueva_fecha_fin= datetime.strptime(request.POST['fecha_fin_nuevo'], '%Y-%m-%d').date()
-            # nueva_fecha_inicio= datetime.strptime(request.POST['fecha_inicio_nuevo'], '%Y-%m-%d').date()      
+            nueva_fecha_inicio=request.POST.get('fecha_inicio_nuevo')  
             if form.is_valid():
-                        print("valido")
                         instance = form.save(commit=False)
+                        print(us)
+                        print(user_story.id_estado)
+                        print(instance.id_estado)
+                        if us!=instance.id_estado:
+                            print("validar usuario")
+                            print((str(instance.id_estado)))
+                            print((str(models.EstadosUserStory.objects.get(nombre_estado='Doing').id_estado)))
+                            if str(instance.id_estado)==str(models.EstadosUserStory.objects.get(nombre_estado='Doing'
+                                ).nombre_estado) or str(instance.id_estado)==str(models.EstadosUserStory.objects.get(nombre_estado='Done').nombre_estado):
+                               print("Que pasa")
+                               if user_story.id_usu_proy_rol.id_group.name=="Creador":
+                                   messages.error(request,'No hay usuario asignado, NO se puede cambiar el estado')
+                                   return redirect('modificar_user_story',pk=user_story.id_user_story)
+                                 
                         if nueva_fecha_inicio !="":
                             instance.fecha_inicio= nueva_fecha_inicio
-                            print(instance.fecha_inicio)
-                            print("hola")
                         if nueva_fecha_fin != "":
                             instance.fecha_fin= nueva_fecha_fin
-                            print("que")
-                            print(instance.fecha_fin)
                         messages.success(request, 'US Actualizado !!')
                         instance.save()
                         sprints= models.Sprint.objects.filter(backlog_id=id_proyecto)
                         ultima_sprint=sprints.filter(fecha_fin_real=None, estado=True)
-                        print(ultima_sprint.count())
                         if ultima_sprint.count()==1:
-                            print(ultima_sprint.get())
-                            print(user_story.backlog_id_sprint)
                             if user_story.backlog_id_sprint == ultima_sprint.get():
                                 cerrado==True
                             user_stories=models.UserStory.objects.filter(id_usu_proy_rol__backlog_id=id_proyecto)
                             for u in user_stories:
-                                print("for")
                                 if u.id_estado.descripcion =="ToDo" or u.id_estado.descripcion =="Doing":
                                     print("false")
                                     cerrado=False
                             if cerrado==True:
                                 print("cambio")
                                 models.Proyecto.objects.filter(backlog_id=id_proyecto).update(fecha_fin_real=timezone.now())
-                        return redirect('backlog',pk=user_story.id_usu_proy_rol.backlog)
+                        
+                        if form_comentario.is_valid():
+                            print("comentario valido=)")
+                            instancia=form_comentario.save(commit=False)
+                            #si es que no se ingreso ningun comentario
+                            print((instancia.comentario))
+                            if instancia.comentario== None:
+                                 messages.error(request, 'No se ha asignado ningun comentario')
+                            else:
+                                comentarios=models.ComentariosUserStory.objects.all()
+                                print(comentarios)
+                                longitud=len(comentarios)
+                                print(longitud)
+                                instancia=form_comentario.save()
+                                models.ComentariosUserStory.objects.filter(id_comentario=longitud+1).update(us=user_story)
+                                messages.success(request, 'Se ha guardado el comentario')
+                        return redirect('modificar_user_story',pk=user_story.id_user_story)
+                        #return redirect('backlog',pk=user_story.id_usu_proy_rol.backlog)
         else:  
             form = UserStoryModelForm(instance = user_story)
-        context = {"form":form, "us": user_story}       
+        context = {"form":form, "us": user_story, "form_comentario": form_comentario}       
         return render(request,'modificar_user_story.html',context)
     else:
         messages.error(request,"No es el Scrum Master o usuario asignado a la tarea")
@@ -545,7 +559,7 @@ def editar_user_story(request,pk):
 
 def agregar_comentario_us(request, id, pk):
     nombre = "Proyecto Scrum"
-    sprint = models.Sprint.objects.get(backlog_id_sprint= pk)
+    #sprint = models.Sprint.objects.get(backlog_id_sprint= pk)
     user_story=models.UserStory.objects.get(id_user_story=id)
     #user_story=models.UserStory.objects.filter(backlog_id_sprint=pk, id_user_story=id)
     form_comentario= ComentarioUserStoryModelForm(request.POST or None)
@@ -553,16 +567,17 @@ def agregar_comentario_us(request, id, pk):
         print("valido=)")
         instancia=form_comentario.save(commit=False)
         #si es que no se ingreso ningun comentario
+        print((instancia.comentario))
         if instancia.comentario== None:
             messages.error(request, 'No se ha asignado ningun comentario')
         else:
             comentarios=models.ComentariosUserStory.objects.all()
             print(comentarios)
             longitud=len(comentarios)
-            for comentario in comentarios:
-                if comentario.id_comentario==longitud:
-                    models.UserStory.objects.filter(id_user_story=id).update(id_comentario=comentario.id_comentario)
-                    instancia=form_comentario.save()
+            print(longitud)
+            instancia=form_comentario.save()
+            models.ComentariosUserStory.objects.filter(id_comentario=longitud+1).update(us=user_story)
+                    
             messages.success(request, 'Se ha guardado el comentario')
     
     context={ "form_comentario":form_comentario,

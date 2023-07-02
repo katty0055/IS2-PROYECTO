@@ -187,15 +187,6 @@ class EstadosUserStory(models.Model):
         db_table = 'estados_user_story'
 
 
-class ComentariosUserStory(models.Model):
-    id_comentario = models.AutoField(primary_key=True)
-    comentario = models.CharField(max_length=500, blank=True, null=True)
-
-    
-
-    class Meta:
-        db_table = 'comentarios_user_story'
-
 
 class UserStory(models.Model):
     id_user_story = models.AutoField(primary_key=True)
@@ -209,9 +200,18 @@ class UserStory(models.Model):
     id_estado = models.ForeignKey(EstadosUserStory, on_delete=models.CASCADE, db_column='id_estado')
     backlog_id_sprint = models.ForeignKey(Sprint, on_delete=models.CASCADE, db_column='backlog_id_sprint', blank=True, null=True)
     id_prioridad = models.ForeignKey(PrioridadUserStory, on_delete=models.CASCADE, db_column='id_prioridad', blank=True, null=True)
-    id_comentario = models.ForeignKey(ComentariosUserStory, on_delete=models.CASCADE, db_column='id_comentario', blank=True, null=True)
+    #id_comentario = models.ForeignKey(ComentariosUserStory, on_delete=models.CASCADE, db_column='id_comentario', blank=True, null=True)
     #usuario = models.CharField(max_length=100)
     
    
     class Meta:
         db_table = 'user_story'
+
+class ComentariosUserStory(models.Model):
+    id_comentario = models.AutoField(primary_key=True)
+    comentario = models.CharField(max_length=500, blank=True, null=True)
+    us = models.ForeignKey(UserStory, on_delete=models.CASCADE, db_column='id_user_story', blank=True, null=True)
+    
+
+    class Meta:
+        db_table = 'comentarios_user_story'

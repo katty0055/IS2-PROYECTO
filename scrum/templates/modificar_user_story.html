@@ -437,7 +437,9 @@
                         
                         <label for="estado" class="label" >Estado</label>    
                         {{form.id_estado}}
-                        
+
+                        <label class="label">Comentario:</label>
+                        {{form_comentario.comentario}}
                         <!-- <label class="label">Fecha Inicio</label>
                         {{form.fecha_inicio}} 
                     
@@ -475,7 +477,23 @@
 <!--Fin de Ventana Modal-->
                     </form>
                         
-                            
+                    <!--div class="row"> 
+                        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                            <h2 class="tittle">Agregar comentario</h2>
+                            <div class="card">
+                                <div class="card-body">
+                                    <form action="" method="POST" class="form" id="comentarios">{% csrf_token %}
+                                        <div class="form-group">
+                                            <label class="label">Comentario:</label>
+                                            {{form_comentario.comentario}}
+                                        </div>
+                                        <input type="submit" value="Guardar" class="primary-button" form="comentarios" name="miboton"></input><br/><br/>
+                                    </form>  
+                                </div>
+                            </div>
+                        </div>
+                    </div-->    
+                
 
                     <div class="row">  
                     </div> 
