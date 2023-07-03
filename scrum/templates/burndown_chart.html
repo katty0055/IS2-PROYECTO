@@ -128,14 +128,16 @@
         }
         .contenido{
           
-
+           
             grid-column-start: 1;
             grid-column-end:3; 
             grid-row-start: 3;
             grid-row-end:4;
             display: flex;
             align-items:center;
-            justify-content:center;
+            {% comment %} justify-content:center; {% endcomment %}
+            flex-direction:column;
+            gap: 5%;
         }
         .tabla{
             display:flex;
@@ -217,6 +219,38 @@
             font-size: calc(0.7vh + 0.7vw);
             margin:auto;
         }
+        .img-b{
+            max-width:60%;
+            height:auto;
+        }
+        .icono{
+            width:30%;
+            height:auto;
+            margin:1%;
+        }
+        .search{
+            display: flex;
+            align-items:Center;
+            margin:10%;
+            flex-direction:row;
+        }
+        .button{
+            background-color: var(--hospital-green) ;
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+            border: none;
+            color: var(--white);
+            width: 5vw; /*para que sea lo mas grande posible */
+            cursor: pointer; /* cursor arriba, aparece una mano */
+            font-size: calc(0.4vh + 0.4vw);     
+            font-weight: bold;
+            height: 3vh;
+            {% comment %} margin: 1%; {% endcomment %}
+        }
+        select{
+            width:15vw;
+            height:3vh;
+        }
 
         @media (max-width:640px) {
             
@@ -279,7 +313,27 @@
             <h2 > Burndown_chart</h2>        
         </div>
         <div class="contenido">
-            <img src="data:image/png;base64,{{data}}" height="900" width="900">
+            
+            <div >
+                <form action="" method="post" id="asignado/{{item.backlog_id_sprint}}" class="search">
+                    {% csrf_token %}
+                    <select name="sprint" >
+                    <option value="---">---</option>
+                    {%for item in sprints%} 
+                    <option value={{item.backlog_id_sprint}} >{{item.nombre}}</option>
+                    {%endfor%}      
+                    </select>
+                    {% comment %} <input name="id" value="{{item.backlog_id_sprint}}" hidden> {% endcomment %}
+                    <button type="submit" name="miboton" class="button" form="asignado/{{item.backlog_id_sprint}}"><img rel="icono" src="{% static '/img/search.png' %}" class="icono"></button>
+                </form>
+
+            </div>
+            {% if messages %}
+            {% for message in messages %}
+                <span id="errorMessage" align="center"> {{message}}</span><br><br>
+            {% endfor %}
+            {% endif %} 
+            <img src="data:image/png;base64,{{data}}" class="img-b">
              
         </div>
     </div>

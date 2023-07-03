@@ -18,6 +18,7 @@ import matplotlib.pyplot
 import numpy
 import io
 import urllib, base64
+import pandas
 
 # from .forms import SelectUserModelForm
 
@@ -162,7 +163,8 @@ def agregar_usuario_proyecto(request,pk):
         if lista_usuarios.count()==10:
             messages.error (request, "Miembros llenos, no es posible asociar")
         else:  
-            usuarios_seleccionados=models.UsuarioProyecto.objects.filter(backlog_id=pk).exclude(id_group=models.Group.objects.get(name="Creador"))
+            usuarios_seleccionados=models.UsuarioProyecto.objects.filter(backlog_id=pk).exclude(
+                id_group=models.Group.objects.get(name="Creador"))
             print(usuarios_seleccionados.filter(id_user=instancia.id_user))
             if usuarios_seleccionados.filter(id_user=instancia.id_user).exists(): 
                 messages.error (request, "El usuario ya forma parte de este proyecto, no es posible asociar")     
@@ -187,6 +189,7 @@ def agregar_usuario_proyecto(request,pk):
 def modificar_proyecto(request,pk): 
     nombre = "Proyecto Scrum"
     usuarios_eliminados=request.POST.getlist('id_user')
+    print(usuarios_eliminados)
     lista_usuarios= models.UsuarioProyecto.objects.filter(backlog_id= pk).exclude(id_group=models.Group.objects.get(name="Creador"))
     form_usuario=UsuarioProyectoModelForm(request.POST or None)
     scrum_master= models.Group.objects.get(name="Scrum Master") 
@@ -215,7 +218,7 @@ def modificar_proyecto(request,pk):
                 messages.error (request, "Miembros llenos, no es posible asociar")
             else:  
                 usuarios_seleccionados=models.UsuarioProyecto.objects.filter(backlog_id=pk).exclude(id_group=models.Group.objects.get(name="Creador"))
-                print(usuarios_seleccionados.filter(id_user=instancia.id_user))
+                
                 if usuarios_seleccionados.filter(id_user=instancia.id_user).exists(): 
                     messages.error (request, "El usuario ya forma parte de este proyecto, no es posible asociar")     
                 elif (lista_usuarios.filter(id_group=product_owner.id).count()==1) and (str(instancia.id_group)==product_owner.name):   
@@ -226,13 +229,15 @@ def modificar_proyecto(request,pk):
                     instancia=form_usuario.save()
             return redirect('modificar_proyecto',pk=pk)
         for u in usuarios_eliminados:
-            tareas=models.UserStory.objects.filter(id_usu_proy_rol__backlog=pk, id_usu_proy_rol=u)
+            print(u)
+            tareas=models.UserStory.objects.filter(id_usu_proy_rol=u,id_usu_proy_rol__backlog=pk)
             print(tareas)
+           
             if len(tareas)>0:
-                print(models.UsuarioProyecto.objects.filter(backlog_id= pk,id_group=models.Group.objects.get(name="Creador")))
+                
                 creador=models.UsuarioProyecto.objects.get(backlog_id= pk,id_group=models.Group.objects.get(name="Creador"))
                 tareas.update(id_usu_proy_rol=creador)
-                lista_usuarios.filter(id_usu_proy_rol=u).delete() 
+            lista_usuarios.filter(id_usu_proy_rol=u).delete() 
               
                    
 
@@ -487,6 +492,9 @@ def editar_user_story(request,pk):
     us=user_story.id_estado
     form_comentario=ComentarioUserStoryModelForm(request.POST or None)
     id_proyecto=user_story.id_usu_proy_rol.backlog
+    proyecto=models.Proyecto.objects.get(backlog_id=id_proyecto)
+    fecha_inicio_proyecto=proyecto.fecha_inicio
+    fecha_fin_proyecto=proyecto.fecha_fin
     usuarios=models.UsuarioProyecto.objects.filter(backlog= id_proyecto)
     if ((user_story.id_usu_proy_rol.id_user.username==str(request.user) and
         user_story.id_usu_proy_rol.id_group.name!="Creador")
@@ -511,43 +519,54 @@ def editar_user_story(request,pk):
                                if user_story.id_usu_proy_rol.id_group.name=="Creador":
                                    messages.error(request,'No hay usuario asignado, NO se puede cambiar el estado')
                                    return redirect('modificar_user_story',pk=user_story.id_user_story)
+                            if instance.id_estado==models.EstadosUserStory.objects.get(descripcion="Done"):
+                                instance.fecha_done=timezone.now()
+                      
+                        
                                  
                         if nueva_fecha_inicio !="":
-                            instance.fecha_inicio= nueva_fecha_inicio
+                            instance.fecha_inicio= datetime.strptime(nueva_fecha_inicio, '%Y-%m-%d').date()
                         if nueva_fecha_fin != "":
-                            instance.fecha_fin= nueva_fecha_fin
-                        messages.success(request, 'US Actualizado !!')
-                        instance.save()
-                        sprints= models.Sprint.objects.filter(backlog_id=id_proyecto)
-                        ultima_sprint=sprints.filter(fecha_fin_real=None, estado=True)
-                        if ultima_sprint.count()==1:
-                            if user_story.backlog_id_sprint == ultima_sprint.get():
-                                cerrado==True
-                            user_stories=models.UserStory.objects.filter(id_usu_proy_rol__backlog_id=id_proyecto)
-                            for u in user_stories:
-                                if u.id_estado.descripcion =="ToDo" or u.id_estado.descripcion =="Doing":
-                                    print("false")
-                                    cerrado=False
-                            if cerrado==True:
-                                print("cambio")
-                                models.Proyecto.objects.filter(backlog_id=id_proyecto).update(fecha_fin_real=timezone.now())
-                        
-                        if form_comentario.is_valid():
-                            print("comentario valido=)")
-                            instancia=form_comentario.save(commit=False)
-                            #si es que no se ingreso ningun comentario
-                            print((instancia.comentario))
-                            if instancia.comentario== None:
-                                 messages.error(request, 'No se ha asignado ningun comentario')
-                            else:
-                                comentarios=models.ComentariosUserStory.objects.all()
-                                print(comentarios)
-                                longitud=len(comentarios)
-                                print(longitud)
-                                instancia=form_comentario.save()
-                                models.ComentariosUserStory.objects.filter(id_comentario=longitud+1).update(us=user_story)
-                                messages.success(request, 'Se ha guardado el comentario')
-                        return redirect('modificar_user_story',pk=user_story.id_user_story)
+                            instance.fecha_fin= datetime.strptime(nueva_fecha_fin, '%Y-%m-%d').date()       
+                         #Fecha Inicio y Fecha Fin: estas fechas deben estar comprendidas dentro del periodo de duración previsto del proyecto.
+                        if instance.fecha_inicio < fecha_inicio_proyecto or instance.fecha_inicio > fecha_fin_proyecto:
+                            messages.error(request,"Favor ingrese una fecha de inicio dentro de la duracion del proyecto" +" "+str(fecha_inicio_proyecto)+"/"+str(fecha_fin_proyecto))
+                        elif instance.fecha_fin > fecha_fin_proyecto or instance.fecha_fin < fecha_inicio_proyecto:
+                            messages.error(request,"Favor ingrese una fecha de finalizacion dentro de la duracion del proyecto" +" "+str(fecha_inicio_proyecto)+"/"+str(fecha_fin_proyecto))
+                        else:
+                            messages.success(request, 'US Actualizado !!')
+                            instance.save()
+                            sprints= models.Sprint.objects.filter(backlog_id=id_proyecto)
+                            ultima_sprint=sprints.filter(fecha_fin_real=None, estado=True)
+                            if ultima_sprint.count()==1:
+                                if user_story.backlog_id_sprint == ultima_sprint.get():
+                                    cerrado==True
+                                user_stories=models.UserStory.objects.filter(id_usu_proy_rol__backlog_id=id_proyecto)
+                                for u in user_stories:
+                                    if u.id_estado.descripcion =="ToDo" or u.id_estado.descripcion =="Doing":
+                                        print("false")
+                                        cerrado=False
+                                if cerrado==True:
+                                    print("cambio")
+                                    ultima_sprint.update(fecha_fin_real=timezone.now())
+                                    models.Proyecto.objects.filter(backlog_id=id_proyecto).update(fecha_fin_real=timezone.now())
+                            
+                            if form_comentario.is_valid():
+                                print("comentario valido=)")
+                                instancia=form_comentario.save(commit=False)
+                                #si es que no se ingreso ningun comentario
+                                print((instancia.comentario))
+                                if instancia.comentario== None:
+                                    messages.error(request, 'No se ha asignado ningun comentario')
+                                else:
+                                    comentarios=models.ComentariosUserStory.objects.all()
+                                    print(comentarios)
+                                    longitud=len(comentarios)
+                                    print(longitud)
+                                    instancia=form_comentario.save()
+                                    models.ComentariosUserStory.objects.filter(id_comentario=longitud+1).update(us=user_story)
+                                    messages.success(request, 'Se ha guardado el comentario')
+                            return redirect('modificar_user_story',pk=user_story.id_user_story)
                         #return redirect('backlog',pk=user_story.id_usu_proy_rol.backlog)
         else:  
             form = UserStoryModelForm(instance = user_story)
@@ -608,7 +627,7 @@ def backlog(request, pk):
     print(pk)
     
     nombre = "Proyecto Scrum"
-    us = models.UserStory.objects.filter(id_usu_proy_rol__backlog=pk)
+    us = models.UserStory.objects.filter(id_usu_proy_rol__backlog=pk).exclude(id_estado=models.EstadosUserStory.objects.get(nombre_estado="Cancelled"))
     sprint = models.Sprint.objects.filter(backlog_id=pk,estado=True)
     user= models.UsuarioProyecto.objects.filter(backlog_id=pk).exclude(id_group__name="Creador")
     if request.method == "POST":
@@ -652,6 +671,16 @@ def eliminar_sprint(request, pk):
     if request.method == 'POST':
         #cambia el estado del proyecto de True a False
         #models.Proyecto.objects.filter(backlog_id= pk).update(estado=False)
+        us=models.UserStory.objects.filter(backlog_id_sprint= pk)
+        for u in us:
+            if u.id_estado.descripcion =="Done" or u.id_estado.descripcion =="Doing" :
+                messages.error(request, 'El sprint no puede ser borrado porque tiene US en estado Done o Doing')
+                return redirect('eliminar_sprint',pk=pk)
+        for u in us:
+            if u.id_estado.descripcion=="ToDo":
+                us_actualizar= models.UserStory.objects.get(id_user_story=u.id_user_story)
+                us_actualizar.backlog_id_sprint= None
+                us_actualizar.save()
         sprint.estado = False
         sprint.save()
         messages.success(request, 'El sprint ha sido borrado con exito')
@@ -683,7 +712,7 @@ def asignar_us_a_sprint(request,pk):
     nombre = "Proyecto Scrum"
     sprint= models.Sprint.objects.get(backlog_id_sprint= pk) 
     us_seleccionados=request.POST.getlist('id_us')
-    lista_user_story= models.UserStory.objects.filter(id_usu_proy_rol__backlog = sprint.backlog_id, backlog_id_sprint=None)
+    lista_user_story= models.UserStory.objects.filter(id_usu_proy_rol__backlog = sprint.backlog_id, backlog_id_sprint=None).exclude(id_estado=models.EstadosUserStory.objects.get(nombre_estado="Cancelled"))
     us_sprint= models.UserStory.objects.filter(backlog_id_sprint  = pk)
     if request.method=='POST':
         if 'miboton' in request.POST:
@@ -703,6 +732,7 @@ def asignar_us_a_sprint(request,pk):
     return render(request,'asignar_us.html', context)
 
 def iniciar_cerrar_sprint(request, pk, accion):
+    llave=0
     print(type(pk))
     sprint=models.Sprint.objects.get(backlog_id_sprint=pk)
     sprints= models.Sprint.objects.filter(backlog_id=sprint.backlog_id)
@@ -768,6 +798,8 @@ def iniciar_cerrar_sprint(request, pk, accion):
         if contador2 > 0 and contador==0:
             messages.success(request,"Sprint Cerrado")
         elif contador2==0 and contador>0:
+            sprint.fecha_fin_real=None
+            sprint.save()
             messages.error(request, "NO se puede cerrar el Sprint porque la(s) US del Sprint NO esta(n) en el estado Done")
        
     elif accion=="Cerrar":
@@ -776,6 +808,13 @@ def iniciar_cerrar_sprint(request, pk, accion):
         print("--------------")
         #if accion=="Cerrar" and activo_sprint==False:
         messages.error(request,"No se puede cerrar el Sprint porque no esta activo")
+
+    for item in sprints:
+        if item.fecha_fin_real ==None:
+            llave=1
+    if llave==0:
+        proy=models.Proyecto.objects.filter(backlog_id=sprint.backlog_id).update(fecha_fin_real=timezone.now())
+     
        
     return redirect('backlog',pk=sprint.backlog_id)
 
@@ -798,36 +837,95 @@ def ver_kanban(request,pk):
     return render(request,'kanban.html', context)
 
 def burndown_chart(request,pk):
+    matplotlib.use('Agg')
+    matplotlib.pyplot.cla()
+    puntos=0
+    porcion=0
+    lista_x=[]
+    lista_y=[]
+    total_puntos=0
+    total_puntos_logrados=0
+    uri=""
     nombre = "Proyecto Scrum"
-    # matplotlib.pyplot.style.use('_mpl-gallery')
+    sprints=models.Sprint.objects.filter(backlog_id=pk, estado=True)
+    if request.method == "POST":
+        id_sprint=request.POST.get('sprint')
+        print(id_sprint)
+        if id_sprint != "---":
+            sprint=sprints.get(backlog_id_sprint=id_sprint)
+            print(sprint)
+            user_stories=models.UserStory.objects.filter(backlog_id_sprint=id_sprint).order_by('fecha_done')
+            print(user_stories)
+            fecha_inicio=str(sprint.fecha_inicio)
+            fecha_fin=str(sprint.fecha_fin)
+            lista_x.append([fecha_inicio,fecha_inicio])
+            lista_y.append([0,0])
+            for us in user_stories:
+                total_puntos+= us.story_points
+            print(type((sprint.fecha_fin-sprint.fecha_inicio).days))
+            print(total_puntos)
+            print((sprint.fecha_fin-sprint.fecha_inicio).days )
+            porcion=total_puntos/(sprint.fecha_fin-sprint.fecha_inicio).days  
+            print(porcion) 
+            for us in user_stories:
+                puntos= porcion * (us.fecha_done-sprint.fecha_inicio).days 
+                print(puntos)
+                if us.id_estado.descripcion=="Done":
+                    total_puntos_logrados+=us.story_points
+                    print(us.fecha_done)
+                    lista_x.append([us.fecha_done,us.fecha_done])
+                    lista_y.append([puntos,lista_y[-1][1]])
+                    lista_x.append([us.fecha_done,us.fecha_done])
+                    lista_y.append([puntos,total_puntos_logrados])
+            print(timezone.now().date())
+            # if timezone.now().date() > sprint.fecha_fin:
+            #     lista_x.append([fecha_fin,fecha_fin])
+            # else:
+            #     lista_x.append([fecha_fin,timezone.now().date()])
 
-    # # make data
-    # numpy.random.seed(3)
-    # x = 0.5 + numpy.arange(8)
-    # y = numpy.random.uniform(2, 7, len(x))
+            # lista_y.append([total_puntos,total_puntos_logrados])
+            
+            
+            print(lista_x)
+            print(lista_y)
+            x=numpy.array(
+                lista_x,
+                dtype='datetime64')
+            y=numpy.array(
+                lista_y)
+            # x = numpy.array(
+            # [[1,1],
+            # [15,15]]) #dias
+            # y = numpy.array(
+            # [[0,0],
+            #  [total_puntos,total_puntos_logrados]
+            # ]) #puntos [50,9],
+            #x e y son las matrices que se usan para graficar,
+            # cada columna representa una linea. Como en este
+            #ejemplo tenemos dos columnas tenemos dos lineas pintadas
+            #cada elemento de la matriz x se corresponde con la matriz y
+            #ejemplo: (1,0), (8,50), (15,100) para la primera linea
+            matplotlib.pyplot.plot(x,y)
+            #para graficar en una imagen
+            fig= matplotlib.pyplot.gcf()
+            buf=io.BytesIO()
+            fig.savefig(buf, format='png', bbox_inches='tight')
+            fig.set_size_inches(14,6)
+            buf.seek(0)
+            string = base64.b64encode(buf.read())
+            uri=urllib.parse.quote(string)
+        else:
+            messages.error(request,"Seleccione un sprint")
+            redirect('burndown_chart',pk=pk)
 
-    # # plot
-    # fig, ax = matplotlib.pyplot.subplots()
-
-    # ax.step(x, y, linewidth=2.5)
-
-    # ax.set(xlim=(0, 8), xticks=numpy.arange(1, 8),
-    #     ylim=(0, 8), yticks=numpy.arange(1, 8))
-
-    # matplotlib.pyplot.show()
-    x = numpy.arange(0, 5, 1)
-    y = numpy.sin(x)
-    matplotlib.pyplot.plot(x, y)
-    fig= matplotlib.pyplot.gcf()
-    buf=io.BytesIO()
-    fig.savefig(buf, format='png')
-    buf.seek(0)
-    string = base64.b64encode(buf.read())
-    uri=urllib.parse.quote(string)
+   
+   
+   
+    
     context={           
         "nombre": nombre,  
         "data":uri,
+        "sprints": sprints,
             
     }           
     return render(request,'burndown_chart.html', context)
-

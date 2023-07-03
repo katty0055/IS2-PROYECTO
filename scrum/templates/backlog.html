@@ -423,8 +423,8 @@
                     <table class="tabla">
                         <thead>
                             <tr>
-                                {% comment %} <th class="columnas">ID Proyecto</th>
-                                <th class="columnas">ID Sprint</th> {% endcomment %}
+                                {% comment %} <th class="columnas">ID Proyecto</th>{% endcomment %}
+                                <th class="columnas">ID Sprint</th> 
                                 <th class="columnas">Nombre</th>
                                 <th class="columnas">Fecha Inicio</th>
                                 <th class="columnas">Fecha Fin</th>
@@ -439,8 +439,8 @@
                             {% for item in sprint %}
                             <tr>        
                                 {% comment %} <td class="fila">{{forloop.counter}}</td> {% endcomment %}
-                                {% comment %} <td class="fila">{{item.backlog_id}}</td>
-                                <td class="fila">{{item.backlog_id_sprint}}</td> {% endcomment %}
+                                {% comment %} <td class="fila">{{item.backlog_id}}</td>{% endcomment %}
+                                <td class="fila">{{item.backlog_id_sprint}}</td> 
                                 <td class="filas">{{item.nombre}}</td>
                                 <td class="filas">{{item.fecha_inicio}}</td>
                                 <td class="filas">{{item.fecha_fin}}</td>

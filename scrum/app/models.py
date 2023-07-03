@@ -192,7 +192,7 @@ class UserStory(models.Model):
     id_user_story = models.AutoField(primary_key=True)
     user_story_name = models.CharField(max_length=100)
     id_usu_proy_rol = models.ForeignKey(UsuarioProyecto, on_delete=models.SET_DEFAULT, default=None, null=True, db_column='id_usu_proy_rol')
-    descripcion = models.CharField(max_length=200, blank=True, null=True)
+    descripcion = models.CharField(max_length=200, blank=True, null=True, default="Yo como [perfil_usuario] necesito [funcionalidad] para [objetivo de la funcionalidad])")
     story_points = models.IntegerField(blank=True, null=True)
     definicion_hecho = models.CharField(max_length=200)
     fecha_inicio = models.DateField(blank=True, null=True)
@@ -200,8 +200,8 @@ class UserStory(models.Model):
     id_estado = models.ForeignKey(EstadosUserStory, on_delete=models.CASCADE, db_column='id_estado')
     backlog_id_sprint = models.ForeignKey(Sprint, on_delete=models.CASCADE, db_column='backlog_id_sprint', blank=True, null=True)
     id_prioridad = models.ForeignKey(PrioridadUserStory, on_delete=models.CASCADE, db_column='id_prioridad', blank=True, null=True)
-    #id_comentario = models.ForeignKey(ComentariosUserStory, on_delete=models.CASCADE, db_column='id_comentario', blank=True, null=True)
-    #usuario = models.CharField(max_length=100)
+    fecha_done = models.DateField(blank=True, null=True)
+    
     
    
     class Meta:

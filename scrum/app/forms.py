@@ -54,6 +54,7 @@ class UsuarioProyectoModelForm(forms.ModelForm):
             'class':'desplegable '
         })
         self.fields["id_group"].queryset=Group.objects.exclude(name="Creador")
+        self.fields["id_user"].queryset=User.objects.exclude(is_active=False)
 
     class Meta:
         model=UsuarioProyecto
@@ -284,6 +285,7 @@ class UserStoryCreacionModelForm(forms.ModelForm):
             'name': 'fecha_inicio',
         })
         self.fields["fecha_fin"].widget.attrs.update({
+            'required': '',
             'type':'date',
             'placeholder':'',
             'class':'input input-date',
