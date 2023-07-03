@@ -733,81 +733,86 @@ def asignar_us_a_sprint(request,pk):
 
 def iniciar_cerrar_sprint(request, pk, accion):
     llave=0
-    print(type(pk))
     sprint=models.Sprint.objects.get(backlog_id_sprint=pk)
+    #todos los sprints del proyecto
     sprints= models.Sprint.objects.filter(backlog_id=sprint.backlog_id)
-    us_sprint=models.UserStory.objects.filter(id_usu_proy_rol__backlog = sprint.backlog_id)
-    print("--")
-    print(us_sprint)
-    print("--")
-    #us_sprint=models.UserStory.objects.get(backlog_id_sprint=sprint.backlog_id_sprint)
-    #us_sprint2=models.UserStory.objects.filter(id_user_story=us_sprint.id_user_story)
-    #backlog_id_sprint=us_sprint.backlog_id_sprint,id_usu_proy_rol__backlog = sprint.backlog_id
-    #us_sprint= models.UserStory.objects.filter(backlog_id_sprint  = pk)
-    #estados=models.EstadosUserStory.objects.filter(id_estado)
-    
+    us_sprint=models.UserStory.objects.filter(id_usu_proy_rol__backlog = sprint.backlog_id)   
     activo_sprint=False
     cerrado=False
+    clave=0
+    ids= models.UserStory.objects.filter(backlog_id_sprint=sprint.backlog_id_sprint)
     for s in sprints:
-        print(type(s.backlog_id_sprint))
         if s.fecha_inicio_real !=None:
-            print("fecha_inicio activo")
+            print("distinto de none")  
             if s.fecha_fin_real==None and accion=="Iniciar":
-                print("que")
                 activo_sprint=True
             elif accion=="Cerrar" and s.backlog_id_sprint==int(pk):        
                 print("hola")       
-                sprint.fecha_fin_real= timezone.now()
-                sprint.save()
-                cerrado=True
-     
+                for item in ids:
+                    if item.id_estado.descripcion== "ToDo" or item.id_estado.descripcion== "Doing":
+                        clave+=1
+                if clave==0:
+                    sprint.fecha_fin_real= timezone.now()
+                    sprint.save()
+                    cerrado=True
+                else:
+                     messages.error(request, "NO se puede cerrar el Sprint porque la(s) US del Sprint NO esta(n) en el estado Done")
 
     if activo_sprint:
         messages.error(request,"No se puede iniciar el Sprint porque otro esta activo")
     elif accion=="Iniciar":
-        #ids=models.UserStory.objects.values_list("backlog_id_sprint", flat=True).distinct()
-        #for i in ids:
-            #print(i)
-        bandera = 0
-        for lista in us_sprint:
-            if lista.backlog_id_sprint is not None and lista.backlog_id_sprint.backlog_id_sprint==sprint.backlog_id_sprint:
-                bandera += 1
-        #No se debe poder iniciar un Sprint cuyo Sprint Backlog no esté asociado a US caso contrario se inicia el Sprint
-        if bandera == 0:
+       
+    #     #ids=models.UserStory.objects.values_list("backlog_id_sprint", flat=True).distinct()
+    #     #for i in ids:
+    #         #print(i)
+    #     bandera = 0
+    #     for lista in us_sprint:
+    #         if lista.backlog_id_sprint is not None and lista.backlog_id_sprint.backlog_id_sprint==sprint.backlog_id_sprint:
+    #             bandera += 1
+    #     #No se debe poder iniciar un Sprint cuyo Sprint Backlog no esté asociado a US caso contrario se inicia el Sprint
+        if len(ids) == 0:
             messages.error(request,"No se puede iniciar el Sprint porque no esta asociado a un User Story")
         else: 
             messages.success(request,"Sprint Iniciado")
             sprint.fecha_inicio_real= timezone.now()
             sprint.save()
-            if sprints.exclude(fecha_inicio_real= None).count() == 1:
-                models.Proyecto.objects.filter(backlog_id=sprint.backlog_id).update(fecha_inicio_real=timezone.now())
+    #         if sprints.exclude(fecha_inicio_real= None).count() == 1:
+    #             models.Proyecto.objects.filter(backlog_id=sprint.backlog_id).update(fecha_inicio_real=timezone.now())
     
     if cerrado:
         print("-------------")
         print("Hola Man")
         print("--------------")
-        contador=0 #cuenta cuantos us No estan en Done
-        contador2=0 #cuenta cuantos us estan en Done
-        #verifica si todas las us de un sprint estan en Done
-        for lista in us_sprint:
-            if lista.id_estado == "Done" and lista.backlog_id_sprint.backlog_id_sprint == sprint.backlog_id_sprint:
-                contador2+=1
-            else:
-                contador+=1
-        #Una vez que todas las US de un Sprint están en Done, se puede cerrar el Sprint.
-        if contador2 > 0 and contador==0:
-            messages.success(request,"Sprint Cerrado")
-        elif contador2==0 and contador>0:
-            sprint.fecha_fin_real=None
-            sprint.save()
-            messages.error(request, "NO se puede cerrar el Sprint porque la(s) US del Sprint NO esta(n) en el estado Done")
+    #     contador=0 #cuenta cuantos us No estan en Done
+    #     contador2=0 #cuenta cuantos us estan en Done
+    #     #verifica si todas las us de un sprint estan en Done
+    #     for lista in us_sprint:
+    #         print(lista.id_estado )
+    #         print(lista.backlog_id_sprint)
+    #         print(sprint.backlog_id_sprint)
+    #         if lista.id_estado == "Done" and lista.backlog_id_sprint == sprint.backlog_id_sprint:
+    #             contador2+=1
+    #             print("@@@")
+    #             print(contador2)
+    #         else:
+    #             contador+=1
+    #             print(contador)
+    #     #Una vez que todas las US de un Sprint están en Done, se puede cerrar el Sprint.
+    #     if contador2 > 0 and contador==0:
+    #         print("cerrado")
+    #         messages.success(request,"Sprint Cerrado")
+    #     elif contador2==0 and contador>0:
+    #         print("cerrado2")
+    #         sprint.fecha_fin_real=None
+    #         sprint.save()
+    #         messages.error(request, "NO se puede cerrar el Sprint porque la(s) US del Sprint NO esta(n) en el estado Done")
        
-    elif accion=="Cerrar":
-        print("-------------")
-        print("Hola Men")
-        print("--------------")
-        #if accion=="Cerrar" and activo_sprint==False:
-        messages.error(request,"No se puede cerrar el Sprint porque no esta activo")
+    # elif accion=="Cerrar":
+    #     print("-------------")
+    #     print("Hola Men")
+    #     print("--------------")
+    #     #if accion=="Cerrar" and activo_sprint==False:
+    #     messages.error(request,"No se puede cerrar el Sprint porque no esta activo")
 
     for item in sprints:
         if item.fecha_fin_real ==None:
@@ -868,22 +873,28 @@ def burndown_chart(request,pk):
             porcion=total_puntos/(sprint.fecha_fin-sprint.fecha_inicio).days  
             print(porcion) 
             for us in user_stories:
-                puntos= porcion * (us.fecha_done-sprint.fecha_inicio).days 
-                print(puntos)
-                if us.id_estado.descripcion=="Done":
+                print("hola")
+                # if us.fecha_done != None:
+                #     puntos= porcion * (us.fecha_done-sprint.fecha_inicio).days 
+                
+                if us.id_estado.descripcion=="Done" :
+                    puntos= porcion * (us.fecha_done-sprint.fecha_inicio).days 
                     total_puntos_logrados+=us.story_points
                     print(us.fecha_done)
+                    print(puntos)
+                    print("que tal")
                     lista_x.append([us.fecha_done,us.fecha_done])
                     lista_y.append([puntos,lista_y[-1][1]])
                     lista_x.append([us.fecha_done,us.fecha_done])
                     lista_y.append([puntos,total_puntos_logrados])
-            print(timezone.now().date())
-            # if timezone.now().date() > sprint.fecha_fin:
-            #     lista_x.append([fecha_fin,fecha_fin])
-            # else:
-            #     lista_x.append([fecha_fin,timezone.now().date()])
+            print(timezone.now().date().strftime('%Y-%m-%d'))
+            print(type(fecha_fin))
+            if timezone.now().date() > sprint.fecha_fin:
+                lista_x.append([fecha_fin,fecha_fin])
+            else:
+                lista_x.append([fecha_fin,timezone.now().date().strftime('%Y-%m-%d')])
 
-            # lista_y.append([total_puntos,total_puntos_logrados])
+            lista_y.append([total_puntos,total_puntos_logrados])
             
             
             print(lista_x)
